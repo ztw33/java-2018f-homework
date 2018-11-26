@@ -4,7 +4,7 @@
 
 - 主要实现了葫芦娃与Javafx框架的结合，实现战场的图形界面。
 
-![ui](F:\code for Java\java_homework\java-2018f-homework\20180925\images\ui.png)
+![ui](https://github.com/turncoat54/java-2018f-homework/blob/master/20180925/images/ui.png)
 
 
 
@@ -35,23 +35,23 @@
 
 1. GUI和后台两部分：后台为backstage，其余部分均为javafx前台布局。
 
-   ![twoParts](F:\code for Java\java_homework\java-2018f-homework\20180925\images\twoParts.png)
+   ![twoParts](https://github.com/turncoat54/java-2018f-homework/tree/master/20180925/images/twoParts.png)
 
    后台类型：分为**生物**和**阵型**两大类，在Space空间中初始化Position，每个生物只能站在一个Position上。
 
-   ![backstage](F:\code for Java\java_homework\java-2018f-homework\20180925\images\backstage.png)
+   ![backstage](https://github.com/turncoat54/java-2018f-homework/tree/master/20180925/images/backstage.png)
 
    ​
 
 2. Creature（生物），Space（空间），Formation（阵型），分类等，均在上次的报告中写到，此不再赘述。
 
-![class](F:\code for Java\java_homework\java-2018f-homework\20180925\images\class.png)
+![class](https://github.com/turncoat54/java-2018f-homework/tree/master/20180925/images/class.png)
 
 
 
 
 
-3. GUI界面，在生成的javafx工程中，利用SceneBuilder对界面实现布局，绑定相应函数。![img](file:///C:\Users\wzr\AppData\Roaming\Tencent\Users\392207009\QQ\WinTemp\RichOle\D1SMXPOE_T{_1NK[DV]KZSV.png)
+3. GUI界面，在生成的javafx工程中，利用SceneBuilder对界面实现布局，绑定相应函数。![img](https://github.com/turncoat54/java-2018f-homework/tree/master/20180925/images/gui.png)
 
 
 
