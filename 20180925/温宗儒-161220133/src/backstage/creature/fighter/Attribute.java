@@ -1,4 +1,4 @@
-package creature.fighter;
+package backstage.creature.fighter;
 
 public enum Attribute {
     FIRST(1,"大娃","红色"),
