@@ -2,11 +2,11 @@ package BattleField;
 
 import creature.Creature;
 
-public class Location {
+public class Location<T extends Creature> {
 
     private int x;
     private int y;
-    private Creature location_creature;
+    private T location_creature;
 
 
     public Location(int x, int y){
@@ -32,11 +32,11 @@ public class Location {
     }
 
 
-    public void setLocation_creature(Creature location_creature) {
+    public void setLocation_creature(T location_creature) {
         this.location_creature = location_creature;
     }
 
-    public Creature getLocation_creature() {
+    public T getLocation_creature() {
         return location_creature;
     }
 }
