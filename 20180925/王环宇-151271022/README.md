@@ -14,6 +14,10 @@
 >
 >version8.0:使用注解，测试对代码进一步地完善
 >
+>version5.1:
+>
+>> 增加了对象状态的调取，以及对象的保存，用于加载对象以及保存对象内容。
+>
 >version5.0:
 >
 >> 增加了文件的写入，通过formation.txt来读取Formation内的数据，以便方便地添加和删除阵型信息
@@ -58,6 +62,12 @@ WarriorInterface.java
 
 Formation.java
 FormationInterface.java
+
+FightField_MMDD.txt	// 用于保存场面信息，并且能够保存多次的内容
+formation.txt		// 用于保存队形信息
+GoodMan.txt			// 
+BadMan.txt			// 用于保存团队信息，在程序中加载对象
+Warriors_MMDD.dat	// 将最后的对象保存在文件中，以便保存战斗过程
 ```
 
 ##### 2. 编写思路
