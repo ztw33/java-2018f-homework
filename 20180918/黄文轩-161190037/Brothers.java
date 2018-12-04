@@ -4,13 +4,9 @@ public class Brothers {
     private Brother[] brothers;
     Brothers(){
         brothers = new Brother[]{
-                        new Brother(1),
-                        new Brother(2),
-                        new Brother(3),
-                        new Brother(4),
-                        new Brother(5),
-                        new Brother(6),
-                        new Brother(7)};
+                        Brother.大娃,Brother.二娃,Brother.三娃,Brother.四娃,Brother.五娃,Brother.六娃,Brother.七娃
+                       };
+
     }
 
     public void randStand(){
@@ -25,7 +21,7 @@ public class Brothers {
 
     public void speakName(){
         for(int i = 0;i<7;i++){
-            System.out.print(brothers[i].getName());
+            System.out.print(brothers[i].speakName());
             System.out.print(" ");
         }
         System.out.println();
@@ -33,7 +29,7 @@ public class Brothers {
 
     public void speakColor() {
         for(int i = 0;i<7;i++){
-            System.out.print(brothers[i].getColor());
+            System.out.print(brothers[i].speakColor());
             System.out.print(" ");
         }
         System.out.println();
@@ -50,8 +46,8 @@ public class Brothers {
         for(int i = 0;i<7;i++){
             for(int j = 0;j<7-i-1;j++){
                 if (compareByName(j,j+1)){
-                    System.out.println(brothers[j].getName()+":"+(j+1)+"->"+(j+2));
-                    System.out.println(brothers[j+1].getName()+":"+(j+2)+"->"+(j+1));
+                    System.out.println(brothers[j].speakName()+":"+(j+1)+"->"+(j+2));
+                    System.out.println(brothers[j+1].speakName()+":"+(j+2)+"->"+(j+1));
                     Brother tmp = brothers[j];
                     brothers[j] = brothers[j+1];
                     brothers[j+1] = tmp;
@@ -65,8 +61,8 @@ public class Brothers {
         int low,high,mid;
         for(int i = 1;i<7;i++){
             temp = brothers[i];
-            String temp_name = brothers[i].getName();
-            System.out.println(brothers[i].getName()+":"+(i+1)+"->"+"temp");
+            String temp_name = brothers[i].speakName();
+            System.out.println(brothers[i].speakName()+":"+(i+1)+"->"+"temp");
             low = 0;
             high = i-1;
             while(low<=high){
@@ -79,7 +75,7 @@ public class Brothers {
                 }
             }
             for(int j = i-1;j>high;j--){
-                System.out.println(brothers[j].getName()+":"+(j+1)+"->"+(j+2));
+                System.out.println(brothers[j].speakName()+":"+(j+1)+"->"+(j+2));
                 brothers[j+1] = brothers[j];
             }
             System.out.println(temp_name+":"+"temp"+"->"+(high+2));

@@ -15,6 +15,11 @@ public class CalabashSort {
             this.rank = str2;
             this.index = r;
         }
+
+        //把葫芦娃移动到队列queue中的位置destination
+        void move(CalabashBrother[] queue,int destination){
+            queue[destination]=this;
+        }
     }
 
     //用于排序的类
@@ -23,12 +28,15 @@ public class CalabashSort {
         CalabashBrother[] brothers;
 
         CbSort(){
+            /*
             brothers=new CalabashBrother[7];    //7个葫芦娃
             //用枚举类赋值七个不同的葫芦娃
             int i=0;
             for (CalabashBrother c : CalabashBrother.values()){
                 brothers[i++]=c;
             }
+            */
+            brothers=CalabashBrother.values();
         }
 
         //从第一个到最后一个报颜色
@@ -55,8 +63,12 @@ public class CalabashSort {
             for(int i=1;i<7;i++){
                 int p=random.nextInt(i+1);
                 CalabashBrother temp=brothers[i];
+                brothers[p].move(brothers,i);
+                temp.move(brothers,p);
+                /*
                 brothers[i]=brothers[p];
                 brothers[p]=temp;
+                */
             }
         }
 
@@ -67,14 +79,18 @@ public class CalabashSort {
             for(int i=0;i<6;i++){
                 for(int j=0;j<7-i-1;j++){
                     if(brothers[j].index>brothers[j+1].index){
-                        swap(j,j+1);
+                        CalabashBrother temp=brothers[j];
+                        brothers[j+1].move(brothers,j);
+                        report(brothers[j],j+1,j);
+                        temp.move(brothers,j+1);
+                        report(brothers[j+1],j,j+1);
                     }
                 }
             }
             printrank();
         }
 
-        //排序前报颜色 + 报告交换动作 + 排序后报颜色
+        //二分插入排序：排序前报颜色 + 报告交换动作 + 排序后报颜色
         void binaryorder(){
             printcolor();
             System.out.println("binary order:");
@@ -90,11 +106,22 @@ public class CalabashSort {
                         right=mid-1;
                     }
                 }
-                move(i,left);
+                CalabashBrother temp=brothers[i];
+                for(int j=i-1;j>=left;j--) {
+                    brothers[j].move(brothers, j+1);
+                    report(brothers[j+1], j, j+1);
+                }
+                temp.move(brothers,left);
+                report(temp,i,left);
             }
             printcolor();
         }
 
+        void report(CalabashBrother cb,int s,int d){
+            System.out.println(cb.rank + ": " + (s + 1) + "->" + (d + 1));
+        }
+
+        /*
         //将p位置的葫芦娃插入到q位置，报告交换动作
         void move(int p,int q){
             if(p!=q) {
@@ -116,6 +143,7 @@ public class CalabashSort {
             brothers[p]=brothers[q];
             brothers[q]=temp;
         }
+        */
     }
 
     public static void main(String args[]) {
