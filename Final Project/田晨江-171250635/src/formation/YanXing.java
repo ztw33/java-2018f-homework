@@ -5,18 +5,20 @@ import creature.Creature;
 
 public class YanXing implements FormationImp {
     @Override
-    public void arrange(BattleField battleField, Creature[] creature, Location location ) {
+    public void arrange(BattleField battleField, Queue queue, Location location ) {
         int row = battleField.getRow();
         int column = battleField.getColumn();
+        Creature[] creatures = queue.getCreatures();
 
         int location_x = location.getX();
         int location_y = location.getY();
 
-        int num = creature.length;
+        int num = creatures.length;
 
         for(int i=location.getX(),count=0;
             i<location.getX()+num&&count<num; count++,i++){
-            battleField.addCreature(creature[count],new Location(location_x,location_y));
+            battleField.addCreature(creatures[count],new Location(location_x,location_y));
+            creatures[count].setLocation(new Location(location_x,location_y));
             location_x--;
             location_y++;
         }

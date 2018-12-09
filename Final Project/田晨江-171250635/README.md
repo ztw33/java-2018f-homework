@@ -8,7 +8,7 @@
 ### 自顶向下介绍如下
 
 
-## Game 类
+## Main 类
 
 实现了对游戏中所涉及生物的创造，即初始化。
 
@@ -82,7 +82,6 @@ public void arrange(BattleField battleField, Creature[] creature, Location locat
 ```
 
 
-不足：
-- 对于`CalabashBrothers`类和`LittleGuys`类可以共同继承一个队列类。
-- 阵型实现可以对是否会超出边界进行判断
-- 应该创建一个`Coorinator`类实现放置生物等行为，起到造物主的作用，更接近面向对象思想。
+##其他要求
+- 在原来的一些方法中使用了注解
+

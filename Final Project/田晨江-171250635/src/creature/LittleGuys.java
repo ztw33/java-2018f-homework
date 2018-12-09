@@ -2,24 +2,12 @@ package creature;
 
 public class LittleGuys extends Creature {
 
-    private LittleGuys littleGuys;
-    private Creature[] lg;
-
-    public Creature[] createLittleGuys(int num){
-        lg = new Creature[num+1];
-        for(int i=0; i<num; i++){
-            lg[i]= new LittleGuys();
+    public LittleGuys[] initialGuys() {
+        LittleGuys[] LGuys = new LittleGuys[7];
+        for (int i = 0; i < LGuys.length; i++) {
+            LGuys[i] = new LittleGuys();
         }
-        lg[num]=new ScorpionEssence();
-        return lg;
-    }
-
-    public void setLg(Creature[] lg) {
-        this.lg = lg;
-    }
-
-    public Creature[] getLg() {
-        return lg;
+        return LGuys;
     }
 
 

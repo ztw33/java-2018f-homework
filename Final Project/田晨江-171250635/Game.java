@@ -8,7 +8,7 @@ import formation.*;
 
 import java.util.Scanner;
 
-public class Game {
+public class Main {
 
 
     public static void main(String[] args){

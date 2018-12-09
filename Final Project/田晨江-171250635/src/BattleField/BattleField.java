@@ -50,8 +50,8 @@ public class BattleField{
 
     /** 增加棋盘上的队伍 */
 
-    public void addQueue(Creature[] creature, Location startLocation, FormationImp formation){
-        formation.arrange(this.battleField,creature,startLocation);
+    public void addQueue(Queue queue, Location startLocation, FormationImp formation){
+        formation.arrange(this.battleField,queue,startLocation);
     }
 
 

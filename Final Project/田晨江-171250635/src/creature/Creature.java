@@ -2,10 +2,9 @@ package creature;
 import BattleField.*;
 
 
-public class Creature {
+public class Creature implements Comparable {
 
     protected String name;
-    //private int x, y;
     private Creature creature;
     private Location location;
 
@@ -17,10 +16,16 @@ public class Creature {
 
     public void setLocation(Location location) {
         this.location = location;
-        //location.setLocation_creature(this);
+        location.setLocation_creature(this);
     }
+
     public void setCreature(Creature creature){
         this.creature = creature;
+    }
+
+    @Override
+    public boolean compareTo(Comparable another) {
+        return false;
     }
 
 
