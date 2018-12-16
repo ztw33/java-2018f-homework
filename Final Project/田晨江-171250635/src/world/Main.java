@@ -1,19 +1,11 @@
-import javafx.application.Platform;
-import world.BattleField;
-import creature.CalabashBrothers;
-import creature.*;
-import creature.LittleGuys;
-import world.*;
-import formation.*;
-import javafx.application.Application;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import sort.BubbleSort;
-import sort.RandomSort;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+package world;
 
-import java.util.Scanner;
+import javafx.application.Platform;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import world.*;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 
@@ -24,7 +16,9 @@ public class Main extends Application {
             @Override
             public void run() {
                 try {
-                    new Controller().start(primaryStage);
+
+                    new Controller().startGame(primaryStage);
+
                 } catch (Exception e){
                     e.printStackTrace();
                 }
