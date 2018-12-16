@@ -1,10 +1,11 @@
-package com.homework3.being;
+package being;
 
 /**
  * @Description 小怪
  * @Author LUCUS BAI
  * @Date 2018/10/23
  */
+
 public class LowLevelDemon extends Evil implements Fighting {
 
     public LowLevelDemon() {

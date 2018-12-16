@@ -12,8 +12,8 @@ public class Crab extends Creature{
 	public Crab(Location l,Administrator ad) {
 		this.loc = l;
 		this.admin = ad;
-		this.sizex = 80;
-		this.sizey = 80;
+		this.sizex = 100;
+		this.sizey = 100;
 	}
 
 	public void draw(Graphics g) {

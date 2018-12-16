@@ -8,8 +8,10 @@ public class HuLuBattle {
     private boolean[][] place;
     private String[][] lives;
 
-    YeYe yeye = new YeYe();
-    SJ sj = new SJ();
+    Leader yeye=new YeYe();
+    Leader sj=new SJ();
+    //YeYe yeye = new YeYe();
+    //SJ sj = new SJ();
 
     HuLuBro[] bro = {HuLuBro.RED, HuLuBro.YELLOW, HuLuBro.GREEN, HuLuBro.ORANGE, HuLuBro.CYAN, HuLuBro.BLUE, HuLuBro.PURPLE};
     Enemy[] enemy = {Enemy.XZJ, Enemy.XLL1, Enemy.XLL2, Enemy.XLL3, Enemy.XLL4, Enemy.XLL5, Enemy.XLL6, Enemy.XLL7, Enemy.XLL8};
@@ -90,7 +92,8 @@ public class HuLuBattle {
             enemy[6].setSpace(6, 12);
             enemy[7].setSpace(7, 13);
             enemy[8].setSpace(8, 17);
-        } else {
+        }
+        else if(no==1) {
             System.out.print("鹤翼阵\n");
             enemy[1].setSpace(0, 6);
             enemy[2].setSpace(1, 7);
@@ -101,6 +104,19 @@ public class HuLuBattle {
             enemy[6].setSpace(2, 12);
             enemy[7].setSpace(1, 13);
             enemy[8].setSpace(0, 14);
+
+        }
+        else if(no==2){
+            System.out.print("锋矢阵\n");
+            enemy[1].setSpace(2, 6);
+            enemy[2].setSpace(1, 7);
+            enemy[3].setSpace(0, 8);
+            enemy[4].setSpace(1, 8);
+            enemy[0].setSpace(2, 8);
+            enemy[5].setSpace(3, 8);
+            enemy[6].setSpace(4, 8);
+            enemy[7].setSpace(1, 9);
+            enemy[8].setSpace(2, 10);
 
         }
         //
@@ -132,7 +148,8 @@ public class HuLuBattle {
         battle.printIt0(0);
         //鹤翼
         battle.printIt0(1);
-
+        //锋矢
+        battle.printIt0(2);
     }
 
 }

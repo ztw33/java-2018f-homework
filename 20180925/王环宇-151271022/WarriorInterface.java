@@ -1,8 +1,7 @@
 /*
- * 构造一个Warriors的接口，用于规范Warrior类的内容
- * 接口中的内容皆为抽象
+ * 鏋勯�犱竴涓猈arriors鐨勬帴鍙ｏ紝鐢ㄤ簬瑙勮寖Warrior绫荤殑鍐呭
+ * 鎺ュ彛涓殑鍐呭鐨嗕负鎶借薄
  * */
-package javahw3;
 
 public interface WarriorInterface {	
 	/*

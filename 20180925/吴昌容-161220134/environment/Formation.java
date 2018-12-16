@@ -1,28 +1,36 @@
 package environment;
 
+import java.io.*;
+
 public class Formation {
     final static int num = 7;
+    final static int dimension = 2;
     String name;
     int[] leaderPos;
     int[][] array;
     {
         array = new int[num][];
         for (int i = 0; i < num; ++i) {
-            array[i] = new int[2];
+            array[i] = new int[dimension];
         }
-        leaderPos = new int[2];
+        leaderPos = new int[dimension];
     }
 
-    public Formation(int[][] arg, String str, int[] argLeaderPos) {
+    public Formation(int[][] argArray, String str, int[] argLeaderPos) {
         for (int i = 0; i < num; ++i) {
-            array[i][0] = arg[i][0];
-            array[i][1] = arg[i][1];
+            for (int j = 0; j < dimension; ++j) {
+                array[i][j] = argArray[i][j];
+            }
         }
         name = str;
         leaderPos = argLeaderPos;
     }
-    public int getSize() {
+
+    static public int getSize() {
         return num;
+    }
+    static public int getDimension() {
+        return dimension;
     }
     public int[] getCoord(int n) {
         if (n < 0 || n >= num)

@@ -2,7 +2,9 @@ package creature;
 
 import environment.Battlefield;
 import environment.Formation;
+import org.jetbrains.annotations.Contract;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -18,9 +20,11 @@ enum LeaderEnum {
         sign = argSign;
     }
 
+    @Contract(pure = true)
     public String getName() {
         return name;
     }
+    @Contract(pure = true)
     public String getSign() {
         return sign;
     }
@@ -49,6 +53,49 @@ public class Leader extends Creature {
 
     public void addFormation(Formation fm) {
         strategies.add(fm);
+    }
+    public void addFormation(File fp) {
+        BufferedReader configFile;
+        try {
+            configFile = new BufferedReader(new FileReader(fp));
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("File Not Found:" + fp);
+            return;
+        }
+
+        try {
+            String sepStr = ",| ";
+            while (true) {
+                String str = configFile.readLine();
+                if (str == null)
+                    break;
+                String[] input1 = str.split(sepStr);
+                str = configFile.readLine();
+                String[] input2 = str.split(sepStr);
+
+                int[] leaderPos = new int[2];
+                int[][] posData = new int[Formation.getSize()][Formation.getDimension()];
+                for (int i = 0; i < Formation.getDimension(); ++i) {
+                    leaderPos[i] = Integer.parseInt(input1[i + 1]);
+                }
+
+                for (int i = 0; i < Formation.getSize(); ++i) {
+                    for (int j = 0; j < Formation.getDimension(); ++j) {
+                        posData[i][j] = Integer.parseInt(input2[i * 2 + j]);
+                    }
+                }
+
+                strategies.add(new Formation(posData, input1[0], leaderPos));
+            }
+        }
+        catch (IOException ioe) {
+            System.err.println("[Read Error]Cannot resolve the file: " + fp.getAbsolutePath());
+        }
+        catch (NumberFormatException nfe) {
+            System.err.println("[FormatError]Cannot resolve the file:" + fp.getAbsolutePath());
+        }
     }
     public void embattle(Battlefield world, Creature[] kids) {
         nowPtr = (nowPtr + 1) % strategies.size();

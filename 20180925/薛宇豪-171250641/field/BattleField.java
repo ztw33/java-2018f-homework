@@ -1,12 +1,13 @@
 package field;
 
 import creature.Creature;
+import sample.Controller;
 
 public class BattleField {
     private int row;
     private int column;
     public Cell<Creature>[][] battlefield;
-    public BattleField(int row,int column){
+    public BattleField(int row, int column){
         this.row=row;
         this.column=column;
         battlefield=new Cell[row][column];
@@ -17,19 +18,14 @@ public class BattleField {
         }
     }
 
-    public void print(){
+   public void print(Controller controller){
         for(int i=0;i<row;i++){
             for(int j=0;j<column;j++){
-                if(battlefield[i][j].getIfEmpty()){
-                    System.out.print("-");
-                }else {
-                    System.out.print(battlefield[i][j].getCreature().getSymbol());
-                }
-                System.out.print(" ");
+                if(!(battlefield[i][j].getIfEmpty())){
+                    controller.setCreature(i,j,battlefield[i][j].getCreature());
+                };
             }
-            System.out.println();
         }
-        System.out.println();
     }
 
 

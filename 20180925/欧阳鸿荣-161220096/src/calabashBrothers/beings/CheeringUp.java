@@ -7,5 +7,5 @@ import calabashBrothers.Maps;
  * @ Description：${description}
  */
 public interface CheeringUp {
-    void CheeringUp(Maps maps, int x, int y);
+    void CheeringUp(Maps<Creature> maps, int x, int y);
 }

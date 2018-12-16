@@ -1,4 +1,4 @@
-package com.homework3.being;
+package being;
 
 /**
  * @Description 为了便于拓展，或许以后会加入非CartoonCharacter的类

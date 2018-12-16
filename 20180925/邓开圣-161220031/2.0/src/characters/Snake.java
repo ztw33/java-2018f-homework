@@ -10,8 +10,8 @@ import shapes.Location;
 
 public class Snake extends Creature{
 
-	private static Image img = new ImageIcon("resources/characters/snake/snake2.jpg").getImage();
-	private int snakeSizex = 80, snakeSizey = 80;
+	private static Image img = new ImageIcon("resources/characters/snake/snake2.png").getImage();
+	private int snakeSizex = 100, snakeSizey = 100;
 	
 	public Snake(Location l,Administrator ad) {
 		this.loc = l;

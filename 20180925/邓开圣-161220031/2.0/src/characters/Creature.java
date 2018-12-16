@@ -10,7 +10,7 @@ import shapes.Location;
 public class Creature {
 	protected Location loc;
 	public Administrator admin;
-	protected int sizex = 60, sizey = 60;	
+	protected int sizex = 80, sizey = 80;	
 	
 	public int getSizex() {
 		return sizex;
@@ -31,7 +31,7 @@ public class Creature {
 	public Rectangle getRect() {
 		return new Rectangle(loc.locx,loc.locy,sizex,sizey);
 	}
-
+	//检测生物体的碰撞
 	public boolean hitAnother(Creature c) {
 		return this.getRect().intersects(c.getRect());
 	}

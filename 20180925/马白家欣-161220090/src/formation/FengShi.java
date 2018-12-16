@@ -1,57 +1,40 @@
-package com.homework3.formation;
+package formation;
 
-import com.homework3.being.*;
-import com.homework3.battle.BattleField;
-import com.homework3.coordinate.Position;
+import battle.BattleField;
+import being.*;
+import position.Position;
 
 /**
  * @Description 锋矢
  * @Author LUCUS BAI
  * @Date 2018/10/23
  */
-public class FengShi extends Formation {
-    public FengShi() {
+
+public class FengShi <T extends CartoonCharacter> extends Formation<CartoonCharacter> {
+    public FengShi(T kind) {
         super(0, 5, 3, 4);
+        positionList.add(new Position(0, 0));//center
+        positionList.add(new Position(0, 4));
+        positionList.add(new Position(1, 0));
+        positionList.add(new Position(1, -1));
+        positionList.add(new Position(1, 1));
+        positionList.add(new Position(2, 0));
+        positionList.add(new Position(2, -2));
+        positionList.add(new Position(2, 2));
+        positionList.add(new Position(3, 0));
+        positionList.add(new Position(3, -3));
+        positionList.add(new Position(3, 3));
+        positionList.add(new Position(4, 0));
+        positionList.add(new Position(5, 0));
+        this.kind = kind;
     }
 
-    public void changeFormation(Position position, BattleField battleField, CartoonCharacter cartoonCharacter) {
+    @Override
+    public void changeFormation(Position position, BattleField<CartoonCharacter> battleField) {
 
-        battleField.clearBattleField();
-        fillBattleFiled(battleField, position, cartoonCharacter);
-    }
-
-    private static void fillBattleFiled(BattleField battleField, Position position, CartoonCharacter cartoonCharacter)
-    {
-        if(cartoonCharacter instanceof Justice)
-        {
-            assert false;
-        }
-        battleField.setBattleFieldLattice(position, new Scorpion());
-        position.move(0, 4);
-        battleField.setBattleFieldLattice(position, new Snake());
-        position.move(1, -5);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, 1);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, 1);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(1, -1);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, -2);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, 4);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(1, -2);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, -3);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, 6);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(0, -3);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(1, 0);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
-        position.move(1, 0);
-        battleField.setBattleFieldLattice(position, new LowLevelDemon());
+        assert this.kind instanceof Evil;
+        FillFormation.fillFormation(new Evil(), this.formationMap, this.positionList);
+        battleField.setBattleFieldLattice(formationMap, position);
     }
 }
+

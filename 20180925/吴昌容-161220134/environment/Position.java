@@ -1,6 +1,8 @@
 package environment;
 
-public class Position <T> {
+import creature.Creature;
+
+public class Position <T extends Creature> {
     T conetnt = null;
 
     public T getConetnt() {

@@ -1,4 +1,3 @@
-package javahw3;
 /*
  * 
  * @ author: why

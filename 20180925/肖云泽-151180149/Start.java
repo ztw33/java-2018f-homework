@@ -1,33 +1,42 @@
-﻿import creature.*;
+import creatures.*;
+import formation.*;
 import battlefield.*;
 import infos.Infos;
 
 public class Start {
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Battlefield b = new Battlefield(Infos.BATTLEFIELD_SCALE);
-		Queue c = new Queue(Infos.CALABASHBROTHERQUEUE);
-		Queue e = new Queue(Infos.ENEMYQUEUE);
-		c.randomOrder();
-		c.calaSort();
-		Formation f1 = Formation.SNAKE_FORMATION;
-		f1.arr.setStartpoint(new Position(0,4));
-		f1.arr.normalize();
-		b.place(c, f1);
-		Formation f2 = Formation.ECHELON_FORMATION;
-		f2.arr.setStartpoint(new Position(7,4));
-		f2.arr.normalize();
-		b.place(e, f2);
-		Creature c1 = new Grandpa();
-		Creature c2 = new Serpent();
-		b.place(c1, new Position(0,7));
-		b.place(c2, new Position(14,7));
+		//calabashbrothers
+		Queue q_calabro = new Queue();
+		q_calabro.sevenBrothers();
+		q_calabro.randomOrder();
+		SnakeFormation formation_s= new SnakeFormation(Infos.FORMATION_SCALE);
+		b.place(formation_s, new Position(0,4), q_calabro);
+		//badguys
+		EchelonFormation formation_e = new EchelonFormation(Infos.FORMATION_SCALE);
+		Queue q_badguys = new Queue();
+		for (int i=0; i<formation_e.getLength(); i++) {
+			if(i == 0) {
+				q_badguys.appendCreature(new Scorpion());
+			}else {
+				q_badguys.appendCreature(new Minion());
+			}
+		}
+		b.place(formation_e, new Position(7,4), q_badguys);
+		//grandpa & serpent
+		Grandpa gp = new Grandpa();
+		b.place(new Position(0,7), gp);
+		Serpent s = new Serpent();
+		b.place(new Position(14,7), s);
 		b.showBattlefield();
-		
-		Formation f3 = Formation.ARROW_FORMATION;
-		f3.arr.setStartpoint(new Position(7,4));
-		f3.arr.normalize();
-		b.changeFormation(e, f2, f3);
+		//change formation
+		ArrowFormation formation_a = new ArrowFormation(Infos.FORMATION_SCALE);
+		for (int i=formation_e.getLength(); i<formation_a.getLength(); i++) {
+			q_badguys.appendCreature(new Minion());
+		}
+		b.changeFormation(formation_a, q_badguys, formation_e, new Position(7,4));
 		b.showBattlefield();
 	}
 }

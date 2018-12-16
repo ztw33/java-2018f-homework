@@ -1,7 +1,10 @@
 package calabashBrothers.formation;
 
+import calabashBrothers.Coordinate;
 import calabashBrothers.Maps;
 import calabashBrothers.beings.Creature;
+
+import java.util.ArrayList;
 
 /**
  * @ Author     ：Young
@@ -10,24 +13,30 @@ import calabashBrothers.beings.Creature;
 public class FengShi extends Formation{
     public FengShi(int startX, int startY) {
         super(startX, startY);
+        initSites(startX,startY);
+    }
+
+
+    public void initSites(int x,int y){
+        sites.add(new Coordinate(x,y));
+        sites.add(new Coordinate(x,y+1));
+        sites.add(new Coordinate(x-1,y+1));
+        sites.add(new Coordinate(x+1,y+1));
+        sites.add(new Coordinate(x+2,y+2));
+        sites.add(new Coordinate(x,y+2));
+        sites.add(new Coordinate(x-2,y+2));
+        sites.add(new Coordinate(x+3,y+3));
+        sites.add(new Coordinate(x,y+3));
+        sites.add(new Coordinate(x-3,y+3));
+        sites.add(new Coordinate(x,y+4));
+        sites.add(new Coordinate(x,y+4)); //maybe some bugs
     }
 
     @Override
-    public void SetFormation(Maps maps, Creature[] creatures, int direction) {
-        maps.getMaps()[startX][startY].setCreature(creatures[0]);
-        maps.getMaps()[startX][startY+1].setCreature(creatures[1]);
-        maps.getMaps()[startX-1][startY+1].setCreature(creatures[2]);
-        maps.getMaps()[startX+1][startY+1].setCreature(creatures[3]);
-
-        maps.getMaps()[startX+2][startY+2].setCreature(creatures[4]);
-        maps.getMaps()[startX][startY+2].setCreature(creatures[5]);
-        maps.getMaps()[startX-2][startY+2].setCreature(creatures[6]);
-
-        maps.getMaps()[startX+3][startY+3].setCreature(creatures[7]);
-        maps.getMaps()[startX][startY+3].setCreature(creatures[8]);
-        maps.getMaps()[startX-3][startY+3].setCreature(creatures[9]);
-
-        maps.getMaps()[startX][startY+4].setCreature(creatures[10]);
-        maps.getMaps()[startX][startY+4].setCreature(creatures[11]);
+    public void SetFormation(Maps<Creature> maps, ArrayList<Creature> creatures, int direction) {
+        for(int i=0;i<=11;i++){
+            maps.setContent(sites.get(i).getX(),sites.get(i).getY(),creatures.get(i));
+        }
     }
+
 }

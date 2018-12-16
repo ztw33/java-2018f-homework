@@ -1,54 +1,36 @@
-﻿package battlefield;
+package battlefield;
 
 import java.util.Random;
-
-import creature.*;
+import creatures.*;
 
 public class Queue {
 	public Creature[] queue;
-	Queue(){
+	public Queue(){
 		this.queue = new Creature[0];
 	}
-	public Queue(String[] namelist) {
-		this.queue = new Creature[namelist.length];
-		for (int i=0; i<namelist.length; i++) {
-			this.queue[i] = recognizeClass(namelist[i]);
+	public Queue(Creature c) {
+		this.queue = new Creature[1];
+		this.queue[0] = c;
+	}
+	public Queue(Creature[] list) {
+		this.queue = new Creature[list.length];
+		for (int i=0; i<list.length; i++) {
+			this.queue[i] = list[i];
 		}
 	}
-	public void printQueue() {
-		for (int i=0; i<this.queue.length; i++) {
-			System.out.print(this.queue[i].getName() + " ");
+	//for convenience
+	public void sevenBrothers() {
+		CalabashBrotherMask[] list = CalabashBrotherMask.values();
+		this.queue = new Creature[list.length];
+		for (int i=0; i<list.length; i++) {
+			this.queue[i] = new CalabashBrother(list[i]);
 		}
 	}
-	public Creature recognizeClass(String name) {
-		switch (name) {
-		case "Grandpa":
-			return new Grandpa();
-		case "Minion":
-			return new Minion();
-		case "Scorpion":
-			return new Scorpion();
-		case "Serpent":
-			return new Serpent();
-		case "0":
-			return new CalabashBrother(CalabashBrotherMask.RED);
-		case "1":
-			return new CalabashBrother(CalabashBrotherMask.ORANGE);
-		case "2":
-			return new CalabashBrother(CalabashBrotherMask.YELLOW);
-		case "3":
-			return new CalabashBrother(CalabashBrotherMask.GREEN);
-		case "4":
-			return new CalabashBrother(CalabashBrotherMask.CYAN);
-		case "5":
-			return new CalabashBrother(CalabashBrotherMask.BLUE);
-		case "6":
-			return new CalabashBrother(CalabashBrotherMask.PURPLE);
-		default:
-			return new Creature();
-		}
-	}
+	//for unique function
 	public Creature[] randomOrder() {
+		if (!this.checkCamp()) {
+			return null;
+		}
 		Random rand = new Random();
 		int[] QueueIndex = new int[this.queue.length];
 		// get an index code
@@ -81,24 +63,79 @@ public class Queue {
 		this.printQueue();
 		return this.queue;
 	}
+	
 	public void calaSort() {
-		for (int i=0; i<this.queue.length; i++) {
-			if (this.queue[i].index < 0) {
-				System.out.print("\nOther creature exists");
-				return;
-			}
+		if (!this.checkCamp()) {
+			return;
 		}
-		for (int i = 0; i < this.queue.length; i++) {
-			for (int j = 0; j < this.queue.length - 1; j++) {
-				if (this.queue[j].index > this.queue[j + 1].index) {
-					Creature temp = this.queue[j];
-					this.queue[j] = this.queue[j + 1];
-					this.queue[j + 1] = temp;
+		CalabashBrother[] tempqueue = new CalabashBrother[this.queue.length];
+		//向下转型
+		/*for (int i=0; i<this.queue.length; i++) {
+			if (this.queue[i] instanceof CalabashBrother){
+				tempqueue[i] = (CalabashBrother)this.queue[i];
+	         }
+		}*/
+		try {
+			for (int i=0; i<this.queue.length; i++) {
+				if (this.queue[i] instanceof CalabashBrother){
+					tempqueue[i] = (CalabashBrother)this.queue[i];
+		         }
+			}
+			for (int i = 0; i < tempqueue.length; i++) {
+				for (int j = 0; j < tempqueue.length - 1; j++) {
+					if (tempqueue[j].getIndex() > tempqueue[j + 1].getIndex()) {
+						CalabashBrother temp = tempqueue[j];
+						tempqueue[j] = tempqueue[j + 1];
+						tempqueue[j + 1] = temp;
+					}
 				}
 			}
+			System.out.println("\ncalaSort results:");
+			this.printQueue();
+			System.out.println("");
+		}catch(Exception e) {
+			System.out.print(e + ":");
+			System.out.println("calaSort() is only used for CalabashBrother");
+			return;
 		}
-		System.out.println("\ncalaSort results:");
-		this.printQueue();
-		System.out.println("");
+	}
+	private boolean checkCamp() {
+		int sum = 0;
+		for (int i=0; i<this.queue.length; i++) {
+			sum += this.queue[i].getCamp();
+		}
+		if (sum == 0 || sum == this.queue.length) {
+			return true;
+		}else {
+			System.out.println("The Queue has different camp creatures");
+			return false;
+		}
+	}
+	
+	//functional 
+	public void printQueue() {
+		for (int i=0; i<this.queue.length; i++) {
+			System.out.print(this.queue[i].getName() + " ");
+		}
+		System.out.println();
+	}
+	public void appendCreature(Creature c) {
+		Creature[] tempqueue = new Creature[this.queue.length + 1];
+		for (int i=0; i<this.queue.length; i++) {
+			tempqueue[i] = this.queue[i];
+		}
+		tempqueue[tempqueue.length - 1] = c;
+		this.queue = tempqueue;
+	}
+	
+	public void appendQueue(Queue q) {
+		Creature[] tempqueue = new Creature[this.queue.length + q.queue.length];
+		for (int i=0; i<this.queue.length; i++) {
+			tempqueue[i] = this.queue[i];
+		}
+		for (int i=0; i<q.queue.length; i++) {
+			tempqueue[i + this.queue.length] = q.queue[i];
+		}
+		this.queue = tempqueue;
 	}
 }

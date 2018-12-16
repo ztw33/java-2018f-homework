@@ -4,7 +4,7 @@
 ## 类说明
 ### 生物包(Package Creature)
 1. **Creature**
-描述普适性的生物概念，是所有生物元素的基类
+描述普适性的生物概念，是所有生物元素的基类。
 ```
 public class Creature {
     int x; //生物的x坐标
@@ -41,7 +41,7 @@ public class CalabashBrother extends Creature {
 }
 ```
 3. **Monster**
-描述蝎子精、小喽啰等具有战斗属性的坏人，除了继承自Creature类的属性外，还有名称属性
+描述蝎子精、小喽啰等具有战斗属性的坏人，除了继承自Creature类的属性外，还有名称属性。
 ```
 public class Monster extends Creature {
     String name; //名称属性
@@ -60,20 +60,23 @@ public class Leader extends Creature {
     public Leader(String argName); //构造函数，按名构造，sign在枚举类型构造时指定，此处只是读取
 
     public void addFormation(Formation fm); //向战略库中添加阵型
+    public void addFormation(File fp); //从文件中导入阵型
     public void embattle(Battlefield world, Creature[] kids); //排兵布阵，安排阵营中生物的位置（包括自身）
 }
 ```
 ### 环境包(Package Environment)
 1. **Game**
-描述整个程序的主体——游戏
+描述整个程序的主体——游戏。
 ```
 public class Game {
     public static void main(String[] args); //启动游戏，也是整个游戏程序的main方法
-    static void initializeFormation(Leader snaker, Leader grandpa); //为两位领导者初始化阵型
+    static void initializeFormation(Leader snaker, Leader grandpa);
+    //为两位领导者初始化阵型。在此处，我分别试验了使用相对路径和使用java资源管理器两种方式来从txt文本文件中导入阵型信息
+    //配置文件为放在res包下的monsterFormationConfig.txt和huluwaFormationConfig.txt
 }
 ```
 2. **Battlefield**
-描述大环境——战场，其本质是一个2维空间，每个位置上均可以放置一个生物
+描述大环境——战场，其本质是一个2维空间，每个位置上均可以放置一个生物。
 ```
 public class Battlefield {
     Position<Creature>[][] matrix; //二维空间
@@ -89,9 +92,9 @@ public class Battlefield {
 }
 ```
 3. **Position**
-描述环境中的一个位置，其类型参数用于指定其可以承载什么类型的物体
+描述环境中的一个位置，其类型参数用于指定其可以承载什么类型的物体，其边界类型为Creature，即只能承载生物。
 ```
-public class Position <T> {
+public class Position <T extends Creature> {
     T conetnt = null;
 
     public T getConetnt(); //获取其承载的物体
@@ -100,22 +103,24 @@ public class Position <T> {
 }
 ```
 4. **Formation**
-描述阵型，其所含的信息包括领导者的位置和部下们的位置
+描述阵型，其所含的信息包括领导者的位置和部下们的位置。
 ```
 public class Formation {
     final static int num; //阵型所包含的部下的数量
+    final static int dimension = 2; //阵型中每个坐标的维度
     String name; //阵型的名字
     int[] leaderPos; //领导者的位置
     int[][] array; //部下们的位置
 
     public Formation(int[][] arg, String str, int[] argLeaderPos); //初始化阵型的信息
-    public int getSize(); //获取阵型的大小信息
+    static public int getSize(); //获取阵型的大小信息
+    static public int getDimension(); //获取坐标的维度
     public int[] getCoord(int n); //获取阵型一个指定单位的位置信息
     public int[] getLeaderPos(); //获取领导者的位置信息
 }
 ```
 5. **SortController**
-描述排序器，是作业2中的简化版本。采用快速排序算法，基于葫芦娃的颜色属性进行比较，会输出排序中的位置变动信息及结果
+描述排序器，是作业2中的简化版本。采用快速排序算法，基于葫芦娃的颜色属性进行比较，会输出排序中的位置变动信息及结果。
 ```
 public class SortController {
     //Sort Calabash Brothers by Quick-sort Algorithm based on color

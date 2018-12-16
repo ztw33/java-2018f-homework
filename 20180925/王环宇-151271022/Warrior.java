@@ -1,10 +1,9 @@
 /*
- * ÔÚWarriors½Ó¿ÚµÄÒªÇóÏÂ£¬¹¹ÔìÒ»¸öWarriorÀà£¬ÔÚÕâ¸öÊÀ½çÖĞ´æ»îµÄËùÓĞÉúÎï
- * ¶¼ÊÇWarrior£¬µ«È´ÓÖÓĞ²»Í¬µÄ¹¦ÄÜ
+ * åœ¨Warriorsæ¥å£çš„è¦æ±‚ä¸‹ï¼Œæ„é€ ä¸€ä¸ªWarriorç±»ï¼Œåœ¨è¿™ä¸ªä¸–ç•Œä¸­å­˜æ´»çš„æ‰€æœ‰ç”Ÿç‰©
+ * éƒ½æ˜¯Warriorï¼Œä½†å´åˆæœ‰ä¸åŒçš„åŠŸèƒ½
  * */
-package javahw3;
 
-public class Warrior implements WarriorInterface {
+public class Warrior implements WarriorInterface{
 	/*
 	 * Variables: name, function, position, team;
 	 * Methods: getName(), getFunction(), getPosition(), changePosition(), toString(), showMe();
@@ -20,6 +19,7 @@ public class Warrior implements WarriorInterface {
 		this.team = team;
 		position = new int[2];
 	}
+	
 	
 	public String getName() {
 		return name;
@@ -44,11 +44,11 @@ public class Warrior implements WarriorInterface {
 		this.team = team;
 	}
 
-	//ÖØÔØ×Ô´øµÄtoStringº¯Êı£¬ÓÃÓÚSystem.outµÄµ÷ÓÃ
+	//é‡è½½è‡ªå¸¦çš„toStringå‡½æ•°ï¼Œç”¨äºSystem.outçš„è°ƒç”¨
 	public String toString() {
 		return name;
 	}
-	//×Ô¶¨ÒåÏÔÊ¾º¯Êı£¬´òÓ¡³ö¶ÔÏóµÄËùÓĞ¹Ø¼üĞÅÏ¢
+	//è‡ªå®šä¹‰æ˜¾ç¤ºå‡½æ•°ï¼Œæ‰“å°å‡ºå¯¹è±¡çš„æ‰€æœ‰å…³é”®ä¿¡æ¯
 	public void showMe() {
 		System.out.println(name+" team:"+team+" "+function+" ["+position[0]+","+position[1]+"]");
 	}
