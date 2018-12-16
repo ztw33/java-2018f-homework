@@ -41,6 +41,7 @@ public class BattleField {
         this.column = column;
     }
 
+
     /**
      * 增加棋盘上的生物种类
      * 在开始游戏后用于添加生物
@@ -100,4 +101,6 @@ public class BattleField {
             }
         }
     }
+
+
 }

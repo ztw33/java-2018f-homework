@@ -97,7 +97,7 @@ public class CalabashBrothers extends Creature implements Comparable{
 
     @Override
     public Image getImage() {
-        String url = "resources/" + NAME + ".png";
+        String url = "resources/pic/" + NAME + ".png";
 //        System.out.println(url);
         return new Image(url);
     }

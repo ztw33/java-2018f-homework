@@ -5,13 +5,11 @@ import creature.Grandpa;
 import creature.LittleGuys;
 import creature.SnakeSpirit;
 import formation.*;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import sort.BubbleSort;
@@ -19,7 +17,7 @@ import sort.RandomSort;
 
 import java.util.Scanner;
 
-public class Controller extends Application {
+public class Controller  {
 
     private BattleField battleField;
     private Canvas canvas;
@@ -29,22 +27,24 @@ public class Controller extends Application {
     }
 
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void startGame(Stage primaryStage) {
 
         StackPane root = new StackPane();
-        root.setStyle("-fx-background-image: url('background.png')");
+
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(25, 25, 25, 25));
 
         canvas = new Canvas(100, 500);
-
         root.getChildren().add(canvas);
+
         Scene scene = new Scene(root,1100,600);
+        scene.getStylesheets().add(Controller.class.getClassLoader().getResource("resources/BattleField.css").toExternalForm()); //设置背景
 
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setTitle("葫芦世界");
+
+        showUI();
 
         play();
     }
@@ -156,6 +156,4 @@ public class Controller extends Application {
 
 
     }
-
-
 }

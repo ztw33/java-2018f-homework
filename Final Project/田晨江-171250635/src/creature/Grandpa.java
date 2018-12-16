@@ -11,7 +11,7 @@ public class Grandpa extends Creature{
 
     @Override
     public Image getImage() {
-        String url = "resources/" + "grandpa" + ".png";
+        String url = "resources/pic/" + "grandpa" + ".png";
         return new Image(url);
     }
 }
