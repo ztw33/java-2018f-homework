@@ -38,7 +38,8 @@ public class Controller  {
         root.getChildren().add(canvas);
 
         Scene scene = new Scene(root,1100,600);
-        scene.getStylesheets().add(Main.class.getClassLoader().getResource("resources/BattleField.css").toExternalForm()); //设置背景
+
+        scene.getStylesheets().add(Controller.class.getClassLoader().getResource("resources/BattleField.css").toExternalForm()); //设置背景
 
         primaryStage.setScene(scene);
         primaryStage.show();
