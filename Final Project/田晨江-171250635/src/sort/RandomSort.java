@@ -1,7 +1,6 @@
 package sort;
 
-import BattleField.Location;
-import creature.CalabashBrothers;
+import world.Location;
 import creature.Creature;
 import formation.Queue;
 
@@ -11,6 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomSort implements Sorter {
     @Override
     public void sort(Queue queue) {
+//        取代以前每个随机变量实例化一个随机数生成器实例，每个线程实例化一个。
         Random rnd = ThreadLocalRandom.current();
         Location[] locations = queue.getLocations();
         Creature creature = null;

@@ -1,9 +1,7 @@
 package formation;
 
-import BattleField.Location;
-import creature.CalabashBrothers;
+import world.Location;
 import creature.Creature;
-import creature.LittleGuys;
 
 public class Queue {
 

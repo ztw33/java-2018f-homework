@@ -1,5 +1,8 @@
 package creature;
 
+import javafx.scene.image.Image;
+
+import javax.swing.*;
 import java.util.Random;
 
 public class CalabashBrothers extends Creature implements Comparable{
@@ -32,7 +35,7 @@ public class CalabashBrothers extends Creature implements Comparable{
 
     @Override
     public String toString(){
-        return NAME + "";
+        return NAME + " ";
     }
     /**
      * 随机站队
@@ -90,6 +93,13 @@ public class CalabashBrothers extends Creature implements Comparable{
 
     public void setSENIORITY(creature.SENIORITY SENIORITY) {
         this.SENIORITY = SENIORITY;
+    }
+
+    @Override
+    public Image getImage() {
+        String url = "resources/" + NAME + ".png";
+//        System.out.println(url);
+        return new Image(url);
     }
 }
 

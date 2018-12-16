@@ -1,23 +1,31 @@
-package BattleField;
+package world;
 
 import creature.*;
 import formation.*;
-import javax.swing.*;
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import sort.BubbleSort;
+import sort.RandomSort;
+
+import java.util.Scanner;
 
 
-public class BattleField{
-    /**
-     * Tite[][] 二维数组
-    /**
-     * 初始化
-     * @param boardSize
-     */
+public class BattleField {
+
 
     private int row;
     private int column;
     private BattleField battleField;
-    private Creature creature;
-    private Location location;
     public Location[][] arr;
 
 
@@ -33,7 +41,6 @@ public class BattleField{
         this.column = column;
     }
 
-
     /**
      * 增加棋盘上的生物种类
      * 在开始游戏后用于添加生物
@@ -46,14 +53,10 @@ public class BattleField{
 
     }
 
-
-
     /** 增加棋盘上的队伍 */
-
     public void addQueue(Queue queue, Location startLocation, FormationImp formation){
-        formation.arrange(this.battleField,queue,startLocation);
+        formation.arrange(this.battleField, queue, startLocation);
     }
-
 
 
     public int getRow() {
@@ -75,19 +78,26 @@ public class BattleField{
         }
     }
 
-
-    /**
-     * 打印棋盘
-     */
+    /* 打印棋盘*/
     public void print(){
         for(int i=0; i<row; i++){
             for(int j=0; j<column; j++){
-                System.out.print(this.arr[i][j].getLocation_creature().toString() + "    ");
+                System.out.print(this.arr[i][j].getLocation_creature().toString() + "      ");
             }
-            System.out.println();
+            System.out.println("\t");
         }
-        System.out.println();
+        System.out.println("\t");
     }
 
 
+    public void loadImage(GraphicsContext graphicsContext) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (!arr[i][j].getLocation_creature().getClass().equals(new Space().getClass())) { //不是空地
+                    Image image = arr[i][j].getLocation_creature().getImage();
+                    graphicsContext.drawImage(image,  j*70, i*52, 60, 60);
+                }
+            }
+        }
+    }
 }

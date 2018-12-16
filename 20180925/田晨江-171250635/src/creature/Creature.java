@@ -1,5 +1,5 @@
 package creature;
-import BattleField.*;
+import world.*;
 
 
 public class Creature {

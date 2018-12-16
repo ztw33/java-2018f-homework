@@ -44,10 +44,10 @@ private int row;
 private int column;
 public Location[][] arr; //建立Location类的二维数组用于存放creature
 ```
-以上是`BattleField`类的实例变量
+以上是`world`类的实例变量
 
 ```
-public BattleField(int row, int column){
+public world(int row, int column){
     arr = new Location[row][column];
     for(int i=0; i<row; i++) {
         for (int j = 0; j < column; j++) {
@@ -78,7 +78,7 @@ public void print(){
 定义了一个`FormationImp`接口，定义了待实现方法`arrange()`
 有六种不同的阵型实现了该接口
 ```
-public void arrange(BattleField battleField, Creature[] creature, Location location );
+public void arrange(world battleField, Creature[] creature, Location location );
 ```
 
 

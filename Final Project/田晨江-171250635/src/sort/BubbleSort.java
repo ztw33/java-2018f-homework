@@ -1,7 +1,6 @@
 package sort;
 
-import BattleField.Location;
-import creature.CalabashBrothers;
+import world.Location;
 import creature.Creature;
 import formation.Queue;
 

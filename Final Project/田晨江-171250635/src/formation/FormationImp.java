@@ -1,7 +1,6 @@
 package formation;
 
-import BattleField.*;
-import creature.Creature;
+import world.*;
 
 public interface FormationImp {
 

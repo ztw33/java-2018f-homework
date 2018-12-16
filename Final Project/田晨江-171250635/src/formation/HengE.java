@@ -1,6 +1,6 @@
 package formation;
 
-import BattleField.*;
+import world.*;
 import creature.Creature;
 
 public class HengE implements FormationImp {
@@ -20,7 +20,7 @@ public class HengE implements FormationImp {
             i<location.getX()+num&&count<num; count++,i++){
             battleField.addCreature(creatures[count],new Location(location_x,location_y));
             creatures[count].setLocation(new Location(location_x,location_y));
-            if(count%2==0) {
+            if(count%2 == 0) {
                 location_x++;
                 location_y++;
             }else {
