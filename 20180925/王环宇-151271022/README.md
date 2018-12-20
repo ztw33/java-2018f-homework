@@ -1,16 +1,63 @@
 # README
 
-## copyright@why | version 1.2 | date 2018-9-28 
+## copyright@why | version 3.1 | date 2018-11-13
 
 ## https://github.com/cjnjuwhy
+
+>更新内容：
+>
+>更新建议：
+>
+>version6.0:使用网络对代码进行改写
+>
+>version7.0:使用图形化界面改写代码，实现图形化的展示
+>
+>version8.0:使用注解，测试对代码进一步地完善
+>
+>version5.0:
+>
+>> 增加了文件的写入，通过formation.txt来读取Formation内的数据，以便方便地添加和删除阵型信息
+>>
+>> 增加了文件的输出，将每次模拟的结果输出到FightField.txt文件中。
+>
+>Version4.0:
+>
+>> 增加了排序操作，针对不同的队伍，完成了排序操作
+>>
+>> 使用范型完善了代码，并且在运行时对类型进行了检查
+>
+>version 3.1:
+>
+>> 完善了代码的结构，给类酌情增加了Interface，便于对类功能的控制
+>>
+>> 增加了乱序操作，使得Warrior在队伍中的顺序相较于进入时是混乱的
+>
+>version 3.0:
+>
+>>  添加了几处异常处理机制，使得程序更加稳定。
+>>
+>> 自定义了一个新的异常，及时发现并且“归化”异类，保证了在同一组中不会出现“间谍”存在；对类重新进行组织，使得相互之间的通讯只能通过接口而不能直接作用数据； 利用collection来完成了葫芦娃程序。
+
+
 
 ##### 1. 所包含的文件
 
 ```java
 FightField.java
+
+MyException.java
+CalabashBrothers.java
+CalabashBrothersEnum.java // undo
+
+Team.java
+TeamInterface.java
+
 Warriors.java
 Warrior.java
-CalabashBrothers.java
+WarriorInterface.java
+
+Formation.java
+FormationInterface.java
 ```
 
 ##### 2. 编写思路
@@ -35,7 +82,7 @@ CalabashBrothers.java
 
 #### 3. UML图
 
-![UML](https://github.com/cjnjuwhy/java-2018f-homework/blob/master/20180925/%E7%8E%8B%E7%8E%AF%E5%AE%87-151271022/pic/UML.png)
+![UML](./pic/UML.png)
 
 
 
@@ -132,12 +179,12 @@ public class CalabashBrothers extends Warrior{
 
 #### 5. 执行过程
 
-![](https://github.com/cjnjuwhy/java-2018f-homework/blob/master/20180925/%E7%8E%8B%E7%8E%AF%E5%AE%87-151271022/pic/round1.png)
+![](/pic/round1.png)
 
 
 
-![round2](https://github.com/cjnjuwhy/java-2018f-homework/blob/master/20180925/%E7%8E%8B%E7%8E%AF%E5%AE%87-151271022/pic/round2.png)
+![round2](./pic/round2.png)
 
 
 
-![allwarriors](https://github.com/cjnjuwhy/java-2018f-homework/blob/master/20180925/%E7%8E%8B%E7%8E%AF%E5%AE%87-151271022/pic/allwarriors.png)
+![allwarriors](./pic/allwarriors.png)
