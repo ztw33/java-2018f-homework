@@ -2,6 +2,7 @@ package space;
 
 import java.util.ArrayList;
 
+import creature.Being;
 import gui.Gui;
 
 //向外暴露
@@ -14,7 +15,7 @@ import gui.Gui;
 */
 public abstract class Formation {
 	//protected int num;	//所占的方块个数
-	protected ArrayList<Square> formation=new ArrayList<>();
+	protected ArrayList<Square<Being>> formation=new ArrayList<>();
 	//protected Square[] formation;
 	
 	protected static int broadxLines=Gui.N;
@@ -25,7 +26,7 @@ public abstract class Formation {
 		//formation=new Square[num];
 	}
 	
-	public ArrayList<Square> getFormation(){
+	public ArrayList<Square<Being>> getFormation(){
 		return formation;
 	}
 }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import com.cjinchi.battlefield.BattleField;
 import com.cjinchi.creature.CalabashMan;
 import com.cjinchi.creature.Creature;
@@ -12,20 +15,25 @@ public class BattleTest {
         // Create a new battle field
         BattleField battleField = new BattleField();
 
-        System.out.println("Round One:");
-        // Get random calabash mans, then make them sorted
-        CalabashMan[] calabashMans = CalabashMan.getRandomCalabashMans();
+        // Get random Calabash mans, then make them sorted
+        List<CalabashMan> calabashMans = CalabashMan.getRandomCalabashMans();
         CalabashMan.sortBySequence(calabashMans);
-        Creature[] niceCreatures = calabashMans;
+        List<Creature> niceCreatures = new ArrayList<>();
+        for (int i = 0; i < calabashMans.size(); i++) {
+            niceCreatures.add(calabashMans.get(i));
+        }
+        // Get bad creatures
+        List<Creature> badCreatures = new ArrayList<>();
+        badCreatures.add(ScorpionMan.getInstance());
+        for (int i = 1; i < BattleField.sideTwoCreatureNum; i++) {
+            badCreatures.add(Minion.getInstance(i));
+        }
+
+        System.out.println("Round One:");
         // Go to side one of battle field, as Changshe
         battleField.setSideOneChangsheFormat(niceCreatures);
         battleField.setSideOneAudience(GrandFather.getInstance());
-        // Get bad creatures,go to side two of battle field as Fangyuan
-        Creature[] badCreatures = new Creature[BattleField.sideTwoCreatureNum];
-        badCreatures[0] = ScorpionMan.getInstance();
-        for (int i = 1; i < BattleField.sideTwoCreatureNum; i++) {
-            badCreatures[i] = Minion.getInstance(i);
-        }
+        // Go to side two of battle field, as Fangyuan
         battleField.setSideTwoFangyuanFormat(badCreatures);
         battleField.setSideTwoAudience(SnakeWoman.getInstance());
         // Show battle

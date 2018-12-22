@@ -16,7 +16,7 @@ public class GrandFather extends Creature implements Cheerful {
         return grandFather;
     }
 
-    public void cheer() {
-        System.out.print("加油");
+    public String cheer() {
+        return "加油";
     }
 }

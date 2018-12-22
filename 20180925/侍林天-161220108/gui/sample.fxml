@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GameController">
+   <children>
+      <Canvas id="canvas" fx:id="canvas" height="450.0" layoutX="100.0" layoutY="100.0" onDragDetected="#canvasDragDetect" onMouseClicked="#canvasClick" onMouseDragged="#canvasDrag" width="600.0" />
+      <VBox layoutX="30.0" layoutY="180.0" prefHeight="200.0" prefWidth="60.0" spacing="10.0">
+         <children>
+            <Button fx:id="yanhangHulu" mnemonicParsing="false" onAction="#yanhangHuluOnAction" text="雁行" />
+            <Button fx:id="changsheHulu" mnemonicParsing="false" onAction="#changsheHuluOnAction" text="长蛇" />
+            <Button fx:id="fangmenHulu" mnemonicParsing="false" onAction="#fangmenHuluOnAction" text="方门" />
+            <Button fx:id="fengshiHulu" mnemonicParsing="false" onAction="#fengshiHuluOnAction" text="锋鉃" />
+            <Button fx:id="hengeHulu" mnemonicParsing="false" onAction="#hengeHuluOnAction" text="横轭" />
+            <Button fx:id="heyiHulu" mnemonicParsing="false" onAction="#heyiHuluOnAction" text="鹤翼" />
+            <Button fx:id="yulinHulu" mnemonicParsing="false" onAction="#yulinHuluOnAction" text="鱼鳞" />
+         </children>
+      </VBox>
+      <VBox layoutX="710.0" layoutY="180.0" prefHeight="200.0" prefWidth="60.0" spacing="10.0">
+         <children>
+            <Button fx:id="yanhangDemon" mnemonicParsing="false" onAction="#yanhangDemonOnAction" text="雁行" />
+            <Button fx:id="changsheDemon" mnemonicParsing="false" onAction="#changsheDemonOnAction" text="长蛇" />
+            <Button fx:id="fangmenDemon" mnemonicParsing="false" onAction="#fangmenDemonOnAction" text="方门" />
+            <Button fx:id="fengshiDemon" mnemonicParsing="false" onAction="#fengshiDemonOnAction" text="锋鉃" />
+            <Button fx:id="hengeDemon" mnemonicParsing="false" onAction="#hengeDemonOnAction" text="横轭" />
+            <Button fx:id="heyiDemon" mnemonicParsing="false" onAction="#heyiDemonOnAction" text="鹤翼" />
+            <Button fx:id="yulinDemon" mnemonicParsing="false" onAction="#yulinDemonOnAction" text="鱼鳞" />
+         </children>
+      </VBox>
+      <Label fx:id="info" layoutX="361.0" layoutY="40.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <ImageView fx:id="head" fitHeight="50.0" fitWidth="50.0" layoutX="163.0" pickOnBounds="true" preserveRatio="true" x="50.0" y="40.0" />
+   </children>
+</Pane>

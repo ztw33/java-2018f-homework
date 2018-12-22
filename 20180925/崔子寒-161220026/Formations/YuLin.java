@@ -9,4 +9,8 @@ public class YuLin implements FormationProvider{
                 new Position(5,4),new Position(5,5),new Position(5,6),new Position(6,4)};
         return positions;
     }
+
+    public String getName() {
+        return "鱼鳞阵";
+    }
 }

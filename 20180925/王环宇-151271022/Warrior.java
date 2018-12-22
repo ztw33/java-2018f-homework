@@ -1,14 +1,9 @@
 /*
- * ÔÚWarriors½Ó¿ÚµÄÒªÇóÏÂ£¬¹¹ÔìÒ»¸öWarriorÀà£¬ÓÃÓÚ¶ÔË«·½Õ½Ê¿µÄÃèÊö
- * @see class Warrior
- * @author why
- * @Time 2018-9-27
- * @version 1.0
- * 
+ * åœ¨Warriorsæ¥å£çš„è¦æ±‚ä¸‹ï¼Œæ„é€ ä¸€ä¸ªWarriorç±»ï¼Œåœ¨è¿™ä¸ªä¸–ç•Œä¸­å­˜æ´»çš„æ‰€æœ‰ç”Ÿç‰©
+ * éƒ½æ˜¯Warriorï¼Œä½†å´åˆæœ‰ä¸åŒçš„åŠŸèƒ½
  * */
-package javahw3;
 
-public class Warrior implements Warriors {
+public class Warrior implements WarriorInterface{
 	/*
 	 * Variables: name, function, position, team;
 	 * Methods: getName(), getFunction(), getPosition(), changePosition(), toString(), showMe();
@@ -18,39 +13,44 @@ public class Warrior implements Warriors {
 	private int[] position;
 	private String team;
 	
-	public Warrior(String name, String function, int team) {
+	public Warrior(String name, String function, String team) {
 		this.name = name;
 		this.function = function;
-		if(team==1)
-			this.team = "GoodMan";
-		else
-			this.team = "BadMan";
+		this.team = team;
 		position = new int[2];
 	}
+	
 	
 	public String getName() {
 		return name;
 	}
-
 	public String getFunction() {
 		return function;
 	}
-
+	public void changeFunction(String function) {
+		this.function = function;
+	}
 	public int[] getPosition() {
 		return position;
 	}
-
 	public void changePosition(int m, int n) {
 		position[0] = m;
 		position[1] = n;
 	}
-	//ÖØÔØ×Ô´øµÄtoStringº¯Êı£¬ÓÃÓÚSystem.outµÄµ÷ÓÃ
+	public String getTeam() {
+		return team;
+	}
+	public void changeTeam(String team) {
+		this.team = team;
+	}
+
+	//é‡è½½è‡ªå¸¦çš„toStringå‡½æ•°ï¼Œç”¨äºSystem.outçš„è°ƒç”¨
 	public String toString() {
 		return name;
 	}
-	//×Ô¶¨ÒåÏÔÊ¾º¯Êı£¬´òÓ¡³ö¶ÔÏóµÄËùÓĞ¹Ø¼üĞÅÏ¢
+	//è‡ªå®šä¹‰æ˜¾ç¤ºå‡½æ•°ï¼Œæ‰“å°å‡ºå¯¹è±¡çš„æ‰€æœ‰å…³é”®ä¿¡æ¯
 	public void showMe() {
-		System.out.println(name+" team:"+team+" ["+position[0]+","+position[1]+"]");
+		System.out.println(name+" team:"+team+" "+function+" ["+position[0]+","+position[1]+"]");
 	}
 	
 }

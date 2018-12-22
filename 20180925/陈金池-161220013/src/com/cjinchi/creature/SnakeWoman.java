@@ -16,7 +16,7 @@ public class SnakeWoman extends Creature implements Cheerful {
         return snakeWoman;
     }
 
-    public void cheer() {
-        System.out.print("加油");
+    public String cheer() {
+        return "加油";
     }
 }

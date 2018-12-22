@@ -10,4 +10,5 @@ public class Creature {
     public String getName() {
         return name;
     }
+
 }

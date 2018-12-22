@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import creature.Creature;
+import creature.Being;
 import creature.StyleImage;
 import creature.Human;
 import creature.SnakeEssence;
@@ -168,7 +168,7 @@ public class Gui {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				administer.clearMonsters();
+				administer.clearMonsters(); 
 				//administer.getBoard().clearBoardMonster();
 				administer.getputNextMonsterFormation();
 				putSeq=0;
@@ -268,11 +268,11 @@ public class Gui {
 	}
 	
 	private void mypaint() {
-		ArrayList<ArrayList<Square>> board=administer.getBoard().getBoard();
+		ArrayList<ArrayList<Square<Being>>> board=administer.getBoard().getBoard();
 		for(int i=0;i<N;i++){
 			for(int j=0;j<N;j++){
 				if(board.get(i).get(j).getBeing()!=null){
-					ImageIcon imageIcon=new ImageIcon(getImage(((Creature)board.get(i).get(j).getBeing()).getImage()));
+					ImageIcon imageIcon=new ImageIcon(getImage((board.get(i).get(j).getBeing()).getImage()));
 					background.get(i).get(j).setIcon(imageIcon);	//这里要注意
 				}
 				else{

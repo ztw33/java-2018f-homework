@@ -2,6 +2,7 @@ package regulate;
 
 import java.util.ArrayList;
 
+import creature.Being;
 import creature.Human;
 import space.Square;
 
@@ -15,10 +16,10 @@ import space.Square;
 public class GoodManAdminister {
 	public static HuLuWaAdminister huLuWaAdminister=new HuLuWaAdminister();
 	
-	public  void putGrandPa(ArrayList<ArrayList<Square>> board){
+	public  void putGrandPa(ArrayList<ArrayList<Square<Being>>> board){
 		board.get(0).get(0).setBeing(Human.grandPa);
 	}	
-	public  void putHuLuWaInFormation(ArrayList<Square> formation){
+	public  void putHuLuWaInFormation(ArrayList<Square<Being>> formation){
 		for(int i=0;i<huLuWaAdminister.getBrothers().size();i++){
 			formation.get(i).setBeing(huLuWaAdminister.getBrothers().get(i));
 		}

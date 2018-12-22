@@ -1,9 +1,9 @@
 package space;
 import creature.*;
-public class Tile {
+public class Tile<T extends Creature> {
     private int coordinateX;
     private int coordinateY;
-    private Creature creatureStandOnTile;
+    private T creatureStandOnTile;
     public Tile(){
         coordinateX = 0;
         coordinateY = 0;
@@ -28,7 +28,7 @@ public class Tile {
         creatureStandOnTile = null;
         //System.out.println(" "+coordinateX+" "+coordinateY);
     }
-    public void setCreatureStandOnTile(Creature x){
+    public void setCreatureStandOnTile(T x){
         creatureStandOnTile = x;
     }
     public boolean isEmpty(){
@@ -41,4 +41,5 @@ public class Tile {
     public String getCreatureName(){
         return creatureStandOnTile.getName();
     }
+    public Creature getCreature() { return creatureStandOnTile; }
 }

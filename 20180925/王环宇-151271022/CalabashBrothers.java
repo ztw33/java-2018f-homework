@@ -1,4 +1,3 @@
-package javahw3;
 /*
  * 
  * @ author: why
@@ -10,7 +9,7 @@ public class CalabashBrothers extends Warrior {
 	//private int order;
 	
 	public CalabashBrothers(String name, String function) {
-		super(name, function, 1);
+		super(name, function, "GoodMan");
 		//order = 1;
 		//color = " ";
 	}

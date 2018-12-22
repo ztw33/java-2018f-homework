@@ -16,33 +16,33 @@ public class FangmenFormation extends Formation {
         beings[0].moveTo(space, x, y);
 
         if (direction == 0){
-            for (int i = 1; i < beings.length / 2; i++){
+            for (int i = 1; i < beings.length / 2 + 1; i++){
                 if (i % 2 == 0) {
-                    beings[i].moveTo(space, x + i / 2 * 2, y + i / 2);
+                    beings[i].moveTo(space, x + i / 2 , y - i / 2);
                 } else {
-                    beings[i].moveTo(space, x - (i / 2 + 1) * 2, y + i / 2 + 1);
+                    beings[i].moveTo(space, x - (i / 2 + 1) , y - i / 2 - 1);
                 }
             }
-            for (int i = beings.length / 2; i < beings.length; i++){
+            for (int i = beings.length / 2 + 1; i < beings.length; i++){
                 if (i % 2 == 0) {
-                    beings[i].moveTo(space, x + beings.length - i / 2 * 2 + 1, y + i / 2);
+                    beings[i].moveTo(space, x + (beings.length - i) / 2 + 1 , y - i / 2);
                 } else {
-                    beings[i].moveTo(space, x - beings.length + i / 2 * 2 + 1, y + i / 2 + 1);
+                    beings[i].moveTo(space, x - (beings.length - i) / 2, y - i / 2 - 1);
                 }
             }
         } else {
             for (int i = 1; i < beings.length / 2; i++){
                 if (i % 2 == 0) {
-                    beings[i].moveTo(space, x + i / 2 * 2, y + i / 2);
+                    beings[i].moveTo(space, x + i / 2 , y + i / 2);
                 } else {
-                    beings[i].moveTo(space, x - (i / 2 + 1) * 2, y + i / 2 + 1);
+                    beings[i].moveTo(space, x - (i / 2 + 1) , y + i / 2 + 1);
                 }
             }
             for (int i = beings.length / 2; i < beings.length; i++){
                 if (i % 2 == 0) {
-                    beings[i].moveTo(space, x + beings.length - i / 2 * 2 + 1, y + i / 2);
+                    beings[i].moveTo(space, x + (beings.length - i) / 2 , y + i / 2);
                 } else {
-                    beings[i].moveTo(space, x - beings.length + i / 2 * 2 + 1, y + i / 2 + 1);
+                    beings[i].moveTo(space, x - (beings.length - i) / 2 , y + i / 2 +1);
                 }
             }
         }

@@ -1,3 +1,51 @@
+<u>**Version 3**</u>
+
+在版本2中引入泛型。修正措施如下。
+
+1. 将`Board`中每一个元素`Square`进行泛型化修改。
+
+   ```java
+   public class Square{
+       private Object being;
+   }
+   ```
+
+   ```java
+   public class Square<T extends Being>{
+       private T being;
+   }
+   ```
+
+   将`board`由`ArrayList<ArrayList<Square>>`类别改为`ArrayList<ArrayList<Square<Being>>>`。
+
+   将`formation`由`ArrayList<Square>`类别改为`ArrayList<Square<Being>>`。
+
+2. 在版本2中存在bug。主要由于妖怪不断切换阵型时可能导致待切换的阵型中已经有老爷爷、蛇精挡着。此时应该不能发生切换，需要移动老爷爷、蛇精的位置。对该代码进行fix(其实版本1是没有这个问题的，在版本2重构时疏忽了)。
+
+3. 在循环生成妖怪阵型时，使用工厂方法实现。
+
+   ```java
+   interface Factory<T>{
+       T create();
+       T back();
+   }
+   ```
+
+   ```java
+   class FormationFactory implements Factory<Formation>{
+       public Formation create();
+       public Formation back();
+   }
+   ```
+
+   在`FormationAdminister`中使用`FormationFactory`循环生成阵型。
+
+
+
+----
+
+
+
 <u>**Version 2**</u>
 
 Version1版本存在的问题以及修正措施。

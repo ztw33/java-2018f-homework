@@ -29,12 +29,14 @@ public class Battle {
         grandpa.stepOn(field, 15, 4);
         snake.stepOn(field, 15, 16);
         System.out.println("长蛇阵 vs 偃月阵！ 激战！（最后一句好中二……");
-        field.ShowField();
+        //field.ShowField();
+        System.out.println(field);
         System.out.println();
 
         vlQueue.leaveField(field);
         vlQueue.JumpOntoField(field, Formation.ARROW);
         System.out.println("长蛇阵 vs 锋矢阵！ 激战！（最后一句真的中二……");
-        field.ShowField();
+        //field.ShowField();
+        System.out.println(field);
     }
 }
