@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="917.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="world.gui.GUIBorder">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="开始">
+            <items>
+              <MenuItem fx:id="menuItReset" mnemonicParsing="false" text="重置 (R)" />
+                  <MenuItem fx:id="menuItSaveAs" mnemonicParsing="false" text="保存为 (S)" />
+                  <MenuItem fx:id="menuItReadFrom" mnemonicParsing="false" text="读取 (L)" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="葫芦娃阵型">
+            <items>
+              <MenuItem fx:id="menuBroItHY" mnemonicParsing="false" text="鹤翼阵" />
+                  <MenuItem fx:id="menuBroItYX" mnemonicParsing="false" text="雁行阵" />
+                  <MenuItem fx:id="menuBroItCE" mnemonicParsing="false" text="冲轭阵" />
+                  <MenuItem fx:id="menuBroItCS" mnemonicParsing="false" text="长蛇阵" />
+                  <MenuItem fx:id="menuBroItYL" mnemonicParsing="false" text="鱼鳞阵" />
+                  <MenuItem fx:id="menuBroItFY" mnemonicParsing="false" text="方円阵" />
+                  <MenuItem fx:id="menuBroItYY" mnemonicParsing="false" text="偃月阵" />
+                  <MenuItem fx:id="menuBroItFS" mnemonicParsing="false" text="锋矢阵" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="妖怪阵型">
+            <items>
+                  <MenuItem fx:id="menuMonItHY" mnemonicParsing="false" text="鹤翼阵" />
+                  <MenuItem fx:id="menuMonItYX" mnemonicParsing="false" text="雁行阵" />
+                  <MenuItem fx:id="menuMonItCE" mnemonicParsing="false" text="冲轭阵" />
+                  <MenuItem fx:id="menuMonItCS" mnemonicParsing="false" text="长蛇阵" />
+                  <MenuItem fx:id="menuMonItYL" mnemonicParsing="false" text="鱼鳞阵" />
+                  <MenuItem fx:id="menuMonItFY" mnemonicParsing="false" text="方円阵" />
+                  <MenuItem fx:id="menuMonItYY" mnemonicParsing="false" text="偃月阵" />
+                  <MenuItem fx:id="menuMonItFS" mnemonicParsing="false" text="锋矢阵" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="选项">
+               <items>
+                  <CheckMenuItem fx:id="menuCheckAnim" mnemonicParsing="true" text="显示动画" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

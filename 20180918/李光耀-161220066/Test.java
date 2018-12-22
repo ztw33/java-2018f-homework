@@ -1,26 +1,23 @@
-public class Test{
-	
-	HuLuWas brothers;
+
+public class Test {
+	Administer ad=new Administer();
 	Test(){
-		brothers=new HuLuWas();
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Test test=new Test();
-
-		test.brothers.randomStand();
-		System.out.println("随机排列:");
-		test.brothers.speakName();
-		test.brothers.bubbleSortId();
-		System.out.println("冒泡排序后:");
-		test.brothers.speakName();
 		
-		test.brothers.randomStand();
+	}
+	public static void main(String[] args) {
+		Test test=new Test();
+		test.ad.randomStand();
 		System.out.println("随机排列:");
-		test.brothers.speakColor();
-		test.brothers.binarySort();
+		test.ad.speakName();
+		test.ad.sortName();
+		System.out.println("冒泡排序后:");
+		test.ad.speakName();
+		
+		test.ad.randomStand();
+		System.out.println("随机排列:");
+		test.ad.speakColor();
+		test.ad.sortColor();
 		System.out.println("二分排序后:");
-		test.brothers.speakColor();
+		test.ad.speakColor();
 	}
 }
