@@ -1,3 +1,140 @@
+# 迭代6(2018.12.10)
+
+## 版本说明
+
+- 修改了JavaFX的设计：
+  - 通过initialize()来进行初始化，替代了上一个版本中点击launch按钮初始化的操作
+
+- maven的使用：
+  - 利用了maven进行自动依赖包导入、测试、打包，可通过运行maven clean test package命令进行自动测试打包
+  - 对common.CommonSort中的sort方法进行测试随机数组的排序测试
+
+# 迭代5(2018.12.03)
+
+## 版本说明
+
+- 使用了JavaFX框架进行图形界面构建：
+  - 用户通过点击按钮切换阵型
+  - 使用了FXML对界面框架进行构建
+  - 使用了CSS对按钮样式进行设计
+  - 进行了一些构建，使得：
+    - 背景图片根据画布大小自动改变自己的大小（背景图片自适应画布大小）
+    - 方格大小根据背景图片自使用后的大小改变自己的大小
+    - 方格的横向数量和纵向数量可以不等
+  - 底层逻辑基本上沿用迭代4的版本
+
+## JavaFX的使用
+
+### FXML生成界面框架：
+
+FXML使用XML格式对于界面框架进行描述，下面是我的界面的FXML
+
+#### 1. 主界面Grid Pane
+
+<div align=center>
+    <img src = "image\Code2.jpg" width='80%'>
+</div>
+
+其中指定了对齐方式，hgap，vgap等参数
+
+#### 2. 主界面画布
+
+<div align=center>
+    <img src = "image\Code3.jpg" width='80%'>
+</div>
+
+其中指定了画布的id，高度，宽度，在Grid Pane中的位置，其中id是可以直接在.java文件中引用的：
+
+<div align=center>
+    <img src = "image\Code4.jpg" width='30%'>
+</div>
+#### 3. 按钮
+
+<div align=center>
+    <img src = "image\Code5.jpg" width='70%'>
+</div>
+
+其中指定了按钮的id，onAction，stylesheets等
+
+- onAction指定了按钮被触发时的响应函数，需要在.java中有相应的函数对应：
+
+<div align=center>
+    <img src = "image\Code6.jpg" width='50%'>
+</div>
+
+- stylesheets指定了按钮的CSS样式，对应于某个CSS文件，添加CSS后的按钮效果为：
+
+<div align=center>
+    <img src = "image\picture4.jpg" width='25%'>
+</div>
+
+### CSS对按钮样式进行设计：
+
+JavaFX中的CSS格式与Web中的CSS基本相同，下面以开始(Launch)按钮的CSS为例
+
+开始(Launch)按钮的CSS如下：
+
+```css
+.button {
+    -fx-background-image: url("/IconStart.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
+}
+```
+
+- -fx-background-image指定了按钮的背景图片的url
+- -fx-background-repeat指定了背景填充的重复方式，这是是不重复，也就是如果png的尺寸小于icon是不重复填充
+- -fx-background-size指定了背景的尺寸，“100% 100%”表示图片填充占按钮宽和高的100%，也就是实现了背景图片自适应按钮大小
+
+之后需要在FXML中指定按钮与CSS的对应，见“FXML生成界面框架”
+
+这样的按钮效果如下：
+
+<div align=center>
+    <img src = "image\picture5.jpg" width='20%'>
+</div>
+
+### .java实现后端逻辑：
+
+后端的葫芦娃数组生成的逻辑沿用了上一个版本的内容，后端的背景图片自适应画布和战场方格自适应背景为新增功能：
+
+#### 1. 背景图片自适应画布
+
+背景图片自适应画布是指背景图片根据画布的大小进行伸缩，也就是**同比例放大缩小，并且居中放置**，而不是直接设置为画布的大小，实现思想如下：
+
+- 求出背景图片的长宽与画布长宽的比值的最大值max
+- 背景图片的长宽同比例除以max倍
+- 背景图片的起始位置为(Canvas.location - backgroundImage.location/max)/2（这里只是示意，不是java代码）
+
+#### 2. 战场方格自适应背景
+
+战场方格自适应的效果和背景图片自适应的效果近似，只是除了**位置居中**，每个**方格尺寸**也会发生变化，实现思想如下：
+
+- 计算每个**正方形**方格的边长latticeSize：
+  - 获得背景图片width和height
+  - length = min(width/横向方格数, height/纵向方格数)
+- 计算边界冗余，即如果方格无法铺满整个背景时的左右上下预留空间widthRedundancy和heightRedundancy
+- 双层for循环绘制方格，第(row, col)个方格的位置是：
+  - 横坐标 = widthRedundancy + backgroundImage.getX() + col * latticeSize
+  - 纵坐标 = heightRedundancy + backgroundImage.getY() + row * latticeSize
+
+## 效果展示
+
+<div align=center>
+    <img src = "image\show.gif" width='60%'>
+    <div>gif动图</div>
+</div>
+<div align=center>
+    <img src = "image\picture3.jpg" width='60%'>
+    <div>效果展示</div>
+</div>
+
+
+- 主打卡通风
+- 界面背景和半透明方格配合，这样可以清楚的展示卡通角色的相对位置而且还可以显示出背景，增加美观度
+- 左侧按键表示开始游戏（上）和随机产生阵型（下），右侧点击阵型按钮则生成相应阵型
+- 文件夹中有相应.gif文件展示使用的动画效果
+
 # 迭代4(2018.11.22)
 
 ## 版本说明
