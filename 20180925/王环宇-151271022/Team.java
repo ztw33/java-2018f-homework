@@ -119,6 +119,8 @@ public class Team implements TeamInterface{
 		Collections.sort(team, comp);
 	}
 	
+	// 抑制这里的警告
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	Comparator<Warrior> comp = new Comparator() {
 		public int compare(Object a0, Object a1) {
 			try {
@@ -160,6 +162,5 @@ public class Team implements TeamInterface{
 			return 0;
 		}
 	};
-		
 	
 }

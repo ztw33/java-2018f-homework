@@ -48,6 +48,7 @@ public class Warrior implements WarriorInterface, Serializable{
 	}
 	public void changeTeam(String team) {
 		this.team = team;
+		//this.team = "BadMan";
 	}
 
 	//重载自带的toString函数，用于System.out的调用

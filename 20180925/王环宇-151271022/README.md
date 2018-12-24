@@ -1,6 +1,6 @@
 # README
 
-## copyright@why | version 3.1 | date 2018-11-13
+## copyright@why | version 6.0 | date 2018-11-24
 
 ## https://github.com/cjnjuwhy
 
@@ -8,11 +8,9 @@
 >
 >更新建议：
 >
->version6.0:使用网络对代码进行改写
+>version6.0:
 >
->version7.0:使用图形化界面改写代码，实现图形化的展示
->
->version8.0:使用注解，测试对代码进一步地完善
+>完成了对程序的注解和测试功能。
 >
 >version5.1:
 >
@@ -62,6 +60,9 @@ WarriorInterface.java
 
 Formation.java
 FormationInterface.java
+
+TeamSide.java 		// 自定义注解，给人物加上标记
+CalabashTest.java 	// 用于测试
 
 FightField_MMDD.txt	// 用于保存场面信息，并且能够保存多次的内容
 formation.txt		// 用于保存队形信息

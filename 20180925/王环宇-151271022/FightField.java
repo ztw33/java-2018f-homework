@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.io.*;
 
 
+
+
 public class FightField {
 	/*
 	 * 程序主要的执行入口，在此类中导入战场，加入战士，选择阵型，显示战场信息.
@@ -125,6 +127,7 @@ public class FightField {
 		}
 	}
 	
+	@SuppressWarnings("all")
 	private void loading() {
 //		try {
 //			FileInputStream fis = new FileInputStream(pwd+"test.txt");
@@ -151,8 +154,12 @@ public class FightField {
 		FightField ff = new FightField();
 		
 		//登录每队的战士并且显示其基本信息
+		@TeamSide(side = "GoodTeam")
 		Team teamGood = new Team("GoodMan");
+		
+		@TeamSide(side = "BadTeam")
 		Team teamBad = new Team("BadMan");
+		
 		loading(teamGood, teamBad);
 		try {
 			teamGood.checkMember();
