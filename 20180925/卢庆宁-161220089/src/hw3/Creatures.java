@@ -3,13 +3,16 @@ package hw3;
 class Creatures {						//生物群类
 	protected int number;					//生物数量
 	protected Creature[] cs;				//生物类数组
+	protected Formation f;
 	Creatures(){}							//空的默认构造函数，在子类中具体实现
 	public int getNumber() {return number;}	//获取生物数量
+	public String getFormationName(){return f.name;}
 	public int set(Board b,int x,int y,Formation f) //根据阵型放置生物群
 	{
 		if(f.test(b,x,y,number)==false)
 		{
 			f.set(b,x,y,cs,number);
+			this.f=f;
 			return 0;
 		}
 		else return -1;

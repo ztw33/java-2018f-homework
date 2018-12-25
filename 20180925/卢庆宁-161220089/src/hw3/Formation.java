@@ -5,7 +5,6 @@ class Formation {			//阵型类，含测试、放置等方法
 	Formation(){name="无";}
 	public boolean test(Board b,int x,int y,int number) {return true;}
 	public void set(Board b,int x,int y,Creature c[],int number) {}
-	public void snakeVersusInfo() {System.out.println("长蛇 对阵 "+name);}
 }
 
 class Snake extends Formation {
@@ -47,7 +46,6 @@ class Goose extends Formation {
 			c[i].set(x+i, y-i);
 			b.set(c[i]);
 		}
-		snakeVersusInfo();
 	}
 }
 
@@ -71,7 +69,6 @@ class Yoke extends Formation {
 			c[i].set(x+i, y+j);
 			b.set(c[i]);
 		}
-		snakeVersusInfo();
 	}
 }
 
@@ -104,6 +101,5 @@ class Crane extends Formation {
 			c[i].set(x+number/2+number/2-i, y-i);
 			b.set(c[i]);
 		}
-		snakeVersusInfo();
 	}
 }

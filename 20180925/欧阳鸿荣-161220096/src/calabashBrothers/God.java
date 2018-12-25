@@ -3,6 +3,7 @@ package calabashBrothers;
 import calabashBrothers.beings.*;
 import calabashBrothers.formation.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -12,18 +13,18 @@ public class God {
     private static final int col = 15;
     private static final int size = 50;
 
-    static void SetRandom(CalabashBoy[] boys){
+    static <T>void SetRandom(ArrayList<T> list){
         Random r = new Random();
         int times = r.nextInt(20);
         int m = 0;
         int n = 0;
-        CalabashBoy tmp;
+        T tmp;
         for (int i = 0; i < times ; i++) {
             m = r.nextInt(7);
             n = r.nextInt(7);
-            tmp = boys[m];
-            boys[m]=boys[n];
-            boys[n]=tmp;
+            tmp = list.get(m);
+            list.set(m,list.get(n));
+            list.set(n,tmp);
         }
     }
 
@@ -37,23 +38,24 @@ public class God {
 
     public static void main(String[] args) {
 
-        CalabashBoy[] boys = new CalabashBoy[7];    //7个葫芦娃
-        Monster[] mons = new Monster[19];           //蝎子精和小喽啰的阵营
+        ArrayList<Creature> boys = new ArrayList<Creature>();       //7个葫芦娃
+        ArrayList<Creature> mons = new ArrayList<Creature>();       //蝎子精和小喽啰的阵营
+
         Grandpa gp =new Grandpa();                  //爷爷
         Snake sk = new Snake();                     //蛇精
         Scorpion sp = new Scorpion();               //蝎子精
 
         for (int i = 0; i < 7; i++) {               //葫芦娃的初始化
-            boys[i] = new CalabashBoy(i);
+            boys.add(new CalabashBoy(i));
         }
         SetRandom(boys);                            //使得葫芦娃乱序
 
-        mons[0]= new Scorpion();                    //蝎子精继承于Monster类，因此成为领队
+        mons.add(new Scorpion());                   //蝎子精继承于Monster类，因此成为领队
         for(int i=1;i<19;i++){                      //小喽啰的初始化
-            mons[i]=new Monster();
+            mons.add(new Monster());
         }
 
-        Maps maps = new Maps(row,col);              //创建一个15*15的地图
+        Maps maps = new Maps<Creature>(row,col);              //创建一个15*15的地图
         BattleField bf = new BattleField(row, col, size);  //创建一个15*15的地图(GUI)
 
         ChangShe cs = new ChangShe(4,3);//长蛇阵 葫芦娃阵法

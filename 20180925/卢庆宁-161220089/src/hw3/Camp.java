@@ -1,10 +1,10 @@
 package hw3;
 
-class Camp {
+class Camp {						//阵营类，包含一个boss和若干小兵
 	public Creature boss;
 	public Creatures soldiers;
 }
-class Good extends Camp
+class Good extends Camp				//好人阵营，包含老爷爷和七个葫芦娃
 {
 	Good(int x_boss,int y_boss)
 	{
@@ -12,7 +12,7 @@ class Good extends Camp
 		soldiers=new CalabashBrothers(7);
 	}
 }
-class Bad extends Camp
+class Bad extends Camp				//坏人阵营，包含蛇精和若干妖怪
 {
 	Bad(int x_boss,int y_boss,int number)
 	{

@@ -53,3 +53,38 @@ void DemonSnakeShowup(Coordinate c) //蛇精旁观
 void AllLeaveaway() //所有人离场  
 void main(String[] args) //入口函数，启动整个程序  
 ```
+  
+---  
+## 第一次改进
+**1、对Existence.java进行了重构，加入了CalabashWorld,Justice,Evil等类，力求更加地贴近实际。**     
+### CalabashWorld类   
+>这是一个抽象类，将Existence放到更高层的抽象，只保存一个名字，而Calabash类中定义了坐标、性质等针对“特定的存在”--葫芦娃世界而定义的属性。   
+### Justice类和Evil类   
+>这同样是两个抽象类，继承自CalabashWorld类,目的是将葫芦娃的世界分成两个阵营，一个是正义阵营，一个是邪恶阵营，这样葫芦娃、爷爷、蛇精、蝎子精、小喽啰具体的类则根据自身正义和邪恶的属性决定继承Justice还是Evil类。   
+
+**2、吸收了Interface的思想,利用接口更好地封装了函数，更好地实现了多态。**     
+### WarMan接口   
+>代表战场上的人，都有离开战场的方法。   
+```java
+void LeaveBattleground(Battleground bg);
+```
+### Fighter和SideLooker接口   
+>代表战士和旁观者，继承自WarMan接口，战士有奔赴战场方法，旁观者有旁观的方法。   
+```java
+void GotoBattleground(Battleground bg, Formation form);  
+void Lookatside(Battleground bg, Coordinate a);  
+```
+### FightLeader接口
+>代表战争指挥者，继承自Fighter接口,指挥者有设置领导点以及决定摆什么阵型的方法。   
+```java
+void SetLeaderground(Coordinate a, Formation form);
+void GiveOrder(String a, Formation form);
+```
+>下面附上Existence.java的类图：
+![Existence类图](class_diagram.cld.jpg)   
+
+---   
+## 第二次改进
+**1、想在程序中使用Collection，但是发现代码中多处使用一维和二维数组，修改起来相当繁琐，以及就目前功能而言，使用Collection没有明显优势，因此没有选择改进。**    
+**2、想在程序中使用Generics，但是发现在我的设计中，葫芦娃、爷爷、蛇精、蝎子精、喽啰虽然都继承自顶层的CalabashWorld这个类，但是在将他们组合到一起放入一个战场的时候，他们有很明显的不一样的功能和操作，所以使用Generics来统一他们是不恰当的，不能反映实际，所以暂时没有选择使用泛型。**   
+   

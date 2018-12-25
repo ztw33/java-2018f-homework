@@ -1,122 +1,122 @@
+import java.awt.*;
+
 public class Formation {
-    private int n;
-    private int num;
-    private int people_num;
-    BattleField battlefield;
-    private int cur_NO;
-    Formation(int N,int team,int number,BattleField x){
-        n=N;//阵型大小
-        num=number;  //阵型号
-        people_num=team;//人数
-        battlefield=x;
-        cur_NO=11;
-    }
-    public void change_formaion(){
-        switch (num){
-            case 1:formaion1();break;
-            case 2:formaion2();break;
-            case 3:formaion3();break;
-            case 4:formaion4();break;
-            case 5:formaion5();break;
-            case 6:formaion6();break;
+    private int formation_number;
+    private int size;
+    private int soldier_num;
+    Formation(int number,BattleField battleField,int size,int soldier_num){
+        this.formation_number=number;
+        this.size=size;
+        this.soldier_num=soldier_num;
+        battleField.set_one(size/2,0,1);
+        battleField.set_one(size/2+1,0,2);
+        battleField.set_one(size/2-1,0,3);
+        battleField.set_one(size/2+2,0,4);
+        battleField.set_one(size/2-2,0,5);
+        battleField.set_one(size/2+3,0,6);
+        battleField.set_one(size/2-3,0,7);
+        battleField.set_one(size/2,2,8);
+        battleField.set_one(size/2,size/2,9);
+        battleField.set_one(size/2,size/2+1,10);
+        switch (formation_number){
+            case 1:formaion1(battleField);break;
+            case 2:formaion2(battleField);break;
+            case 3:formaion3(battleField);break;
+            case 4:formaion4(battleField);break;
+            case 5:formaion5(battleField);break;
+            case 6:formaion6(battleField);break;
             default:break;
         }
     }
-    private void formaion1(){//鹤形
-        cur_NO=11;
-        int last_x=0,last_y=0;
-        for(int i=0;i<people_num;i++){
-            if(i==0){
-                battlefield.set_one(n/2,n-1,cur_NO);
-                last_x=1;last_y=1;
-                cur_NO++;
-            }
-            else if(i%2==1){
-                battlefield.set_one(n/2+last_x,n-1-last_y,cur_NO);
-                cur_NO++;
-            }
-            else{
-                battlefield.set_one(n/2-last_x,n-1-last_y,cur_NO);
+    private void formaion1(BattleField battleField){
+        System.out.println("鹤形");
+        int last_x=0;int last_y=0;
+        for(int i=0;i<soldier_num;i++){
+            if(i%2==0) {
+                battleField.set_one(size / 2+last_x, size / 2 + 3+last_y, 11 + i);
                 last_x++;last_y++;
-                cur_NO++;
+            }
+            else {
+                battleField.set_one(size / 2-last_x, size / 2 + 3+last_y, 11 + i);
             }
         }
-        cur_NO=11;
     }
-    private void formaion2(){//雁形
-        cur_NO=11;
-        int last_x=n/2+people_num/2,last_y=n-1;
-        for(int i=0;i<people_num;i++){
-            battlefield.set_one(last_x,last_y,cur_NO);
-            cur_NO++;
-            last_x--;last_y--;
-        }
-        cur_NO=11;
-    }
-    private void formaion3(){//阵型3
-        cur_NO=11;
-        int last_x=n/2-people_num/2,last_y=0;
-        for(int i=0;i<people_num;i++){
-            battlefield.set_one(last_x,n-1-last_y,cur_NO);
-            cur_NO++;
-            last_x++;
-            if(last_y==0)
-                last_y=1;
-            else
-                last_y=0;
-        }
-        cur_NO=11;
-    }
-    private void formaion4(){
-        cur_NO=11;
-        int last_x=n/2-people_num/2,last_y=n-1;
-        for(int i=0;i<people_num;i++){
-            battlefield.set_one(last_x,last_y,cur_NO);
-            cur_NO++;
-            last_x++;
-        }
-        cur_NO=11;
-    }
-    private void formaion5(){
-        cur_NO=11;
-        int last_x=0,last_y=n-1;
-        for(int i=0;i<people_num;i++){
-            if(i==0) {
-                battlefield.set_one(n / 2 , last_y, cur_NO);
+    private void formaion2(BattleField battleField){
+        System.out.println("雁形");
+        int last_x=0;int last_y=0;
+        for(int i=0;i<soldier_num;i++){
+            if(i%2==0) {
+                battleField.set_one(size / 4+last_x, size / 2 + 3+last_y, 11 + i);
+                last_x++;last_y++;
             }
-            else if(i%2!=0){
-                battlefield.set_one(n / 2 + last_x, last_y, cur_NO);
+            else {
+                battleField.set_one(size / 4+last_x, size / 2 + 3+last_y, 11 + i);
+                last_x++;last_y++;
             }
-            else
-                battlefield.set_one(n / 2 - last_x, last_y, cur_NO);
-        last_x=1;
-        if(i>=2&&i%2==0){
-            last_y--;
         }
-            cur_NO++;
-        }
-        cur_NO=11;
     }
-    private void formaion6(){
-        cur_NO=11;
-        int last_x=1,last_y=n;
-        for(int i=0;i<people_num;i++){
-            if(i<5){
+    private void formaion3(BattleField battleField){
+        System.out.println("蛇形");
+        int last_x=size/2-soldier_num/2;int last_y=0;
+        for(int i=0;i<soldier_num;i++){
+            if(i%2==0) {
+                battleField.set_one(last_x, size-1-last_y, 11 + i);
+                last_y=1;last_x++;
+            }
+            else {
+                battleField.set_one(last_x, size-1-last_y, 11 + i);
+                last_y=0;last_x++;
+            }
+        }
+    }
+    private void formaion4(BattleField battleField){
+        System.out.println("Z字形");
+        int last_x=0;int last_y=0;
+        for(int i=0;i<soldier_num;i++){
+            if(i%2==0) {
+                battleField.set_one(size / 2+last_x, size -1-last_y, 11 + i);
+                last_x++;last_y=1;
+            }
+            else {
+                battleField.set_one(size / 2-last_x, size -1-last_y, 11 + i);
+                last_x++;last_y=0;
+            }
+        }
+    }
+    private void formaion5(BattleField battleField){
+        System.out.println("箭头形");
+        int last_x=1,last_y=size;
+        for(int i=0;i<soldier_num;i++){
+            if(i<5) {
                 last_y--;
-                battlefield.set_one(n/2,last_y,cur_NO);
-                cur_NO++;
+                battleField.set_one(size/2,last_y,11+i);
             }
-            else if(i%2==1){
-                last_y++;
-                battlefield.set_one(n/2+last_x,last_y,cur_NO);
-                cur_NO++;
-            }
-            else{
-                battlefield.set_one(n/2-last_x,last_y,cur_NO);
-                cur_NO++;
+            else if(i%2==0) {
+                battleField.set_one(size / 2+last_x, last_y, 11 + i);
                 last_x++;
             }
+            else {
+                last_y++;
+                battleField.set_one(size / 2-last_x, last_y, 11 + i);
+            }
         }
-        cur_NO=11;
+    }
+    private void formaion6(BattleField battleField){
+        System.out.println("凹形");
+        int last_x=0;int last_y=size-1;
+        for(int i=0;i<soldier_num;i++){
+            if(i==0){
+                battleField.set_one(size / 2, last_y, 11 + i);
+            }
+            else if(i%2==0) {
+                battleField.set_one(size / 2+last_x, last_y, 11 + i);
+            }
+            else {
+                battleField.set_one(size / 2-last_x, last_y, 11 + i);
+            }
+            last_x=1;
+            if(i>=2&&i%2==0)
+                last_y--;
+        }
     }
 }

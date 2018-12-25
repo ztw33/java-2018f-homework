@@ -2,10 +2,11 @@ package hw3;
 
 import javax.swing.*;
 import javax.swing.text.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Display {
+public class Display{
 	int height;							//高度
 	int width;							//宽度
 	int badNumber=0;					//怪物数量，仅此参数未知

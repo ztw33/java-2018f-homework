@@ -1,4 +1,65 @@
-# 葫芦娃大战妖精
+# 葫芦娃大战妖精_RTTI,collection
+
+#### 相较于第一个版本的改进
+
+* 使用了ArrayList来存放管理创建出来的生物，而不是单独的一个个生物
+* 基本上每个类单独一个文件，便于管理
+* 受到大佬的启发，为便于扩展其他非生物增加了Creature的基类Being。在Creature下面又分为了Good和Bad。在Bad下面除了蛇精和蝎子精之外定义了Follower这个抽象类，含义是"小喽啰"，在Follower下面是各种具体的小喽啰。由于所有的Being都可能会有“行为”，定义了Behave这个接口，Being实现此接口，CheerUp接口和Battle接口分别继承Behave，各自被有需要的类实现。
+* 仍然使用图形界面，但较于第一个版本更好看，可以自己选择阵形，也可以点击生物，会实现各自的行为(目前都是在控制台输出一段话)。
+* 设置Cell类，该类继承自JButton作为阵形中的一个小格子，Cell类不可以放任何Being，只是作为战场的一部分存在。BeingCell继承Cell，可以放任何Being。其余的类和继承关系类似于beings包中的情况。每个Cell只允许放置该类对象或者子孙类对象(使用了RTTI    Class对象)BeingCell添加了事件处理，当点击BeingCell时，如果上面放置了Being，就会调用Being的Behave().
+* 设置Formation类，该类含有15*15个Cell，各种具体的阵形继承自Formation创建不同的Cell子类对象。
+* 设置BattleField类，该类继承自JPanel，数据成员含有一个Formation。
+* 主界面类也承包了创世界的功能，先创造各Being，再创造用户交互的界面。
+
+
+
+#### 类结构
+
+beings包
+
+- ![avatar](/appendix/beings.jpg)
+
+
+
+cells包
+
+![avatar](/appendix/cells.jpg)
+
+
+
+formation包
+
+![avatar](/appendix/formations.jpg)
+
+
+
+效果展示：
+
+![avatar](/appendix/CraneWing.jpg)
+
+
+
+上面一排是being show，展示都有哪些being参与。
+
+左边的下拉框可以选择阵形。
+
+中间面板的按钮可以点击，如果上面放置了生物则会有相应的行为(目前是在控制台打印出一段话)。
+
+
+
+编译后将additions文件夹跟其他class文件所在包文件夹放在同一目录下。
+
+
+
+
+
+
+
+
+
+
+
+# 葫芦娃大战妖精_v1
 
 ---
 
