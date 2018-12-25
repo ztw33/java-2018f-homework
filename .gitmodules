@@ -1,12 +1,3 @@
-[submodule "邓开圣-161220031"]
-	path = 邓开圣-161220031
-	url = git@github.com:KSDeng/java-2018f-homework.git
-[submodule "Final Project/Final"]
-	path = Final Project/Final
-	url = https://github.com/KSDeng/Java-Final-Project
-[submodule "Final Project/Java-Final-Project"]
-	path = Final Project/Java-Final-Project
-	url = https://github.com/KSDeng/Java-Final-Project.git
 [submodule "Final Project/邓开圣-161220031"]
 	path = Final Project/邓开圣-161220031
 	url = https://github.com/KSDeng/Java-Final-Project
