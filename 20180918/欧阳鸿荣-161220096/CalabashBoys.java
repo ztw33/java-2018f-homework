@@ -9,15 +9,18 @@ enum Color {
     RED("红色"), ORANGE("橙色"), YELLOW("黄色"), GREEN("绿色"), VERDANT("青色"), BLUE("蓝色"), PURPLE("紫色"); // 红橙黄绿蓝靛紫
 
     private String colorName;
-    private int colorNumber;
+    private final int colorNumber = 7;
 
     Color(String colorName) {
         this.colorName = colorName;
-        this.colorNumber = 7;
     }
 
     public String getColorName() {
         return colorName;
+    }
+
+    public  int getColorNumber(){
+        return colorNumber;
     }
 }
 
@@ -46,18 +49,76 @@ enum CalabashBrothers {
     public String getName() {
         return name;
     }
-
     public String getColor() {
         return color.getColorName();
     }
-
     public int getRank() {
         return this.rank;
     }
 
-
 }
 
+class CalabashBoys extends Creature{
+    private CalabashBrothers[] boys;
+    private final int boysNumber = 7;
+
+    public CalabashBoys() {
+        super("葫芦兄弟", CreatureType.CALABASH_BOY);
+        this.boys = new CalabashBrothers[this.boysNumber];
+        for (int i = 0; i < boys.length; i++) {
+            boys[i] = CalabashBrothers.values()[i];
+        }
+    }
+
+    public int getBoysNumber() {
+        return boysNumber;
+    }
+
+    public int getSomeoneRank(int i){
+        return boys[i].getRank();
+    }
+
+
+    public void swap(int i, int j) {
+        CalabashBrothers tmp = boys[i];
+        boys[i] = boys[j];
+        boys[j] = tmp;
+    }
+
+    public void swapWithReport(int i, int j) {
+        System.out.println(boys[i].getName() + ":" + i + "->" + j);
+        System.out.println(boys[j].getName() + ":" + j + "->" + i);
+        CalabashBrothers tmp = boys[i];
+        boys[i] = boys[j];
+        boys[j] = tmp;
+    }
+
+    public boolean compareSmaller(int i, int j){
+        return boys[i].getRank()<boys[j].getRank();
+    }
+
+    public void boysReportDetails() {
+        for (int i = 0; i < boysNumber; i++) {
+            System.out.println("我是" + i + "号,我的名字叫" + boys[i].getName() + ",我的颜色是" + boys[i].getColor());
+        }
+    }
+
+    public void boysReportNames() {
+        for (CalabashBrothers b : boys) {
+            System.out.print(b.getName() + ",");
+        }
+        System.out.println();
+    }
+
+    public void boysReportColors() {
+        for (CalabashBrothers b : boys) {
+            System.out.print(b.getColor() + ",");
+        }
+        System.out.println();
+    }
+
+
+}
 
 
 
