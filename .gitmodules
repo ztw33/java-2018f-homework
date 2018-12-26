@@ -1,3 +1,6 @@
+[submodule "Final Project/李冰心-161220063"]
+	path = Final Project/李冰心-161220063
+	url = git@github.com:yuanqilbx/java_final_homework.git
 [submodule "Final Project/邓开圣-161220031"]
 	path = Final Project/邓开圣-161220031
 	url = https://github.com/KSDeng/Java-Final-Project
