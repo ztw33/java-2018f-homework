@@ -1,30 +1,15 @@
 package formation;
 
 public abstract class Formation {
-	protected String name;
-	protected int scale = 7; //default 7
-	protected Position[] array;
-	/*Formation(int s){
-		this.setName();
-		this.setScale(s);
-		this.setArray();
-	}*/
+	String name;
+	Position[] array;
 	public String getName() {
-		return this.name;
+		return name;
 	}
-	public int getScale() {
-		return this.scale;
-	}
-	public void setScale(int scale) {
-		this.scale = scale;
-		this.setArray();
+	public Position[] getArray() {
+		return array;
 	}
 	public int getLength() {
-		return this.array.length;
+		return array.length;
 	}
-	public Position[] getPosition() {
-		return this.array;
-	}
-	protected abstract void setName();
-	protected abstract void setArray();  
 }

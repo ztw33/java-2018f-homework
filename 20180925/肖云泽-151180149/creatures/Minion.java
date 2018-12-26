@@ -1,9 +1,7 @@
 package creatures;
 
-import infos.Infos;
-
-public class Minion extends Creature{
+public class Minion extends BadCampCreature {
 	public Minion(){
-		super("Minion", Infos.BAD_CAMP);
+		name = "Minion";
 	}
 }

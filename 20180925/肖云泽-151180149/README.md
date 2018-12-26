@@ -1,3 +1,33 @@
+
+
+# 第二次修改说明
+
+## 概述
+
+和version2.0相比，添加了泛型以及容器，简化了并固定了阵型、战场的一些参数
+
+## 主要修改的类
+
+### Creature
+
+删除了camp的成员变量，并改为了抽象类防止被使用者调用，在具体类和Creature继承之间又添加了两个抽象类BadCampCreature，GoodCampCreature
+
+### Cheer
+
+接口Cheer由Grandpa类和Serpent类实现，但具体功能并未写入，有需要时再写入。
+
+### Queue
+
+使用容器和泛型，对内部存储的Creature进行管理，相关的函数稍有改动
+
+### Unit
+
+使用泛型
+
+### Battlefield
+
+使用容器存储Unit，改动了相应的函数
+
 # 第一次修改说明
 
 ## 概述
@@ -50,4 +80,5 @@ changeFormation()不会自动添加或削减至阵型数量上限的小喽啰，
 - infos的信息包含战场大小、葫芦娃生成信息、妖怪生成信息
 
 ## 输出示例
-![](https://github.com/DarkMagicXYZ/Java-2018f-pics/blob/master/Outputv1.1.png)
+![](https://github.com/DarkMagicXYZ/Java-2018f-pics/blob/master/Outputv2.0-1.png)
+![](https://github.com/DarkMagicXYZ/Java-2018f-pics/blob/master/Outputv2.0-2.png)

@@ -1,11 +1,14 @@
 package calabash;
 
-public class Monsters extends Creature{
+public class Monsters extends Creature {
 	Monsters(){
-		name = "小老弟";
+		name = "喽啰";
+		type = 1;
 	}
-
-	public String getName() {
-		return name;
+	
+	Monsters(int ix, int iy){
+		name = "喽啰";
+		x = ix;
+		y = iy;
 	}
 }
