@@ -1,12 +1,21 @@
 package space;
 import creature.*;
-public class TwoDimensionSpace {
-    private Tile space[][];
+public class TwoDimensionSpace<T extends Creature> {
+    private Tile<T> space[][];
     private int size;
     public TwoDimensionSpace(int N){
         size = N;
         space = new Tile[N][N];
         for (int i = 0; i < N; i++){
+            for (int j = 0; j < N; j++){
+                space[i][j] = new Tile(i, j);
+            }
+        }
+    }
+    public TwoDimensionSpace(int M, int N){
+        size = M;
+        space = new Tile[M][N];
+        for (int i = 0; i < M; i++){
             for (int j = 0; j < N; j++){
                 space[i][j] = new Tile(i, j);
             }
@@ -33,7 +42,7 @@ public class TwoDimensionSpace {
             return true;
         }
     }
-    public void setSpace(int x, int y, Creature p){
+    public void setSpace(int x, int y, T p){
         if (!isExceed(x,y)){
             space[x][y].setCreatureStandOnTile(p);
         }
@@ -50,5 +59,9 @@ public class TwoDimensionSpace {
             }
             System.out.println();
         }
+    }
+
+    public Creature getCreature(int i, int j) {
+        return space[i][j].getCreature();
     }
 }

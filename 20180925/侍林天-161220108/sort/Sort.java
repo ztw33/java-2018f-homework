@@ -1,6 +1,10 @@
 package sort;
 import creature.HuluWa;
-public class Sort {
+public interface Sort {
+    public void sort(HuluWa[] brothers);
+}
+
+/*public class Sort {
     public void bubbleSort(HuluWa[] brothers){
         for (int i = 0; i < brothers.length; i++) {
             for (int j = 0; j < brothers.length-i-1; j++) {
@@ -49,4 +53,4 @@ public class Sort {
     }
 
 
-}
+}*/

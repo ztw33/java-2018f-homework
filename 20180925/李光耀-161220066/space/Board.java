@@ -2,6 +2,7 @@ package space;
 
 import java.util.ArrayList;
 
+import creature.Being;
 import creature.Human;
 import creature.SnakeEssence;
 import regulate.Administer;
@@ -17,7 +18,7 @@ import regulate.Administer;
 */
 public class Board{
 	
-	ArrayList<ArrayList<Square>> board=new ArrayList<>();	
+	ArrayList<ArrayList<Square<Being>>> board=new ArrayList<>();	
 //	private Square[][] board;
 //	private static final int xLines=Gui.N;
 //	private static final int yLines=Gui.N;
@@ -26,9 +27,9 @@ public class Board{
 	public Board(){
 		//board=new Square[yLines][xLines];
 		for(int i=0;i<Administer.yLines;i++){
-			ArrayList<Square> temp=new ArrayList<>();
+			ArrayList<Square<Being>> temp=new ArrayList<>();
 			for(int j=0;j<Administer.xLines;j++)
-				temp.add(new Square(i,j,null));
+				temp.add(new Square<Being>(i,j,null));
 			board.add(temp);
 		}
 	}
@@ -40,7 +41,7 @@ public class Board{
 	public void putSnake(){
 		board.get(Administer.xLines-1).get(0).setBeing(SnakeEssence.snakeWoman);
 	}
-	public ArrayList<ArrayList<Square>> getBoard(){
+	public ArrayList<ArrayList<Square<Being>>> getBoard(){
 		return board;
 	}
 	

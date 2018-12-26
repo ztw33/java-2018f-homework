@@ -3,6 +3,8 @@ package calabashBrothers.formation;
 import calabashBrothers.Maps;
 import calabashBrothers.beings.Creature;
 
+import java.util.ArrayList;
+
 /**
  * @ Author     ：Young
  * @ Description：衝轭阵
@@ -13,13 +15,15 @@ public class ChongE extends Formation{
     }
 
     @Override
-    public void SetFormation(Maps maps, Creature[] creatures, int direction) {
-        for (int i = 0; i <creatures.length ; i++) {
-            if(i%2==0){
-                maps.getMaps()[startX+i][startY].setCreature(creatures[i]);
-            }else{
-                maps.getMaps()[startX+i][startY+1].setCreature(creatures[i]);
-            }
+    void initSites(int x, int y) {
+        //Do nothing
+    }
+
+    @Override
+    public void SetFormation(Maps<Creature> maps, ArrayList<Creature> creatures, int direction) {
+        for (int i = 0; i <creatures.size() ; i++) {
+            maps.setContent(startX+i,startY+i%2,creatures.get(i));
         }
     }
+
 }

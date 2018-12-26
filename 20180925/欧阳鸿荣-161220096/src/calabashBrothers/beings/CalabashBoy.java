@@ -13,7 +13,7 @@ public class CalabashBoy extends Creature implements Fighting{
     protected int rank;
 
     public CalabashBoy(int i) {
-        super(EnumCalabashBoy.values()[i].getName(), CreatureType.CALABASH_BOY);
+        super(EnumCalabashBoy.values()[i].getName());
         this.color = EnumCalabashBoy.values()[i].getColor();
         this.rank = EnumCalabashBoy.values()[i].getRank();
     }

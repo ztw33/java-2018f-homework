@@ -1,7 +1,6 @@
 package calabashBrothers.beings;
 
 import calabashBrothers.Maps;
-import calabashBrothers.beings.enums.CreatureType;
 
 /**
  * @ Author     ：Young
@@ -9,7 +8,7 @@ import calabashBrothers.beings.enums.CreatureType;
  */
 public class Monster extends Creature implements Fighting{
     public Monster() {
-        super("小喽啰", CreatureType.MONSTER);
+        super("小喽啰");
     }
 
     @Override

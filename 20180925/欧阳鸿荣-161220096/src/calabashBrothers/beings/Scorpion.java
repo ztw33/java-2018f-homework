@@ -1,7 +1,6 @@
 package calabashBrothers.beings;
 
 import calabashBrothers.Maps;
-import calabashBrothers.beings.enums.CreatureType;
 
 /**
  * @ Author     ：Young
@@ -9,7 +8,6 @@ import calabashBrothers.beings.enums.CreatureType;
  */
 public class Scorpion extends Monster implements Fighting{
     public Scorpion() {
-        this.type=CreatureType.MONSTER_LEADER;
         this.name="蝎子精";
     }
 

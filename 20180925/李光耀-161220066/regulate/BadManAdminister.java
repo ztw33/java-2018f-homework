@@ -3,6 +3,7 @@ package regulate;
 
 import java.util.ArrayList;
 
+import creature.Being;
 import creature.LittleMonster;
 import creature.Scorpion;
 import creature.SnakeEssence;
@@ -17,7 +18,7 @@ import space.Square;
 *
 */
 public class BadManAdminister {
-	public  void putNextMonsterFormation(ArrayList<Square> formation){
+	public  void putNextMonsterFormation(ArrayList<Square<Being>> formation){
 		for(int i=0;i<formation.size();i++){
 			if(i==0){
 				formation.get(i).setBeing(Scorpion.scorpionMan);
@@ -31,7 +32,7 @@ public class BadManAdminister {
 	* @Title: putSnake
 	* @Description: 蛇精初始的放置
 	*/
-	public  void putSnake(ArrayList<ArrayList<Square>> board){
+	public  void putSnake(ArrayList<ArrayList<Square<Being>>> board){
 		board.get(Administer.xLines-1).get(0).setBeing(SnakeEssence.snakeWoman);
 	}
 	/**

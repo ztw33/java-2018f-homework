@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.List;
 
 /**
  * Map大小初始化设定为11
@@ -6,8 +6,10 @@ import java.util.Random;
 public class Map {
 	// TODO: 2018/10/7 蛇精怎么放？随机码？
 	private Creature[][] creaturesMap;  // 使用一个二维数组来表示二维空间，储存各个生物体的名字，使用接口类型来定义数组
-	private GoodPeople[] goodPeople;
-	private Demon[] demons;
+//	private GoodPeople[] goodPeople;
+//	private Demon[] demons;
+	private List<Creature> goodPeople;
+	private List<Creature> demons;
 	private GoodPeopleHolder goodPeopleHolder;
 	private DemonHolder demonHolder;
 	private int rowNum;
@@ -74,9 +76,9 @@ public class Map {
 	 *    *（蝎子精）
 	 * @param creatures
 	 */
-	private void changeToCRANE_WING(Creature[] creatures) {
-		if (creatures instanceof Demon[]) {
-			int numOfFollowing=creatures.length-2;
+	private void changeToCRANE_WING(List<Creature> creatures) {
+		if (creatures.get(0) instanceof Demon) {
+			int numOfFollowing=creatures.size()-2;
 			int rowOfFollowing =(int) Math.ceil(numOfFollowing / 2.0);
 			int startRowNum=(this.rowNum-(rowOfFollowing+1))/2;
 			int startColumnNum=this.columnNum-rowOfFollowing*2+numOfFollowing%2;
@@ -86,19 +88,19 @@ public class Map {
 			// 放入小喽啰们
 			int j=startColumnNum;
 			for (int i = startRowNum; i <= endRowRowNum; i++) {
-				creaturesMap[i][j++] = creatures[index++];
+				creaturesMap[i][j++] = creatures.get(index++);
 			}
 			if (numOfFollowing % 2 == 0) {
-				creaturesMap[endRowRowNum][j++] = creatures[index++];
+				creaturesMap[endRowRowNum][j++] = creatures.get(index++);
 			}
 			for (int i = endRowRowNum - 1; i >= startRowNum; i--) {
-				creaturesMap[i][j++] = creatures[index++];
+				creaturesMap[i][j++] = creatures.get(index++);
 			}
 
 			// 放入领队的蝎子精
-			creaturesMap[endRowRowNum+1][endColumnNum] = creatures[1];
+			creaturesMap[endRowRowNum+1][endColumnNum] = creatures.get(1);
 			// 放入蛇精，呐喊助威用的
-			creaturesMap[this.rowNum-1][this.columnNum-1] = creatures[0];
+			creaturesMap[this.rowNum-1][this.columnNum-1] = creatures.get(0);
 		}
 	}
 
@@ -112,18 +114,18 @@ public class Map {
 	 *  *
 	 * @param creatures
 	 */
-	private void changeToWILD_GOOSE(Creature[] creatures) {
-		if (creatures instanceof Demon[]) {
-			int startRowNum=(creaturesMap.length-creatures.length+1)/2;
-			int index=creatures.length-1;
+	private void changeToWILD_GOOSE(List<Creature> creatures) {
+		if (creatures.get(0) instanceof Demon) {
+			int startRowNum=(creaturesMap.length-creatures.size()+1)/2;
+			int index=creatures.size()-1;
 			// 放入小喽啰和领队的蝎子精
-			for (int i = startRowNum; i < startRowNum + creatures.length-1; i++) {
-				creaturesMap[i][startRowNum+creaturesMap[0].length-1-i] = creatures[index];
+			for (int i = startRowNum; i < startRowNum + creatures.size()-1; i++) {
+				creaturesMap[i][startRowNum+creaturesMap[0].length-1-i] = creatures.get(index);
 				index--;
 				}
 			}
 			// 放入蛇精，呐喊助威用的
-			creaturesMap[creaturesMap.length - 1][creaturesMap[0].length - 1]=creatures[0];
+			creaturesMap[creaturesMap.length - 1][creaturesMap[0].length - 1]=creatures.get(0);
 	}
 
 	/**
@@ -137,26 +139,26 @@ public class Map {
 	 * 假定了小喽啰的数量不会超过两列
 	 * @param creatures
 	 */
-	private void changeToWOOD(Creature[] creatures) {
-		if (creatures instanceof Demon[]) {
-			int startRowNum=(creaturesMap.length-(creatures.length-2))/2;
+	private void changeToWOOD(List<Creature> creatures) {
+		if (creatures.get(0) instanceof Demon) {
+			int startRowNum=(creaturesMap.length-(creatures.size()-2))/2;
 			// 将小哈喽们分成两队，第一对的人数<=第二队的人数
-			int partOneNum=(creatures.length-2)/2;
-			int partTwoNum=creatures.length-2-partOneNum;
+			int partOneNum=(creatures.size()-2)/2;
+			int partTwoNum=creatures.size()-2-partOneNum;
 			int index=2;
 			// 放入小哈喽们
 			for (int i = startRowNum; i <= startRowNum + 2*(partTwoNum-1); i+=2) {
-				creaturesMap[i][creaturesMap[0].length - 1] = creatures[index];
+				creaturesMap[i][creaturesMap[0].length - 1] = creatures.get(index);
 				index++;
 			}
 			for (int i = startRowNum + 1; i <= 1+startRowNum + 2*(partOneNum-1); i += 2) {
-				creaturesMap[i][creaturesMap[0].length-2]=creatures[index];
+				creaturesMap[i][creaturesMap[0].length-2]=creatures.get(index);
 				index++;
 			}
 			// 放入蝎子精
-			creaturesMap[creaturesMap.length/2][creaturesMap[0].length-3] = creatures[1];
+			creaturesMap[creaturesMap.length/2][creaturesMap[0].length-3] = creatures.get(1);
 			// 放入蛇精，呐喊助威用的
-			creaturesMap[creaturesMap.length - 1][creaturesMap[0].length - 1] = creatures[0];
+			creaturesMap[creaturesMap.length - 1][creaturesMap[0].length - 1] = creatures.get(0);
 		}
 	}
 
@@ -170,16 +172,16 @@ public class Map {
 	 *  *
 	 * @param creatures  demons并不使用这个队形
 	 */
-	private void changeToLONG_SNAKE(Creature[] creatures) {
+	private void changeToLONG_SNAKE(List<Creature> creatures) {
 		// 将葫芦娃们放入map
-		if (creatures instanceof GoodPeople[]) {
-			int startRowNum=(this.rowNum-(creatures.length-1))>>1;
+		if (creatures.get(0) instanceof GoodPeople) {
+			int startRowNum=(this.rowNum-(creatures.size()-1))>>1;
 			int index=1;
-			for (int i = startRowNum; i < startRowNum+creatures.length-1; i++) {
-				creaturesMap[i][1]=creatures[index++];
+			for (int i = startRowNum; i < startRowNum+creatures.size()-1; i++) {
+				creaturesMap[i][1]=creatures.get(index++);
 			}
 			// 将爷爷放入map
-			creaturesMap[this.rowNum>>1][0]=creatures[0];
+			creaturesMap[this.rowNum>>1][0]=creatures.get(0);
 		}
 	}
 
@@ -191,28 +193,28 @@ public class Map {
 	 *     *  这里至少要有两个 below 规定这个是蝎子精
 	 * @param creatures
 	 */
-	private void changeToARROW(Creature[] creatures) {
-		int numOfThree=((creatures.length-2)-2)/3;  // 计算出一行中有三个并列的情况有多少个，两次"-2"的含义分别是：扣掉蝎子精、蛇精；再扣掉最顶上、最底下的两个喽啰的耗损
-		int numOfVertical=creatures.length-2-3*numOfThree+numOfThree+1;  // 最后加的1是添上的蝎子精
+	private void changeToARROW(List<Creature> creatures) {
+		int numOfThree=((creatures.size()-2)-2)/3;  // 计算出一行中有三个并列的情况有多少个，两次"-2"的含义分别是：扣掉蝎子精、蛇精；再扣掉最顶上、最底下的两个喽啰的耗损
+		int numOfVertical=creatures.size()-2-3*numOfThree+numOfThree+1;  // 最后加的1是添上的蝎子精
 		int startRowNum=(this.rowNum-numOfVertical)/2;
 		// 先把一竖条的喽啰摆放好，暂时先不放蝎子精
 		int index=2;
 		int startColumnNum=this.columnNum-numOfThree-1;
 		for (int i = startRowNum; i < startRowNum + numOfVertical-1; i++) {
-			creaturesMap[i][startColumnNum]=creatures[index];
+			creaturesMap[i][startColumnNum]=creatures.get(index);
 			index++;
 		}
 		// 把斜条上的小喽啰放上，先左边，后右边
 		int j=startColumnNum+1;
 		for (int i = startRowNum + 1; i <= startRowNum + numOfThree; i++) {
-			creaturesMap[i][startRowNum+startColumnNum-i]=creatures[index];
+			creaturesMap[i][startRowNum+startColumnNum-i]=creatures.get(index);
 			index++;
-			creaturesMap[i][j++]=creatures[index];
+			creaturesMap[i][j++]=creatures.get(index);
 			index++;
 		}
 		// 放上蝎子精、蛇精
-		creaturesMap[startRowNum + numOfVertical - 1][startColumnNum]=creatures[1];
-		creaturesMap[this.rowNum - 1][this.columnNum - 1] = creatures[0];
+		creaturesMap[startRowNum + numOfVertical - 1][startColumnNum]=creatures.get(1);
+		creaturesMap[this.rowNum - 1][this.columnNum - 1] = creatures.get(0);
 	}
 
 	/**
@@ -223,10 +225,10 @@ public class Map {
 	 *     *（endRowNum，endColumnNum）
 	 * @param creatures
 	 */
-	private void changeToCIRCLE(Creature[] creatures) {
+	private void changeToCIRCLE(List<Creature> creatures) {
 		// TODO: 2018/10/9 判断是否为Demon
-		if (creatures instanceof Demon[]) {
-			int numOfFollowing=creatures.length-2;
+		if (creatures.get(0) instanceof Demon) {
+			int numOfFollowing=creatures.size()-2;
 			int numOfTwo=(numOfFollowing-2)/2;  // 一列中有两个的情况数量
 			int numOfOne = numOfFollowing - 2 * numOfTwo;  // 一列中只有一个的情况数量
 			int numOfVercital=(numOfTwo+1)/2*2+1;
@@ -242,31 +244,32 @@ public class Map {
 			int j=startColumnNum+1;
 
 			// 先把最上面、最下面的单个（或多个）小喽啰放上去
-			creaturesMap[startRowNum][startColumnNum] = creatures[index++];
-			creaturesMap[endRowNum][endColumnNum] = creatures[index++];
+			creaturesMap[startRowNum][startColumnNum] = creatures.get(index++);
+			creaturesMap[endRowNum][endColumnNum] = creatures.get(index++);
 			if (numOfTwo % 2 == 0) {
-				creaturesMap[startRowNum][startColumnNum+1] = creatures[index++];
-				creaturesMap[endRowNum][endColumnNum+1] = creatures[index++];
+				creaturesMap[startRowNum][startColumnNum+1] = creatures.get(index++);
+				creaturesMap[endRowNum][endColumnNum+1] = creatures.get(index++);
 			}
 			for (int i = startRowNum+1; i <=middleRowNum; i++) {
-				creaturesMap[i][startRowNum + startColumnNum - i] = creatures[index++];
-				creaturesMap[i][(1+numOfTwo)%2+j++] = creatures[index++];
+				creaturesMap[i][startRowNum + startColumnNum - i] = creatures.get(index++);
+				creaturesMap[i][(1+numOfTwo)%2+j++] = creatures.get(index++);
 			}
 			j=endColumnNum-1;  // 恢复j的值
 			for (int i = endRowNum-1; i > middleRowNum; i--) {
-				creaturesMap[i][j--] = creatures[index++];
-				creaturesMap[i][(1+numOfTwo)%2+endRowNum+endColumnNum-i] = creatures[index++];
+				creaturesMap[i][j--] = creatures.get(index++);
+				creaturesMap[i][(1+numOfTwo)%2+endRowNum+endColumnNum-i] = creatures.get(index++);
 			}
 			// 把多余下来的单个小喽啰、蝎子精放上去
 			int leftFollowing = numOfOne-2;
 			if (leftFollowing > 0) {
-				creaturesMap[middleRowNum][middleColumnNum - 1] = creatures[index++];  // TODO: 2018/10/9  这里index可以不用++？？？
-				creaturesMap[middleRowNum][middleColumnNum - 2] = creatures[1];
+				creaturesMap[middleRowNum][middleColumnNum - 1] = creatures.get(index++);  // TODO: 2018/10/9
+				// 这里index可以不用++？？？
+				creaturesMap[middleRowNum][middleColumnNum - 2] = creatures.get(1);
 			} else {
-				creaturesMap[middleRowNum][middleColumnNum - 1] = creatures[1];
+				creaturesMap[middleRowNum][middleColumnNum - 1] = creatures.get(1);
 			}
 			// 放入蛇精
-			creaturesMap[this.rowNum - 1][this.columnNum - 1] = creatures[0];
+			creaturesMap[this.rowNum - 1][this.columnNum - 1] = creatures.get(0);
 		}
 	}
 
@@ -281,8 +284,8 @@ public class Map {
 	 *  1354
 	 * @param creatures
 	 */
-	private void changeToMOON(Creature[] creatures) {
-		int numOfFollowing = creatures.length - 2;
+	private void changeToMOON(List<Creature> creatures) {
+		int numOfFollowing = creatures.size() - 2;
 		int columnOfFollowing=(int)Math.ceil(Math.sqrt(numOfFollowing));
 		int startRowNum=this.rowNum>>1;
 		int startColumnNum=this.columnNum-columnOfFollowing;
@@ -291,24 +294,24 @@ public class Map {
 		int count=0;
 		for (int j = startColumnNum; j < startColumnNum + columnOfFollowing; j++) {
 			for (int i = startRowNum - count; i <= startRowNum; i++) {
-				if (index >= creatures.length) {
+				if (index >= creatures.size()) {
 					break;
 				}
 				if (startRowNum * 2 - i == startRowNum) {
-					creaturesMap[i][j] = creatures[index++];
+					creaturesMap[i][j] = creatures.get(index++);
 				}else{
-					creaturesMap[i][j] = creatures[index++];
-					if (index >= creatures.length) {
+					creaturesMap[i][j] = creatures.get(index++);
+					if (index >= creatures.size()) {
 						break;
 					}
-					creaturesMap[startRowNum * 2 - i][j] = creatures[index++];
+					creaturesMap[startRowNum * 2 - i][j] = creatures.get(index++);
 				}
 			}
 			count++;
 		}
 		// 放入蝎子精、蛇精
-		creaturesMap[startRowNum][startColumnNum - 1] = creatures[1];
-		creaturesMap[startRowNum + 1][startColumnNum - 1] = creatures[0];
+		creaturesMap[startRowNum][startColumnNum - 1] = creatures.get(1);
+		creaturesMap[startRowNum + 1][startColumnNum - 1] = creatures.get(0);
 	}
 
 	/**
@@ -320,8 +323,8 @@ public class Map {
 	 *       todo 有问题！！！
 	 * @param creatures
 	 */
-	private void changeToFISH_SCALE(Creature[] creatures) {
-		int numOfFollowing = creatures.length - 2;
+	private void changeToFISH_SCALE(List<Creature> creatures) {
+		int numOfFollowing = creatures.size() - 2;
 		int rowOfTriangle = (int) Math.ceil(Math.sqrt(numOfFollowing));
 		int numOfVertical = rowOfTriangle + 1;
 		int startRowNum = (this.rowNum - numOfVertical) >> 1;
@@ -331,16 +334,16 @@ public class Map {
 		// 先放入小喽啰们构成的三角形
 		for (int i = startRowNum; i < startRowNum + rowOfTriangle; i++) {
 			for (int j = startColumnNum-count; j<=startColumnNum+count; j++) {
-				creaturesMap[i][j]=creatures[index++];
-				if (index >= creatures.length) {
+				creaturesMap[i][j]=creatures.get(index++);
+				if (index >= creatures.size()) {
 					break;
 				}
 			}
 			count++;
 		}
 		// 放入蝎子精、蛇精
-		creaturesMap[startRowNum + rowOfTriangle][startColumnNum] = creatures[1];
-		creaturesMap[this.rowNum-1][this.columnNum-1] = creatures[0];
+		creaturesMap[startRowNum + rowOfTriangle][startColumnNum] = creatures.get(1);
+		creaturesMap[this.rowNum-1][this.columnNum-1] = creatures.get(0);
 	}
 
 	/**

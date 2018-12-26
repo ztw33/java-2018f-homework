@@ -39,13 +39,16 @@ public class HuluBrothers implements Group{
             member[x] = temp;
         }
     }
-    public void prioritySort(){
+    /*public void prioritySort(){
         Sort sort = new Sort();
         sort.bubbleSort(member);
     }
     public void colorSort(){
         Sort sort = new Sort();
         sort.biInsertSort(member);
+    }*/
+    public void sort(Sort sort) {
+        sort.sort(member);
     }
     public void generateFormation(Formation formation, TwoDimensionSpace space, int x, int y, int direction)
     {

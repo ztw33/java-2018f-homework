@@ -2,10 +2,10 @@ package Formation;
 import Creature.*;
 /**
  * @ Author     ：cjh
- * @ Description：一字长蛇阵
+ * @ Description：方円
  */
-public class FangyuanBattleArray {
-    public static void form(Creature scorpionMonster,Creature[] underlings,int row,int column)
+public class FangyuanBattleArray<T extends Creature> {
+    public void form(T scorpionMonster,T[] underlings,int row,int column)
     {
         scorpionMonster.standOnMap(row,column);
         //System.out.println(underlings.length/2);

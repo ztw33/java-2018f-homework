@@ -3,6 +3,7 @@ package regulate;
 
 import java.util.ArrayList;
 
+import creature.Being;
 import gui.Gui;
 import space.Board;
 import space.Square;
@@ -30,9 +31,13 @@ public class Administer implements LinkGUI2Inside{
 	* @Description: formationAdminister用于生成阵型坐标，badManAdminister对formation进行生物填充，boardAdminister用于最后的放置
 	*/
 	public void getputNextMonsterFormation(){
-		ArrayList<Square> formation=formationAdminister.getNextMonsterFormation().getFormation();
+		ArrayList<Square<Being>> formation=formationAdminister.getNextMonsterFormation().getFormation();
 		badManAdminister.putNextMonsterFormation(formation);
-		boardAdminister.putFormationInBoard(formation, myBoard.getBoard());
+		if(boardAdminister.putFormationInBoard(formation, myBoard.getBoard())==false){	//fix bug
+			formation=formationAdminister.getPreMonsterFormation().getFormation();
+			badManAdminister.putNextMonsterFormation(formation);
+			boardAdminister.putFormationInBoard(formation, myBoard.getBoard());
+		}
 	}
 	
 	/**
@@ -40,7 +45,7 @@ public class Administer implements LinkGUI2Inside{
 	* @Description: 同上
 	*/
 	public void getputHuLuFormation(){
-		ArrayList<Square> formation=formationAdminister.getHuLuFormation().getFormation();
+		ArrayList<Square<Being>> formation=formationAdminister.getHuLuFormation().getFormation();
 		goodManAdminister.putHuLuWaInFormation(formation);
 		boardAdminister.putFormationInBoard(formation, myBoard.getBoard());
 	}
