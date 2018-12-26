@@ -1,3 +1,12 @@
+[submodule "Final Project/戚赟-161220097"]
+	path = Final Project/戚赟-161220097
+	url = https://github.com/qunqunqun/java-2018-final
+[submodule "Final Project/李冰心-161220063"]
+	path = Final Project/李冰心-161220063
+	url = git@github.com:yuanqilbx/java_final_homework.git
+[submodule "Final Project/邓开圣-161220031"]
+	path = Final Project/邓开圣-161220031
+	url = https://github.com/KSDeng/Java-Final-Project
 [submodule "Final Project/王志邦-161220131"]
 	path = Final Project/王志邦-161220131
 	url = http://github.com/edwardmartin927/CalabashFight
@@ -25,6 +34,12 @@
 [submodule "Final Project/侍林天-161220108"]
 	path = Final Project/侍林天-161220108
 	url = https://github.com/LintianShi/homework
+[submodule "Final Project/欧阳鸿荣-161220096"]
+	path = Final Project/欧阳鸿荣-161220096
+	url = https://github.com/Tsunaou/CalabashBoys-WarGames
+[submodule "Final Project/薛宇豪-171250641"]
+	path = Final Project/薛宇豪-171250641
+	url = https://github.com/xyh467946553/java-homework
 [submodule "Final Project/李光耀-161220066"]
 	path = Final Project/李光耀-161220066
 	url = https://github.com/lidayou/HuLuWa
@@ -46,3 +61,9 @@
 [submodule "Final Project/李秋霖-161220069"]
 	path = Final Project/李秋霖-161220069
 	url = https://github.com/lqiulin/161220069.git
+[submodule "Final Project/冯亦磊-161180034"]
+	path = Final Project/冯亦磊-161180034
+	url = https://github.com/Echoes-Feng/final-project.git
+[submodule "Final Project/何峰彬-161210005"]
+	path = Final Project/何峰彬-161210005
+	url = https://github.com/gyee75o2/JavaFinalProject
