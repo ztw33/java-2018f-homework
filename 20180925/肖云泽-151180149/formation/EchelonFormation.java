@@ -1,18 +1,9 @@
 package formation;
 
 public class EchelonFormation extends Formation {
-	public EchelonFormation(int s){
-		this.setName();
-		this.setScale(s);
-		//this.setArray();
-	}
-	protected void setName() {
-		this.name = "Echelon";
-	}
-	protected void setArray() {
-		this.array = new Position[scale];
-		for (int i=0; i<scale; i++) {
-			this.array[i] = new Position(i, i);
-		}
+	public EchelonFormation(){
+		name = "Echelon";
+		array = new Position[] {new Position(7,4),new Position(8,5),new Position(9,6),
+				new Position(10,7),new Position(11,8),new Position(12,9),new Position(13,10)};
 	}
 }

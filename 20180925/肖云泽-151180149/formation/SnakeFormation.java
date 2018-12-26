@@ -1,18 +1,9 @@
 package formation;
 
 public class SnakeFormation extends Formation {
-	public SnakeFormation(int s){
-		this.setName();
-		this.setScale(s);
-		//this.setArray();
-	}
-	protected void setName() {
-		this.name = "Snake";
-	}
-	protected void setArray() {
-		this.array = new Position[this.scale];
-		for (int i=0; i<scale; i++) {
-			this.array[i] = new Position((scale - 1) / 2, i);
-		}
+	public SnakeFormation(){
+		name = "Snake";
+		array = new Position[] {new Position(3,4),new Position(3,5),new Position(3,6),
+				new Position(3,7),new Position(3,8),new Position(3,9),new Position(3,10)};
 	}
 }
