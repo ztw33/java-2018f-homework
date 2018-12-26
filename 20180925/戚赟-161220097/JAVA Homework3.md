@@ -18,4 +18,6 @@
 
 ④设计了一个Formation类，对于小怪的阵型，我们可以通过Battlefield给的接口来进行位置的移动。
 
-⑤关于图片展示，利用了一个JFrame和JLabel，每个Creature自带一个JLabel类来存放自己带有的图片属性，从而进行了图形界面的输出
+---
+
+更新了JAVAFX和MAVEN来进行使用

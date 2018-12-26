@@ -1,9 +1,10 @@
 package creatures;
 
-import infos.Infos;
-
-public class Serpent extends Creature{
+public class Serpent extends BadCampCreature implements Cheer {
 	public Serpent(){
-		super("Serpent", Infos.BAD_CAMP);
+		name = "Serpent";
+	}
+	public void cheer() {
+		
 	}
 }

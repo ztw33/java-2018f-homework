@@ -1,4 +1,13 @@
 # **面向葫芦娃编程**
+## **更新GUI(JavaFX)**
+	在Creature类中为每个生物添加一个共用属性url（提供对应图片的地址），然后在Creature的子类初始化时将url初始化，每个生物体对应一个图片；
+	在Battlefield类中添加image变量，用于存储战场上每个位置所存的图片（类型为ImageView）；
+	添加了名为sample的package，实现了战场的图形化（可以输入战场的大小，选择阵型）；
+## **实现结果**
+	![鹤翼阵](1.png)
+	![方円阵](2.png)
+	![锋矢阵](3.png)
+
 ![UML](UML.png)
 ## **Creature类**
 	Creature类是一个父类，它包含了所有生物体所共用的属性（生物名name），这些属性设置为protected，方便子类操作；

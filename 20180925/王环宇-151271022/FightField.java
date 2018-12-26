@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.io.*;
 
 
+
+
 public class FightField {
 	/*
 	 * 程序主要的执行入口，在此类中导入战场，加入战士，选择阵型，显示战场信息.
@@ -31,10 +33,15 @@ public class FightField {
 	 * @param true: 正确, false: 错误
 	 * @return： boolean 
 	 * */
+	static final String pwd = "/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/";
 	static int SHUFFLE = 50;
 	private String file_name;
 	private static final int N = 15;
 	public Warrior[][] fields;
+	
+	static final SimpleDateFormat DF = new SimpleDateFormat("_MMdd");//设置日期格式
+	static final String FILE_DATE = DF.format(new Date());// new Date()为获取当前系统时间
+	static final SimpleDateFormat DF1 = new SimpleDateFormat("YYYY-MM-dd HH:mm");//设置日期格式
 
 
 	//Constructor
@@ -42,11 +49,8 @@ public class FightField {
 		file_name = new String();
 		initialization();
 		
-		SimpleDateFormat df = new SimpleDateFormat("_MMdd");//设置日期格式
-		String name = df.format(new Date());// new Date()为获取当前系统时间
-		SimpleDateFormat df1 = new SimpleDateFormat("YYYY-MM-dd HH:mm");//设置日期格式
-		file_name = "/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/"+"FightField"+ name + ".txt";
-		this.writeToFile(df1.format(new Date()));
+		file_name = "/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/"+"FightField"+ FILE_DATE + ".txt";
+		this.writeToFile(DF1.format(new Date()));
 	}
 
 	private void initialization() {
@@ -59,32 +63,11 @@ public class FightField {
 		for (int i=0; i<7; i++) {
 			teamGood.add(new CalabashBrothers(name.charAt(i) + "娃", ""));
 		}
-		teamGood.add(new Warrior("老爷爷", "看戏", teamBad.getSide()));
-		teamBad.add(new Warrior("蝎子精", "领队", teamBad.getSide()));
-		for (int i=0; i<5; i++) {
-			teamBad.add(new Warrior("小兵"+i, "冲锋", teamBad.getSide()));
-		}
-		teamBad.add(new Warrior("小兵"+5, "冲锋", teamGood.getSide()));
-		teamBad.add(new Warrior("蛇精", "看戏", teamBad.getSide()));
+		teamGood.load(pwd + "GoodMan.txt");
+		teamBad.load(pwd + "BadMan.txt");
 		// shuffle
 		shuffle(teamGood);
 		shuffle(teamBad);
-	}
-	
-	public static void shuffle(Team team) {
-		Random rdm = new Random();
-		for(int i=0; i<SHUFFLE; i++) {
-			int t1 = Math.abs(rdm.nextInt()) % team.team.size();
-			int t2 = Math.abs(rdm.nextInt()) % team.team.size();
-			if(t1 == t2)
-				continue;
-			else {
-				Warrior w;
-				w = team.team.get(t1);
-				team.team.set(t1, team.team.get(t2));
-				team.team.set(t2, w);
-			}
-		}
 	}
 	
 	// show the fields
@@ -117,12 +100,14 @@ public class FightField {
 		try {
 			f1 = in.nextInt();
 			this.goBattle(teamBad, Formation.getForm(f1, 2));
+			this.writeToFile("选择阵型"+f1+":"+Formation.name.get(f1));
 		}catch( IndexOutOfBoundsException e){
 			System.out.println("your input is out of bound! please input again!");
 			f1 = in.nextInt();
 			this.goBattle(teamBad, Formation.getForm(f1, 2));
 		}
 	}
+	
 	
 	private void writeToFile(String str) {
 		System.out.println(str);
@@ -140,18 +125,41 @@ public class FightField {
 		}catch(IOException e){
 				e.printStackTrace();
 		}
-		
+	}
+	
+	@SuppressWarnings("all")
+	private void loading() {
+//		try {
+//			FileInputStream fis = new FileInputStream(pwd+"test.txt");
+//			ObjectInputStream ois = new ObjectInputStream(fis);
+//			Warrior w3 = (Warrior) ois.readObject();
+//			w3.showMe();
+//			Warrior w4 = (Warrior) ois.readObject();
+//			w4.showMe();
+//			ois.close();
+//		}
+//		catch (IOException e) 
+//		{		
+//			e.printStackTrace();
+//		}
+//		catch (ClassNotFoundException e2) {
+//			e2.printStackTrace();
+//		}
 	}
 	
 	
-	
 	public static void main(String[] args) {
+		
 		Scanner in = new Scanner(System.in);
 		FightField ff = new FightField();
 		
 		//登录每队的战士并且显示其基本信息
+		@TeamSide(side = "GoodTeam")
 		Team teamGood = new Team("GoodMan");
+		
+		@TeamSide(side = "BadTeam")
 		Team teamBad = new Team("BadMan");
+		
 		loading(teamGood, teamBad);
 		try {
 			teamGood.checkMember();
@@ -186,6 +194,26 @@ public class FightField {
 		teamBad.showTeam();
 		
 		ff.writeToFile("\n\n");
+		
+		teamGood.writeWarriors(pwd+"Warriors" + FILE_DATE + ".dat");
+		teamBad.writeWarriors(pwd+"Warriors" + FILE_DATE + ".dat");
+	}
+	
+	
+	public static void shuffle(Team team) {
+		Random rdm = new Random();
+		for(int i=0; i<SHUFFLE; i++) {
+			int t1 = Math.abs(rdm.nextInt()) % team.team.size();
+			int t2 = Math.abs(rdm.nextInt()) % team.team.size();
+			if(t1 == t2)
+				continue;
+			else {
+				Warrior w;
+				w = team.team.get(t1);
+				team.team.set(t1, team.team.get(t2));
+				team.team.set(t2, w);
+			}
+		}
 	}
 }
 
