@@ -1,3 +1,14 @@
+# 迭代6(2018.12.10)
+
+## 版本说明
+
+- 修改了JavaFX的设计：
+  - 通过initialize()来进行初始化，替代了上一个版本中点击launch按钮初始化的操作
+
+- maven的使用：
+  - 利用了maven进行自动依赖包导入、测试、打包，可通过运行maven clean test package命令进行自动测试打包
+  - 对common.CommonSort中的sort方法进行测试随机数组的排序测试
+
 # 迭代5(2018.12.03)
 
 ## 版本说明

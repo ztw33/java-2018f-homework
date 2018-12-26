@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFx.BattlefieldController">
+   <children>
+      <Line endX="600.0" layoutY="600.0" />
+      <Line endY="100.0" layoutX="300.0" layoutY="600.0" />
+      <ChoiceBox fx:id="ChangeLeftChoiceBox" layoutX="75.0" layoutY="650.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="ChangeRightChoiceBox" layoutX="375.0" layoutY="650.0" prefWidth="150.0" />
+      <Text layoutX="24.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select deployment style for left" textAlignment="CENTER" wrappingWidth="252.0" />
+      <Text layoutX="324.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select deployment style for right" textAlignment="CENTER" wrappingWidth="252.0" />
+      <GridPane fx:id="BattleFieldGridPane" prefHeight="600.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.5" AnchorPane.topAnchor="0.0">
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+         </rowConstraints>
+      </GridPane>
+      <Button fx:id="leftcheerbutton" layoutX="24.0" layoutY="628.0" mnemonicParsing="false" onAction="#leftCheerButtonClicked" prefHeight="27.0" prefWidth="27.0" text="!!" textAlignment="CENTER" />
+      <Button fx:id="rightcheerbutton" layoutX="324.0" layoutY="628.0" mnemonicParsing="false" onAction="#rightCheerButtonClicked" prefWidth="27.0" text="!!" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
