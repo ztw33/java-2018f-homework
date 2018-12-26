@@ -1,87 +1,63 @@
-import java.lang.Math.*;
+package Creature;
 
-class CalabashBrothersSort{
-    public static void sortByName(CalabashBrothers[] brothers)/**冒泡法*/
-    {
-        for(int i = 0; i < brothers.length; i++)
-        {
-            for(int j = i + 1; j < brothers.length; j++)
-            {
-                if(brothers[i].rank>brothers[j].rank)
-                {
-                    //brothers[i].reportSwap(i,j);
-                    //brothers[j].reportSwap(j,i);
-                    CalabashBrothers.swapPosition(brothers,i,j);
-                }
-            }
-        }
-    }
+import BattleField.Existance;
+import BattleField.Space;
 
-    public static void sortByColor(CalabashBrothers[] brothers)/**二分法*/
-    {
-        for(int i=1;i<brothers.length;i++)
-        {
-            if(brothers[i].rank<brothers[i-1].rank)
-            {
-                int left=0;
-                int right=i-1;
-                while (left<=right)
-                {
-                    int mid = (left + right) / 2;
-                    if (brothers[i].rank < brothers[mid].rank)
-                    {
-                        right = mid - 1;
-                    }
-                    else {
-                        left = mid + 1;
-                    }
-                }
-                //brothers[i].reportSwap(i,left);
-                CalabashBrothers temp=brothers[i];
-                for(int j = i; j > left; j--)
-                {
-                //brothers[j-1].reportSwap(j-1,j);
-                brothers[j]=brothers[j-1];
-                }
-            brothers[left]=temp;
-            }
-        }
-    }
-}
-public enum CalabashBrothers {/**创建人：陈剑豪 创建时间：2018.9.18*/
-    BigBrother("老大","红色",1),SecondBrother("老二","橙色",2),ThirdBrother("老三","黄色",3),FourthBrother("老四","绿色",4),
-    FifthBrother("老五","青色",5), SixthBrother("老六","蓝色",6),SeventhBrother("老七","紫色",7);
-    String name;// 葫芦娃的名字
+/**
+ * @ Author     ：cjh
+ * @ Description：葫芦娃
+ */
+
+public class CalabashBrothers extends Creature{
     String color;// 葫芦娃的颜色
     int rank;// 葫芦娃中的排行
-    int row;
-    int column;
-    CalabashBrothers(String name,String color,int rank)
+    CalabashBrothers(int i)
     {
-        this.name =name;
-        this.color=color;
-        this.rank=rank;
+        init();
+        this.color = CalabashEnum.values()[i].getColor();
+        this.name =CalabashEnum.values()[i].getName();
+        this.rank = CalabashEnum.values()[i].getRank();
+        list.add(this);
     }
+    @Override
     public void standOnMap(int i,int j)
     {
         row=i;
         column=j;
-        Space.space[i][j]=rank+1;
+        switch(rank)
+        {
+            case 1:
+                Space.space[i][j]= Existance.bigbrother;
+                break;
+            case 2:
+                Space.space[i][j]=Existance.secondbrother;
+                break;
+            case 3:
+                Space.space[i][j]=Existance.thirdbrother;
+                break;
+            case 4:
+                Space.space[i][j]=Existance.fourthbrother;
+                break;
+            case 5:
+                Space.space[i][j]=Existance.fifthbrother;
+                break;
+            case 6:
+                Space.space[i][j]=Existance.sixthbrother;
+                break;
+            case 7:
+                Space.space[i][j]=Existance.seventhbrother;
+                break;
+        }
     }
 
     public static void swapPosition(CalabashBrothers[] brothers,int i,int j)/**两个葫芦娃交换位置*/
     {
-
-        CalabashBrothers temp=CalabashBrothers.BigBrother;
+        CalabashBrothers temp;
         temp=brothers[i];
         brothers[i]=brothers[j];
         brothers[j]=temp;
     }
 
-    public void reportName()/**报名字*/
-    {
-        System.out.print(name+"  ");
-    }
     public void reportColor()/**报颜色*/
     {
         System.out.print(color+"  ");
@@ -92,7 +68,11 @@ public enum CalabashBrothers {/**创建人：陈剑豪 创建时间：2018.9.18*
     }
     public static CalabashBrothers[] birth()/**葫芦娃出生（随机顺序）*/
     {
-        CalabashBrothers[] brothers=CalabashBrothers.values();
+        CalabashBrothers[] brothers=new CalabashBrothers[7];
+        for(int i=0;i<7;i++)
+        {
+            brothers[i]=new CalabashBrothers(i);
+        }
         for(int i=0;i<7;i++)
         {
             int num1 = (int) (Math.random() * 7);

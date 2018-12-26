@@ -1,24 +1,33 @@
 package creature;
 
 
-public class SnakeEssence extends Creature{
+import gui.Gui;
+import util.Encourage;
+
+
+/**
+* @ClassName: SnakeEssence
+* @Description: 蛇精
+* @author 13745
+* @date 2018年11月4日
+*
+*/
+public class SnakeEssence extends BadCreature implements Encourage{
 
 	public static SnakeEssence snakeWoman;
 	
 	static{
-		//try {
-		//	Image image=ImageIO.read(HuLuWas.class.getResource("snake.jpg"));
-		//	image=image.getScaledInstance(Gui.squareXLength, Gui.squareYLength,Image.SCALE_DEFAULT );
-			snakeWoman=new SnakeEssence("蛇精",CreatureImage.SNAKE);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		snakeWoman=new SnakeEssence("蛇精",StyleImage.SNAKE);
 	}
 	
-	public SnakeEssence(String name,CreatureImage image) {
-		super(CreatureType.SNAKE, name,image);
-		// TODO Auto-generated constructor stub
+	public SnakeEssence(String name,StyleImage image) {
+		super(name,image);
+	}
+
+	@Override
+	public void cheerUp() {
+		// TODO Auto-generated method stub
+		Gui.textArea.append("蛇精为蝎子精、众妖怪兄弟加油助威!\n");
 	}
 
 }

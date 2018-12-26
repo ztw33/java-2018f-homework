@@ -1,10 +1,16 @@
-﻿package formation;
+package formation;
 
 import creature.*;
 import map.*;
 
-//（2,18）  缺少判断
-public class CrescentMoon implements Formation{
+//（2,18）
+public class CrescentMoon extends Formation{
+	public CrescentMoon() {
+		super.name = "偃月阵";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		creatures[0].move(map.getPos()[x][y]);

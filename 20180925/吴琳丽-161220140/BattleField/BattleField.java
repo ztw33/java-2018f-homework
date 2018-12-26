@@ -22,7 +22,7 @@ public class BattleField {
         for(int i = 0;i < N; i++) {
             System.out.print(i+" ");
             for (int j = 0; j < N; j++) {
-                Field[i][j].PrintTiteName();
+                Field[i][j].PrintcreatureName();
             }
             System.out.println();
         }

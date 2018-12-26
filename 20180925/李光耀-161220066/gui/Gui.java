@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -20,13 +21,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import creature.Creature;
-import creature.CreatureImage;
-import creature.CreatureType;
-import creature.HuLuWaAdminister;
+import creature.Being;
+import creature.StyleImage;
+import creature.Human;
+import creature.SnakeEssence;
 import regulate.Administer;
 import space.Square;
 
+
+
+/**
+* @ClassName: Gui
+* @Description: 整个UI界面 以及外部事物的设置
+* @author 13745
+* @date 2018年11月4日
+*
+*/
 public class Gui {
 
 	private static Image floorImage;
@@ -94,29 +104,17 @@ public class Gui {
 	}
 	public static final int N=17;	//N*N 原来15
 	
-	
-//	private final int xLength=958;	//用于设置窗口大小 原来x 958 y 877
-//	private final int yLength=877;
-	
 	private final int xLength=1500;	
 	private final int yLength=830;
-
-	
-//	public static final int squareXLength=20;	//每一个小方格大小
-//	public static final int squareYLength=20;
 	
 	public static final int squareXLength=40;	//每一个小方格大小 原来50
 	public static final int squareYLength=40;
 	
-	private Administer administer=new Administer();
-//	private static Image floor;
-//	private static Image grandpa;
-//	private static Image hulu1;
-	
-	
+	private Administer administer=new Administer();	
 	private JFrame frame;
 
-	private JLabel[][] background=new JLabel[N][N];
+	//private JLabel[][] background=new JLabel[N][N];
+	private ArrayList<ArrayList<JLabel>> background=new ArrayList<>();
 	/**
 	 * Launch the application.
 	 */
@@ -165,76 +163,76 @@ public class Gui {
 		ImageIcon buttonIcon=new ImageIcon(buttonImage);
 		JButton button=new JButton("妖怪下一个阵型",buttonIcon);
 		button.setHorizontalTextPosition(SwingConstants.CENTER);
-		//button.setBounds(squareXLength*N, N*squareYLength/3, 400, N*squareYLength/3*2/3);
 		button.setBounds(squareXLength*N/3*2, N*squareYLength, N*squareXLength/3 , 100);
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				administer.getBoard().clearBoardMonster();
+				administer.clearMonsters(); 
+				//administer.getBoard().clearBoardMonster();
 				administer.getputNextMonsterFormation();
 				putSeq=0;
 				mypaint();
 				frame.requestFocus();
-				//frame.setFocusable(true);
 			}
 		});
 		
 		JButton button1=new JButton("葫芦娃随机变换",buttonIcon);
-		//button1.setBounds(squareXLength*N, N*squareYLength/3+N*squareYLength/3*2/3, 400, N*squareYLength/3*2/3);
 		button1.setBounds(0, N*squareYLength,N*squareXLength/3 , 100);
 		button1.setHorizontalTextPosition(SwingConstants.CENTER);
 		button1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				administer.getBoard().clearBoardHuLuWa();
-				HuLuWaAdminister.shuffleHuLuWas();
+				administer.clearHuLuWas();
+				administer.shuffleGoodHuLus();
+				//administer.getBoard().clearBoardHuLuWa();
+				//HuLuWaAdminister.shuffleHuLuWas();
 				administer.getputHuLuFormation();;
 				mypaint();
 				frame.requestFocus();
-				//frame.setFocusable(true);
 			}
 		});
 		
 		JButton button2=new JButton("葫芦娃排列整齐",buttonIcon);
-		//button2.setBounds(squareXLength*N, N*squareYLength/3+N*squareYLength/3*2/3+N*squareYLength/3*2/3, 400, N*squareYLength/3*2/3);
 		button2.setBounds(N*squareXLength/3, N*squareYLength, N*squareXLength/3 , 100);
 		button2.setHorizontalTextPosition(SwingConstants.CENTER);
 		button2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				administer.getBoard().clearBoardHuLuWa();
-				HuLuWaAdminister.sortHuLuWas();
+				administer.clearHuLuWas();
+				administer.sortGoodHuLus();
+				//administer.getBoard().clearBoardHuLuWa();
+				//HuLuWaAdminister.sortHuLuWas();
 				administer.getputHuLuFormation();
 				mypaint();
 				frame.requestFocus();
-				//frame.setFocusable(true);
 			}
 		});
 		
-		//button.addActionListener(this);
 		frame.add(button);
 		frame.add(button1);
 		frame.add(button2);
 		
 		
 		for(int i=0;i<N;i++){
+			ArrayList<JLabel> rowtemp=new ArrayList<>();
 			for(int j=0;j<N;j++){
 				ImageIcon imageIcon=new ImageIcon(floorImage);
-				background[i][j] = new JLabel("");
-				background[i][j].setBounds(i*squareXLength, j*squareYLength, squareXLength, squareYLength);
-				background[i][j].setIcon(imageIcon);
-				frame.getContentPane().add(background[i][j]);
+				JLabel temp=new JLabel("");
+				temp.setBounds(i*squareXLength, j*squareYLength, squareXLength, squareYLength);
+				temp.setIcon(imageIcon);
+				rowtemp.add(temp);
+				frame.getContentPane().add(temp);
 			}
+			background.add(rowtemp);
 		}
 		administer.getputHuLuFormation();
 		administer.getputNextMonsterFormation();
 		administer.putGrandPa();
 		administer.putSnake();
 		mypaint();
-		//administer.show();
 		
 		//添加键盘活动
 		KeyAdapter keyAdapter = new KeyAdapter() {
@@ -242,48 +240,51 @@ public class Gui {
 				textArea.append("enter keyadapter\n");
 				if(putSeq>=2)
 					return;
-				CreatureType temp=null;
+				Class<?> temp=null;
 				if(putSeq==0)
-					temp=CreatureType.HUMAN;
+					temp=Human.class;
 				else if(putSeq==1)
-					temp=CreatureType.SNAKE;
+					temp=SnakeEssence.class;
 				int key = e.getKeyCode();
 				switch(key){
 				case KeyEvent.VK_RIGHT: administer.moveRightManual(temp); break;
 				case KeyEvent.VK_LEFT: administer.moveLeftManual(temp); break;
 				case KeyEvent.VK_DOWN: administer.moveDownManual(temp); break;
 				case KeyEvent.VK_UP: administer.moveUpManual(temp); break;
-				case KeyEvent.VK_S:if(putSeq==0) textArea.append("老爷爷放置成功,为葫芦娃加油助威!\n");
-									else if(putSeq==1) textArea.append("蛇精放置成功，为蝎子精加油助威!\n");
-									putSeq++;break;
+//				case KeyEvent.VK_S:if(putSeq==0) textArea.append("老爷爷放置成功,为葫芦娃加油助威!\n");
+//									else if(putSeq==1) textArea.append("蛇精放置成功，为蝎子精加油助威!\n");
+//									putSeq++;break;
+				case KeyEvent.VK_S:if(putSeq==0) administer.grandpaCheer();
+									else if(putSeq==1) administer.snakeCheer();
+									putSeq++;break;	
 				default:break;
 				}
 				mypaint();
 			}
 		};
-		
-		//frame.requestFocusInWindow(); 
+		 
 		frame.addKeyListener(keyAdapter);
 		frame.setFocusable(true);
 	}
 	
 	private void mypaint() {
-		Square[][] board=administer.getBoard().getBoard();
+		ArrayList<ArrayList<Square<Being>>> board=administer.getBoard().getBoard();
 		for(int i=0;i<N;i++){
 			for(int j=0;j<N;j++){
-				if(board[i][j].getBeing()!=null){
-					ImageIcon imageIcon=new ImageIcon(getImage(((Creature)board[i][j].getBeing()).getImage()));
-					background[i][j].setIcon(imageIcon);	//这里要注意
+				if(board.get(i).get(j).getBeing()!=null){
+					ImageIcon imageIcon=new ImageIcon(getImage((board.get(i).get(j).getBeing()).getImage()));
+					background.get(i).get(j).setIcon(imageIcon);	//这里要注意
 				}
 				else{
 					ImageIcon imageIcon=new ImageIcon(floorImage);
-					background[i][j].setIcon(imageIcon);
+					background.get(i).get(j).setIcon(imageIcon);
 				}
 			}
 		}
 	}
 
-	private Image getImage(CreatureImage type){
+	
+	private Image getImage(StyleImage type){
 		switch (type) {
 		case HULUWAONE:return HuLu1;
 		case HULUWATWO:return HuLu2;

@@ -3,8 +3,14 @@ package formation;
 import creature.*;
 import map.*;
 
-//£¨1,19£©
-public class Yoke implements Formation{
+//ï¼ˆ1,19ï¼‰
+public class Yoke extends Formation{
+	public Yoke() {
+		super.name = "è¡¡è½­é˜µ";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		for (int i = 0; i < 6; i = i+2) {

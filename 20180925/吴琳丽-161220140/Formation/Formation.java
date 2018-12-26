@@ -1,9 +1,9 @@
 package com.company.Formation;
 
 import com.company.BattleField.Coordinate;
-import com.company.Tite.Tite;
+import com.company.Creature.Creature;
 
 public interface Formation {
     boolean IfEmpty(Coordinate[][] Field,int x,int y);
-    void SetTites(Coordinate[][] Field,int x,int y, Tite[] tites);
+    void Setcreatures(Coordinate[][] Field,int x,int y, Creature[] creatures);
 }

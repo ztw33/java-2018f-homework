@@ -3,8 +3,14 @@ package formation;
 import creature.*;
 import map.*;
 
-//£¨1,10£©
-public class CraneWing implements Formation{
+//ï¼ˆ1,10ï¼‰
+public class CraneWing extends Formation{
+	public CraneWing() {
+		super.name = "é¹¤ç¿¼é˜µ";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		for (int i = 0; i < 4; i++) {
