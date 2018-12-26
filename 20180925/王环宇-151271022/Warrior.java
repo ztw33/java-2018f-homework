@@ -1,9 +1,15 @@
+import java.io.Serializable;
+
 /*
  * 在Warriors接口的要求下，构造一个Warrior类，在这个世界中存活的所有生物
  * 都是Warrior，但却又有不同的功能
  * */
 
-public class Warrior implements WarriorInterface{
+public class Warrior implements WarriorInterface, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/*
 	 * Variables: name, function, position, team;
 	 * Methods: getName(), getFunction(), getPosition(), changePosition(), toString(), showMe();
@@ -42,9 +48,11 @@ public class Warrior implements WarriorInterface{
 	}
 	public void changeTeam(String team) {
 		this.team = team;
+		//this.team = "BadMan";
 	}
 
 	//重载自带的toString函数，用于System.out的调用
+	@Override
 	public String toString() {
 		return name;
 	}

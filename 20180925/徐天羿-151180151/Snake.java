@@ -1,15 +1,19 @@
 package calabash;
 
-public class Snake extends Creature{
+public final class Snake extends Monsters implements Cheer {
 	Snake(){
 		name = "蛇精";
+		type = 1;
 	}
 	
-	public String getName() {
-		return name;
+	Snake(int ix, int iy){
+		name = "蛇精";
+		x = ix;
+		y = iy;
 	}
 	
-	public String cheerS() {
-		return "小老弟，你们怎么肥四？？？";
-	}
+	@Override
+    public void cheer(){
+        
+    }
 }
