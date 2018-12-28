@@ -1,6 +1,6 @@
 ## 葫芦娃大战妖怪(Final Project)
 
-![show](F:\code for Java\java_homework\java-2018f-homework\Final Project\温宗儒-161220133\image_readme\show.gif)
+![show](https://github.com/turncoat54/java-2018f-homework/blob/master/Final%20Project/%E6%B8%A9%E5%AE%97%E5%84%92-161220133/image_readme/show.gif)
 
 
 
@@ -40,7 +40,7 @@
 
 #### 设计思路：
 
-![class](F:\code for Java\java_homework\java-2018f-homework\Final Project\温宗儒-161220133\image_readme\class.png)
+![class](https://github.com/turncoat54/java-2018f-homework/blob/master/Final%20Project/%E6%B8%A9%E5%AE%97%E5%84%92-161220133/image_readme/class.png)
 
 
 
@@ -195,15 +195,15 @@ public void firstChildTest(){
 
 #### 设计原则：
 
-**SRP单一职责原则**：每种生物都有自己独特的功能，相应类有相应的，对应自己的方法。
+SRP单一职责原则：每种生物都有自己独特的功能，相应类有相应的，对应自己的方法。
 
-**OCP开放封闭原则：**创建ImageSetter、Cheer接口，并在需要的类中实现。
+OCP开放封闭原则：创建ImageSetter、Cheer接口，并在需要的类中实现。
 
-**LSP LISKOV替换法则：**所有Creature的派生类都可以替换为Creature类。
+LSP LISKOV替换法则：所有Creature的派生类都可以替换为Creature类。
 
-**ISP接口隔离原则：**ImageSetter接口中的方法均需要实现的类全部实现，没有多余的方法。
+ISP接口隔离原则：ImageSetter接口中的方法均需要实现的类全部实现，没有多余的方法。
 
-**CARP合成/聚合复用原则：**在Minions和GourdBoys类中包含了Bat、Centipede、Toad等类。
+CARP合成/聚合复用原则：在Minions和GourdBoys类中包含了Bat、Centipede、Toad等类。
 
 
 
