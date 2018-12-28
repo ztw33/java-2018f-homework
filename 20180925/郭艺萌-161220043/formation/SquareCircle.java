@@ -1,10 +1,16 @@
-﻿package formation;
+package formation;
 
 import creature.*;
 import map.*;
 
-//（2,16） 缺少判断
-public class SquareCircle implements Formation{
+//（2,16）
+public class SquareCircle extends Formation{
+	public SquareCircle() {
+		super.name = "方圆阵";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		creatures[0].move(map.getPos()[x][y]);
