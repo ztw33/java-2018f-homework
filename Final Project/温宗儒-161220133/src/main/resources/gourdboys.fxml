@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GourdboysController">
+   <children>
+      <SplitPane dividerPositions="0.5" layoutX="20.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <ImageView fx:id="secondChild" fitHeight="236.0" fitWidth="781.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/secondChildAttack.jpg" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <ImageView fx:id="thirdChild" fitHeight="236.0" fitWidth="266.0" layoutX="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/thirdChildAttack.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fourthChild" fitHeight="236.0" fitWidth="266.0" layoutX="532.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/fourthChildAttack.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="4.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="二娃：本领千里眼、顺风耳、会轻功。远程攻击。攻击力：330 血量：2000 防御力：40" wrappingWidth="257.240234375" />
+                  <Text layoutX="270.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="三娃：本领铜头铁臂、钢筋铁骨、十八般武艺。防御力高，近程攻击。攻击力：330 血量：2000 防御力：70" wrappingWidth="257.240234375" />
+                  <Text layoutX="536.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="四娃：本领吞吐烈火、霹雳、身体耐火。远程攻击。攻击力：330 血量：2000 防御力：40" wrappingWidth="257.240234375" />
+                  <CheckBox fx:id="secondChosen" layoutX="196.0" layoutY="274.0" mnemonicParsing="false" onAction="#secondChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+                  <CheckBox fx:id="fourthChosen" layoutX="728.0" layoutY="274.0" mnemonicParsing="false" onAction="#fourthChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+                  <CheckBox fx:id="thirdChosen" layoutX="462.0" layoutY="274.0" mnemonicParsing="false" onAction="#thirdChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="798.0">
+               <children>
+                  <ImageView fx:id="seventhChild" fitHeight="236.0" fitWidth="266.0" layoutX="532.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/seventhChildAttack.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="sixthChild" fitHeight="236.0" fitWidth="266.0" layoutX="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/sixthChildAttack.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="fifthChild" fitHeight="236.0" fitWidth="266.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@common/images/fighter/gourdboys/fifthChildAttack.jpg" />
+                     </image>
+                  </ImageView>
+                  <CheckBox fx:id="fifthChosen" layoutX="195.0" layoutY="271.0" mnemonicParsing="false" onAction="#fifthChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+                  <CheckBox fx:id="sixthChosen" layoutX="462.0" layoutY="271.0" mnemonicParsing="false" onAction="#sixthChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+                  <CheckBox fx:id="seventhChosen" layoutX="728.0" layoutY="274.0" mnemonicParsing="false" onAction="#seventhChosen" prefHeight="16.0" prefWidth="70.0" text="选  择" />
+                  <Text layoutX="4.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="五娃：本领吞吐河水、霹雳、酒量很大。远程攻击。攻击力：330 血量：2000 防御力：40" wrappingWidth="257.240234375" />
+                  <Text layoutX="270.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="六娃：本领隐身、穿过物体、空中移动。近程攻击。攻击力：300 血量：2000 防御力：60" wrappingWidth="257.240234375" />
+                  <Text layoutX="536.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="七娃：本领宝葫芦、离心咒。远程攻击。攻击力：330 血量：2000 防御力：40" wrappingWidth="257.240234375" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button layoutX="748.0" layoutY="726.0" mnemonicParsing="false" onAction="#gourdBoysChosen" prefHeight="27.0" prefWidth="91.0" text="确定" />
+      <Slider fx:id="batSlider" layoutX="82.0" layoutY="660.0" max="200.0" min="1.0" onMouseDragged="#batNumberChange" showTickLabels="true" value="50.0" />
+      <Slider fx:id="centipedeSlider" layoutX="350.0" layoutY="660.0" max="200.0" min="1.0" onMouseDragged="#centipedeNumberChange" showTickLabels="true" value="50.0" />
+      <Slider fx:id="toadSlider" layoutX="625.0" layoutY="660.0" max="200.0" min="1.0" onMouseDragged="#toadNumberChange" showTickLabels="true" value="50.0" />
+      <Text layoutX="54.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蝙蝠精：防御一般，攻击一般，远程攻击。" wrappingWidth="196.0" />
+      <Text layoutX="322.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蜈蚣精：防御一般，攻击略高，近程攻击。" wrappingWidth="196.0" />
+      <Text layoutX="597.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蛤蟆精：防御略高，攻击略低，近程攻击。" wrappingWidth="196.0" />
+      <Text layoutX="103.0" layoutY="717.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蝙蝠精数量" textAlignment="CENTER" wrappingWidth="97.240234375" />
+      <Text layoutX="371.0" layoutY="717.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蜈蚣精数量" textAlignment="CENTER" wrappingWidth="97.240234375" />
+      <Text layoutX="646.0" layoutY="717.0" strokeType="OUTSIDE" strokeWidth="0.0" text="蛤蟆精数量" textAlignment="CENTER" wrappingWidth="97.240234375" />
+      <Text fx:id="batText" layoutX="232.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="centipedeText" layoutX="506.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="toadText" layoutX="781.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   </children>
+</Pane>

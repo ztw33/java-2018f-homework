@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="861.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <Pane fx:id="mainPane" layoutX="14.0" prefHeight="880.0" prefWidth="1229.0">
+         <children>
+            <ImageView fitHeight="857.0" fitWidth="1208.0" layoutX="85.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@common/images/background/vs.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="-16.0" layoutY="15.0" prefHeight="828.0" prefWidth="1190.0">
+               <children>
+                  <Pane fx:id="creaturePane" layoutX="29.0" prefHeight="903.0" prefWidth="1200.0">
+                     <children>
+                        <Pane layoutX="174.0" layoutY="14.0" prefHeight="55.0" prefWidth="948.0">
+                           <children>
+                              <Button layoutX="20.0" layoutY="16.0" mnemonicParsing="false" onAction="#startGame" onKeyTyped="#startGameKeyboard" prefHeight="17.0" prefWidth="215.0" text="开始游戏" />
+                              <Button layoutX="398.0" layoutY="16.0" mnemonicParsing="false" onAction="#fileLoad" onKeyTyped="#startGameKeyboard" text="读取文件" />
+                           </children>
+                        </Pane>
+                        <Text fx:id="text" layoutX="949.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="257.240234375" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
