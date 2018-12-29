@@ -1,4 +1,4 @@
-package sample;
+package src.sample;
 
 
 import backstage.Position;
