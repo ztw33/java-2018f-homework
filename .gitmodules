@@ -1,4 +1,12 @@
-
+[submodule "Final Project/王明-161220124"]
+	path = Final Project/王明-161220124
+	url = https://github.com/wmFrank/Finalhomework
+[submodule "Final Project/张丰签-161220165"]
+	path = Final Project/张丰签-161220165
+	url = https://github.com/zfq005/Final-Project.git
+[submodule "Final Project/施雨杰-161220106"]
+	path = Final Project/施雨杰-161220106
+	url = https://github.com/shiyujie23242004/JavaHomework
 [submodule "Final Project/朱庭纬-161220186"]
 	path = Final Project/朱庭纬-161220186
 	url = https://github.com/ztw33/Java2018_FinalProject.git
@@ -89,3 +97,15 @@
 [submodule "Final Project/周梓康-161220183"]
 	path = Final Project/周梓康-161220183
 	url = https://github.com/ZikangZhou/CalabashBrother
+[submodule "Final Project/陈哲霏-161220022"]
+	path = Final Project/陈哲霏-161220022
+	url = https://github.com/NovelistChan/CalabashFinal
+[submodule "Final Project/徐安孜-161220149"]
+	path = Final Project/徐安孜-161220149
+	url = https://github.com/AminoACID123/Final-Project
+[submodule "Final Project/陈诚-161240003"]
+	path = Final Project/陈诚-161240003
+	url = https://github.com/Julius-c/Huluwa
+[submodule "Final Project/谢准一-161220147"]
+	path = Final Project/谢准一-161220147
+	url = https://github.com/Taeyang123456/javaHuLuWa
