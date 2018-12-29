@@ -9,4 +9,7 @@ public class YanYue implements FormationProvider {
                 new Position(5,3),new Position(5,4),new Position(6,4),new Position(7,5)};
         return positions;
     }
+    public String getName() {
+        return "偃月阵";
+    }
 }

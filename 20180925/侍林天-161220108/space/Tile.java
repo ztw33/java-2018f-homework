@@ -41,4 +41,5 @@ public class Tile<T extends Creature> {
     public String getCreatureName(){
         return creatureStandOnTile.getName();
     }
+    public Creature getCreature() { return creatureStandOnTile; }
 }

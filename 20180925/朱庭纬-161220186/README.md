@@ -1,5 +1,60 @@
 # 实验报告
 ---
+### rewrite with GUI
+采用JavaFx为葫芦娃排阵法加上了一个简单的GUI图形界面。   
+代码总体在上次重构之后并没有什么大的变化，仅在输出战场的同时加上GUI的绘制即可。
+```java
+public void displayField() {
+		System.out.print(battleField);
+		// 以下两行是新增加的
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		battleField.guiDisplay(gc);
+	}
+```
+背景图通过CSS样式表载入。对于在背景图上显示生物，最初的想法很自然：既然战场就是一个像植物大战僵尸那样的方格阵，我就使用GridPane构造那么多小格子，每个格子里放一个ImageView，然后排阵法的时候往ImageView上放Image不就行了吗？但实际上实施起来时，不仅因为遇到像grid不能先指定好格子的数目、不能设置大小等等不太方便但还算可以解决的问题，我还发现在格子数逐渐增加的时候，程序启动的越来越慢。后来突然想起来本学期同时再上的软件工程课中进行安卓项目开发时，有一次注意到对于一个xml文件，有一个“最大控件数”的属性（安卓项目默认好像是225）。查阅相关资料得知，一个界面文件中的控件数不能太多，否则会严重影响效率。我在一个页面上放置的ImageView太多，导致程序效率低下。所以最后放弃，采用了画布类Canvas，选择使用drawImage方法在指定位置绘制图片。同时给每个生物加上getImage方法用以获取它的图片。
+```java
+public void guiDisplay(GraphicsContext gc) {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				if (coords[i][j].existCreature()) {
+					Image image = coords[i][j].getCreatrue().getImage();
+					// 设置一个图片的大小为60*60,70和52分别为横向和纵向的偏移量
+			        gc.drawImage(image, j*70, i*52, 60, 60);
+				}
+			}
+		}
+	}
+```
+我的设计是让图形界面每3秒刷新一次来更换两个阵营的位置和阵法。最初我使用Thread.sleep函数，但发现只有最后一次能成功显示，前几次窗口都是一片空白。我在JavaFx的文档中找到了关于这个问题的解释：
+>The JavaFX scene graph, which represents the graphical user interface of a JavaFX application, is not thread-safe and can only be accessed and modified from the UI thread also known as the JavaFX Application thread. Implementing long-running tasks on the JavaFX Application thread inevitably makes an application UI unresponsive. A best practice is to do these tasks on one or more background threads and let the JavaFX Application thread process user events.   
+
+所以我调用的sleep操作阻碍了UI线程，这意味着图像不能被刷新。关于这个问题在stackoverflow上找到了解决方案：放弃Thread.sleep，采用Timeline。
+```java
+world.displayField();// 先display一次
+Timeline ThreeSecondsWonder = new Timeline(new KeyFrame(Duration.seconds(3), new EventHandler<ActionEvent>() {
+    private int i = 1;
+    @Override
+	public void handle(ActionEvent event) {
+        switch (i) {
+		case 1:
+			/* set and display */
+			break;
+		case 2:
+			/* set and display */
+			break;
+		default:
+			break;
+		}
+		i++;
+	}
+}));		
+ThreeSecondsWonder.setCycleCount(2);
+ThreeSecondsWonder.play();
+```
+最终实现效果如下所示：
+![](READMEPic/stalemate.gif)
+
+---
 ### rewrite CalabashBrother
 - 使用持有对象ArrayList替换数组
 ``` java
@@ -62,11 +117,11 @@ if(!creatures.isEmpty() && creatures.get(0) instanceof Good) {
 以下是原文件：
 ## 文件结构
 本次实验采取 **一个类型一个java文件** 的设计方法，所以文件众多。为了方便项目管理与视图的清晰，将项目划分为几个包，将相关文件放入相关包中。具体结构如下图所示：
-![](File.png)
+![](READMEPic/File.png)
 
 
 ## 类图
-![](Class.png)
+![](READMEPic/Class.png)
 
 
 ## 设计思想
@@ -94,4 +149,4 @@ if(!creatures.isEmpty() && creatures.get(0) instanceof Good) {
     多态是同一个行为具有多个不同表现形式或形态的能力。就是同一个接口，使用不同的实例而执行不同操作。在BattleField类中override了toString操作，打印对峙局面时可以直接使用System.out.Println(BattleField)。
 
 ## 运行效果展示
-![](result.png)
+![](READMEPic/result.png)

@@ -1,9 +1,7 @@
-package javahw3;
-
 // this enum file is prepared for better manage CalabashBrothers
 // but not used now, it can be used in the future version
 public enum CalabashBrothersEnum {
-	´óÍŞ("ºì",1), ¶şÍŞ("³È",2), ÈıÍŞ("»Æ",3), ËÄÍŞ("ÂÌ",4), ÎåÍŞ("Çà",5), ÁùÍŞ("À¶",6), ÆßÍŞ("×Ï",7);
+	å¤§å¨ƒ("çº¢",1), äºŒå¨ƒ("æ©™",2), ä¸‰å¨ƒ("é»„",3), å››å¨ƒ("ç»¿",4), äº”å¨ƒ("é’",5), å…­å¨ƒ("è“",6), ä¸ƒå¨ƒ("ç´«",7);
 	private final String name;
 	private final int order;
 	public int[] destination;
