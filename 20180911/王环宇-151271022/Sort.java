@@ -20,49 +20,54 @@ public class Sort {
 		for(int i=0; i<n; i++) {
 			a[i] = (int)(Math.random()*100);
 		}
-		for(int k:a)
+		for (int k:a) {
 			System.out.print(k+"\t");
+		}
 		
 		bubble(a.clone());
-		int[] qs = quick_sort(a.clone(), 0, a.length-1);
+		int[] qs = quickSort(a.clone(), 0, a.length-1);
 		System.out.println("\nAfter quick sort:");
-		for(int k:qs)
+		for (int k:qs) {
 			System.out.print(k+"\t");
+		}
 		
 		int[] mer = merge(a.clone());
 		System.out.println("\nAfter merge sort:");
-		for(int k:mer)
+		for (int k:mer) {
 			System.out.print(k+"\t");
+		}
 	}
-	
-	
 	
 	public static void bubble(int[] x) {
 		int len = x.length;
-		for(int i=0; i<len; i++) {
-			for(int j=0; j<len-i-1;j++) {
-				if(x[j]>x[j+1])
+		for (int i=0; i<len; i++) {
+			for (int j=0; j<len-i-1;j++) {
+				if (x[j]>x[j+1]) {
 					swap(x,j,j+1);
+				}
 			}
 		}
 		System.out.println("\nAfter Bubble sort:");
-		for(int k:x)
+		for (int k:x) {
 			System.out.print(k+"\t");
+		}
 	}
 	
-	
-	public static int[] quick_sort(int[] x, int m, int n) {
-		if(m==n || m>n)return x;
-		int mid = partion( x, m, n);
-		quick_sort( x, m, mid-1);
-		quick_sort(x, mid+1, n);
+	public static int[] quickSort(int[] x, int m, int n) {
+		if (m == n || m>n) {
+			return x;
+		}
+		int mid = partion(x, m, n);
+		quickSort(x, m, mid-1);
+		quickSort(x, mid+1, n);
 		return x;
 	}
 	
-	
 	public static int[] merge(int[] x) {
 		int len = x.length;
-		if(len==1)return x;
+		if (len==1) {
+			return x;
+		}
 		int [] x1 = copy(x, 0, len/2);
 		int [] x2 = copy(x, len/2, len);
 		
@@ -70,6 +75,10 @@ public class Sort {
 		int[] part2 = merge(x2);
 		
 		return together(part1, part2);
+	}
+	
+	public static int[] choose(int[] x) {
+		return x;
 	}
 	
 	public static void swap(int[] x, int i, int j) {
@@ -83,8 +92,8 @@ public class Sort {
 		int pivot = m;
 		int head = m+1;
 		int tail = n;
-		for(int i=head; i<=tail; i++) {
-			if(x[i]>x[pivot]) {
+		for (int i=head; i<=tail; i++) {
+			if (x[i]>x[pivot]) {
 				swap(x, i, tail);
 				tail--;
 				i--;
@@ -96,7 +105,7 @@ public class Sort {
 
 	public static int[] copy(int[] x, int m, int n) {
 		int[] temp = new int[n-m];
-		for(int i=0; i<temp.length; i++) {
+		for (int i=0; i<temp.length; i++) {
 			temp[i] = x[m+i];
 		}
 		return temp;
@@ -108,18 +117,23 @@ public class Sort {
 		int i = 0; int j= 0;
 		int k = 0;
 		while(i<x1.length && j<x2.length) {
-			if(x1[i]<x2[j])
+			if (x1[i]<x2[j]) {
 				ans[k++] = x1[i++];
-			else if(x1[i]>=x2[j])
+			}
+			else if (x1[i]>=x2[j]) {
 				ans[k++] = x2[j++];
+			}
 		}
-		if(i<x1.length)
-			while(i<x1.length)
+		if (i<x1.length) {
+			while (i<x1.length) {
 				ans[k++] = x1[i++];
-		else if(j<x2.length)
-			while(j<x2.length)
+			}
+		}
+		else if (j<x2.length) {
+			while (j<x2.length) {
 				ans[k++] = x2[j++];
-		
+			}		
+		}
 		return ans;
 	}
 }
