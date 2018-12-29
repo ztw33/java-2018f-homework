@@ -55,28 +55,29 @@ public class BattleField {
         f.getContentPane().removeAll();
     }
 
-    void ShowBattleField(Maps maps) {
+    void ShowBattleField(Maps<Creature> maps) {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 ImageIcon  icon = new ImageIcon("");
-                if(maps.getMaps()[i][j].getCreature()!=null){
-                    Creature tmp = maps.getMaps()[i][j].getCreature();
-                    switch (tmp.getType()){
-                        case CALABASH_BOY:{
+
+                Creature tmp = maps.getContent(i,j);
+                if(tmp != null){
+                    switch (tmp.getClass().getSimpleName()){
+                        case "CalabashBoy":{
                             int rank = nameToRank.get(tmp.getName()) + 1;
 //                            System.out.println(rank);
                             icon = new ImageIcon(this.getClass().getResource("/"+rank+".jpg"));
                         }break;
 
-                        case HUMAN_BEING:{
+                        case "Grandpa":{
                             icon = new ImageIcon(this.getClass().getResource("/grandpa.jpg"));
                         }break;
 
-                        case MONSTER:{
+                        case "Monster":{
                             icon = new ImageIcon(this.getClass().getResource("/lolo.jpg"));
                         }break;
 
-                        case MONSTER_LEADER:{
+                        case "Scorpion": case"Snake":{
                             if(tmp.getName().equals("蛇精")){
                                 icon = new ImageIcon(this.getClass().getResource("/snake.jpg"));
 

@@ -15,5 +15,10 @@ public class Beings {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }
 

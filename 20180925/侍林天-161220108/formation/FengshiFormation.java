@@ -11,6 +11,7 @@ public class FengshiFormation extends Formation {
             ob.moveTo(space, 0, 0);
         }
         else {
+            //ob.moveTo(space, space.size() - 1, space.size() - 1);
             ob.moveTo(space, space.size() - 1, space.size() - 1);
         }
         beings[0].moveTo(space, x, y);

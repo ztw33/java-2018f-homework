@@ -4,8 +4,8 @@ import Creature.*;
  * @ Author     ：cjh
  * @ Description：一字长蛇阵
  */
-public class FengshiBattleArray {
-    public static void form(Creature scorpionMonster,Creature[] underlings,int row,int column)
+public class FengshiBattleArray<T extends Creature> {
+    public void form(T scorpionMonster,T[] underlings,int row,int column)
     {
         scorpionMonster.standOnMap(row,column);
         //System.out.println(underlings.length/2);

@@ -1,32 +1,22 @@
-package javahw3;
-
 import java.util.ArrayList;
+import java.io.*;
 
-public class Formation{
+public class Formation implements FormationInterface{
 	/*
-	 * �����࣬����˫����������Ϣ
+	 * 阵型类，保存双方的阵型信息
 	 * Variables: ArrayList<int[][]> book1, ArrayList<int[][]> book1;
 	 * Methods: initialization(), getForm(), convert();
+	 * 	从文件中读取阵型
 	 * */
 	private static ArrayList<int[][]> book1;
 	private static ArrayList<int[][]> book2;
+	public static ArrayList<String> name;
 	
 	public static void initialization() {
 		book1 = new ArrayList<int[][]>();
 		book2 = new ArrayList<int[][]>();
-		int x1[][] = {{4,4},{5,4},{6,4},{7,4},{8,4},{9,4},{10,4},{7,2}} ;
-		int x2[][] = {{4,6},{5,5},{6,4},{7,3},{8,2},{9,1},{10,0},{5,1}} ;
-		int x3[][] = {{4,6},{5,5},{6,4},{7,3},{6,2},{5,1},{4,0},{4,3}} ;
-		int x4[][] = {{3,3},{4,4},{5,3},{6,4},{7,3},{8,4},{9,3},{6,1}} ;
-		
-		book1.add(x1);
-		book2.add(convert(x1));
-		book1.add(x2);
-		book2.add(convert(x2));
-		book1.add(x3);
-		book2.add(convert(x3));
-		book1.add(x4);
-		book2.add(convert(x4));
+		name = new ArrayList<String>();
+		readFromFile();	
 	}
 	
 	public static int[][] getForm(int m, int team){
@@ -45,5 +35,50 @@ public class Formation{
 		y[7][0] = xx[7][0];
 		return y;
 	}
+	
+	
+	public static void readFromFile() {
+		
+		String fileName="/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/formation.txt";
+		ArrayList<String> arrayList = new ArrayList<>();
+		int[][] books = new int[8][2];
+		try
+		{
+			FileReader file = new FileReader(fileName);
+			BufferedReader bf = new BufferedReader(file);
+			String str;
+			while ((str = bf.readLine()) != null) {
+				arrayList.add(str);
+			}
+			bf.close();
+			file.close();
+		} 
+		catch (IOException e) 
+		{		
+			e.printStackTrace();
+		}
+		for(String file_string:arrayList) {
+			if(file_string.isEmpty()) continue;
+			String[] str = file_string.split(" ");
+			name.add(str[0]);
+			System.out.println(str[0]);
+			for(int i=1; i < str.length; i++) {
+				int temp = i/2;
+				books[temp][0] = Integer.parseInt(str[i++]);
+				books[temp][1] = Integer.parseInt(str[i]);
+			}
+			book1.add(books);
+			book2.add(convert(books));	
+		}
+	}
+	
+	public static void show() {
+		System.out.println("************双方战士上场**************");
+		System.out.println("*********请选择妖精上场的阵型**********");
+		for(int i=0; i<name.size(); i++) {
+			System.out.println("**********"+ i +"----------"+name.get(i)+"**********");
+		}
+	}
+	
 	
 }

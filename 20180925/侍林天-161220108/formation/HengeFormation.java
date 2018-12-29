@@ -15,9 +15,9 @@ public class HengeFormation extends Formation {
         }
         for (int i = 0; i < beings.length; i++) {
             if (direction == 0) {
-                beings[i].moveTo(space, x + i % 2, y - i);
+                beings[i].moveTo(space, x + i, y + i %  2);
             } else {
-                beings[i].moveTo(space, x + i % 2, y + i);
+                beings[i].moveTo(space, x + i, y + i %  2);
             }
         }
     }

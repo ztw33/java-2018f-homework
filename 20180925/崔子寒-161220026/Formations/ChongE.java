@@ -8,4 +8,7 @@ public class ChongE implements  FormationProvider {
                 new Position(5,5),new Position(6,4),new Position(7,5),new Position(8,4)};
         return positions;
     }
+    public String getName() {
+        return "冲轭阵";
+    }
 }

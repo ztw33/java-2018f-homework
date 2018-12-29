@@ -1,10 +1,13 @@
 package Creatures;
 import Attributes.Color;
+import javafx.scene.image.Image;
 
 public class CalabashBrother extends Creature implements Comparable{
     private Color color;
     public CalabashBrother(Color color) {
         this.color = color;
+        int index = color.ordinal()+1;
+        image = new Image("resourceFiles/"+index+".jpg");
     }
     public void outputInfo() {
         System.out.print(color.getName());
@@ -12,6 +15,10 @@ public class CalabashBrother extends Creature implements Comparable{
 
     public Color getColor() {
         return color;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public int compareTo(Object obj) {
@@ -29,6 +36,9 @@ public class CalabashBrother extends Creature implements Comparable{
             e.printStackTrace();
         }
         return 0;
+    }
+    public String toString() {
+        return color.getName();
     }
 }
 

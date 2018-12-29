@@ -1,6 +1,69 @@
 [TOC]
 
+# game v2
 
+## 版本说明：
+
+- 添加了GUI（javafx）
+  - 这里遇到一些问题：我们知道**人物形象**可以说是所有**生物（creature）**共有的属性。但是不同的GUI框架存形象的**对象**不相同，例如：javafx里面**Image**存图片，swing用ImageIcon存。因此不同框架这个属性的类型不相同，而不能因为不同的GUII框架就去修改后端的逻辑。所以我想到两个解决办法
+    - 1.利用泛型，将此条属性设置为泛型，在RTT时生成（这次是这样做的），但这样的做法导致原本非常简单的代码变得十分的冗杂。要将这个类的class逐层的传到creature里面。
+    - 2.因为不管设么形象都是读取本地（或网上）的图片，这是设置一个String类型存资源位置即可
+- 运用了Collection
+  - 将**正义**和**邪恶**阵营的怪物数组都用List代替
+- 更细致的划分了怪物
+  - 将葫芦娃，怪物更加具体化了。
+
+
+
+## GUI(javafx)
+
+- javafx设计目前只是简单的显示，用了一个GameModel类来讲UI和游戏逻辑绑定(这里就得看出用泛型去传递Image类的信息的不好之处，基本上代码的每个类都需要去传递)
+
+```java
+public class GameModel<T> {
+    private Board board;
+    private JustSide<T> justSide;
+    private EvilSide<T> evilSide;
+
+    public GameModel(Class<T> tClass) {
+        this.board = new Board();
+        Sides.formation = new Formation(this.board);
+
+        this.justSide = new JustSide<>(tClass);
+        this.evilSide = new EvilSide<>(tClass);
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public JustSide getJustSide() {
+        return justSide;
+    }
+
+    public EvilSide getEvilSide() {
+        return evilSide;
+    }
+}
+```
+
+
+
+## Collection使用
+
+```java
+public class Sides <T>{
+    ...
+    ArrayList<Creature<T>> creatures;
+    ...
+}
+```
+
+![1543842304105](structure.png)
+
+## 效果展示
+
+![1543841425027](javaGUI.png)
 
 # homework3
 
@@ -95,3 +158,4 @@
 ![](雁阵.png)
 
 ![](鹤翼阵.png)
+

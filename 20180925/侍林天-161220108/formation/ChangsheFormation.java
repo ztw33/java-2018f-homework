@@ -14,12 +14,7 @@ public class ChangsheFormation extends Formation {
             ob.moveTo(space, space.size() - 1, space.size() - 1);
         }
         for (int i = 0; i < beings.length; i++) {
-            //beings[i].shoutOutName();
-            if (direction == 0) {
-                beings[i].moveTo(space, x, y - i);
-            } else {
-                beings[i].moveTo(space, x, y + i);
-            }
+            beings[i].moveTo(space, x + i, y);
         }
     }
 }

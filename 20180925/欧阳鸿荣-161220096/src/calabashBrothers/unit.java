@@ -6,47 +6,45 @@ import calabashBrothers.beings.Creature;
  * @ Author     ：Young
  * @ Description：空间上的格点，映射到BattleField的容器
  */
-public class unit {
-    private int x;
-    private int y;
-    private Creature creature;
+public class unit<T> {
+    private Coordinate pos; //格点的坐标
+    private T content;      //格点的内容物
 
     public unit(int x, int y) {
-        this.x = x;
-        this.y = y;
-        this.creature = null;
+        pos = new Coordinate(x,y);
+        this.content = null;
     }
 
     public int getX() {
-        return x;
+        return pos.getX();
     }
 
     public int getY() {
-        return y;
+        return pos.getY();
     }
 
-    public Creature getCreature() {
-        return creature;
+    public T getContent() {
+        return content;
     }
 
-    public void setCreature(Creature creature) {
-        if(this.creature==null){
-            this.creature = creature;
+    public void setContent(T content) {
+        if(this.content==null){
+            this.content = content;
         }else{
-            System.out.println("冲突了");
+            System.out.println("Collision When setting" + content.toString());
         }
     }
 
     public boolean none(){
-        return this.creature==null;
+        return this.content==null;
     }
 
-    public void removeCreature(){
-        this.creature = null;
+    public void removeContent(){
+        this.content = null;
     }
 
-    public void showCreature(){
-        this.creature.selfIntroduction();
+    public void showContent(){
+        this.content.toString(); //用了泛型后，这里就不能用原来的方法了
     }
 
 }
