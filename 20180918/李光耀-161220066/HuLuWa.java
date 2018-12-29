@@ -1,54 +1,38 @@
 
-enum Color{
-	RED,ORANGE,YELLOW,GREEN,CYAN,BLUE,PURPLR;
-	@Override
-	public String toString(){
-		if(this==Color.RED)
-			return "红色";
-		else if(this==Color.ORANGE)
-			return "橙色";
-		else if(this==Color.YELLOW)
-			return "黄色";
-		else if(this==Color.GREEN)
-			return "绿色";
-		else if(this==Color.CYAN)
-			return "青色";
-		else if(this==Color.BLUE)
-			return "蓝色";
-		else if(this==Color.PURPLR)
-			return "紫色";
-		return "";
-	}
-}
-
-public class HuLuWa {
-	private String name;
-	private int id;
-	private Color color;
-	public HuLuWa(String name,int id,Color color) {
+public enum HuLuWa {
+	ONE("老大","红色",1,1),
+	TWO("老二","橙色",2,2),
+	THREE("老三","黄色",3,3),
+	FOUR("老四","绿色",4,4),
+	FIVE("老五","青色",5,5),
+	SIX("老六","蓝色",6,6),
+	SEVEN("老七","紫色",7,7);
+	
+	private final String name;
+	private final int rankName;
+	private final String color;
+	private final int rankColor;
+	
+	HuLuWa(String name,String color,int rank1,int rank2){
+		this.name=name;
 		this.color=color;
-		this.id=id;
-		this.name=new String(name);
+		this.rankName=rank1;
+		this.rankColor=rank2;
 	}
-	public int getId(){
-		return id;
-	}
-	public Color getColor(){
-		return color;
-	}
+	
 	public String getName(){
 		return name;
 	}
-	public int huluCompareId(HuLuWa b){
-		if(this.getId()<b.getId())
-			return -1;
-		else if(this.getId()==b.getId())
-			return 0;
-		else {
-			return 1;
-		}
+	
+	public String getColor(){
+		return color;
 	}
-	public int huluCompareColor(HuLuWa b) {
-		return this.getColor().compareTo(b.getColor());
+
+	public int getNameRank(){
+		return rankName;
+	}
+	
+	public int getColorRank(){
+		return rankColor;
 	}
 }
