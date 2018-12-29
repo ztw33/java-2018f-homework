@@ -1,19 +1,17 @@
-package njuics.java2018;
 
-class CalabashBrother{
+enum CalabashBrother{
+    FIRST("老大", "红色"), SECOND("老二", "橙色"), THIRD("老三", "黄色"),
+    FORTH("老四", "绿色"), FIFTH("老五","青色"), SIXTH("老六", "蓝色"), SEVENTH("老七", "紫色");
+
     private String name;
     private String color;
-    private int pos;
-    void initialize(String newName, String newColor){
-        name = newName;
-        color = newColor;
+
+    CalabashBrother(String name, String color){
+        this.name = name;
+        this.color = color;
     }
-    void rePos(int newPos){
-        pos = newPos;
-    }
-    void setPos(int newPos){
+    void setPos(int pos, int newPos){
         System.out.print(name + ", " + pos + "->" + newPos + " ");
-        pos = newPos;
     }
     void numberOffByName(){
         System.out.print(name + " ");
@@ -29,34 +27,9 @@ class CalabashQueue {
     //ArrayList<Integer> line;
     private int[] line;
     CalabashQueue() {
-        brothers = new CalabashBrother[NUM];
+        brothers = CalabashBrother.values();
         line = new int[NUM];
         for (int i = 0; i < NUM; i++) {
-            CalabashBrother bro = new CalabashBrother();
-            brothers[i] = bro;
-            switch (i) {
-                case 0:
-                    brothers[i].initialize("老大", "红色");
-                    break;
-                case 1:
-                    brothers[i].initialize("老二", "橙色");
-                    break;
-                case 2:
-                    brothers[i].initialize("老三", "黄色");
-                    break;
-                case 3:
-                    brothers[i].initialize("老四", "绿色");
-                    break;
-                case 4:
-                    brothers[i].initialize("老五", "青色");
-                    break;
-                case 5:
-                    brothers[i].initialize("老六", "蓝色");
-                    break;
-                case 6:
-                    brothers[i].initialize("老七", "紫色");
-                    break;
-            }
             line[i] = -1;
         }
         //random();
@@ -77,7 +50,7 @@ class CalabashQueue {
                 i--;
             else {
                 line[i] = num;
-                brothers[num].rePos(i);
+                //brothers[num].rePos(i);
             }
         }
         System.out.print("Random line up: ");
@@ -89,8 +62,8 @@ class CalabashQueue {
         for (int i = 0; i < NUM - 1; i++){
             for (int j = 0; j < NUM - i - 1; j++){
                 if (line[j] > line[j + 1]) {
-                    brothers[line[j]].setPos(j + 1);
-                    brothers[line[j + 1]].setPos(j);
+                    brothers[line[j]].setPos(j,j + 1);
+                    brothers[line[j + 1]].setPos(j + 1, j);
                     System.out.println();
                     int temp = line[j];
                     line[j] = line[j + 1];
@@ -102,7 +75,7 @@ class CalabashQueue {
     }
     void binaryInsertSort(){
         for (int i = 0; i < NUM; i++){
-            int temp = line[i];
+            int temp = line[i], num = i;
             int left = 0, right = i - 1, mid = 0;
             while (left <= right){
                 mid = (left + right) / 2;
@@ -113,11 +86,11 @@ class CalabashQueue {
                 }
             }
             for (int j = i - 1 ; j >= left; j--){
-                brothers[line[j]].setPos(j + 1);
+                brothers[line[j]].setPos(j,j + 1);
                 line[j + 1] = line[j];
             }
             if (left != i){
-                brothers[temp].setPos(left);
+                brothers[temp].setPos(num, left);
                 System.out.println();
                 line[left] = temp;
             }
