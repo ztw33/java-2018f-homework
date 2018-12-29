@@ -1,3 +1,104 @@
+# add GUI with javafx
+## 增加了一个GUI的类Main
+![avatar](https://github.com/LintianShi/java-2018f-homework/blob/master/20180925/%E4%BE%8D%E6%9E%97%E5%A4%A9-161220108/image/gui1.png)
+* Main继承于javafx的Application类
+* 这里使用了Scene builder进行UI的可见化设置。在start函数里通过加载FXML文件进行控件的布局。
+<pre>
+<code>
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+</code>
+</pre>
+## GameController类
+* 在Scene builder的设计里，控件的控制和监听事件注册由GameController类里的函数完成。
+* GameController类有以下数据成员。BattleField battle含有整个对战所有的生物体，和对战的二维平面。Image background作为对战的背景图片。Creature selected是当前选择的生物体。
+<pre>
+<code>
+    private BattleField battle;
+    private Image background;
+    private Creature selected;
+</code>
+</pre>
+* GameController类里有以下控件。Button用于控制双方阵营变换阵型。Canvas canvas作为画布用于显示对战场面。Label info用于显示当前选取的对象的名称。ImageView用于显示当前选择的对象的图片。
+<pre>
+<code>
+    @FXML private Canvas canvas;
+    @FXML private Button yanhangHulu;
+    @FXML private Button changsheHulu;
+    @FXML private Button fangmenHulu;
+    @FXML private Button yulinHulu;
+    @FXML private Button fengshiHulu;
+    @FXML private Button heyiHulu;
+    @FXML private Button hengeHulu;
+    @FXML private Button yanhangDemon;
+    @FXML private Button changsheDemon;
+    @FXML private Button fangmenDemon;
+    @FXML private Button yulinDemon;
+    @FXML private Button fengshiDemon;
+    @FXML private Button heyiDemon;
+    @FXML private Button hengeDemon;
+    @FXML private Label info;
+    @FXML private ImageView head;
+</code>
+</pre>
+* 在GameController类里有函数void canvasClick(MouseEvent event)，通过Scene builder注册到了canvas的鼠标点击事件上。当鼠标在画布canvas上点击时，就会通过坐标的换算找到Battlefield类space成员对应位置上的生物体，然后显示该生物体的图片和名称。
+<pre>
+<code>
+@FXML private void canvasClick(MouseEvent event) {
+        int x = (int)event.getX() - 60;
+        int y = (int)event.getY();
+        x = x / 30;
+        y = y / 30;
+        if (battle.space.getCreature(y, x) != null) {
+            selected = battle.space.getCreature(y, x);
+            head.setImage(selected.getImage());
+            info.setText(selected.getName());
+        }
+    }
+</code>
+</pre>
+![avatar](https://github.com/LintianShi/java-2018f-homework/blob/master/20180925/%E4%BE%8D%E6%9E%97%E5%A4%A9-161220108/image/gui2.png)
+* 在GameController类里有函数void canvasDrag(MouseEvent event)，通过Scene builder注册到了canvas的鼠标拖拽事件上。当鼠标在画布canvas上拖拽时，就会通过坐标的换算找到Battlefield类space成员对应的位置，然后让已选择的生物体移动到该位置，从而实现拖动效果。
+<pre>
+<code>
+@FXML private void canvasDrag(MouseEvent event) {
+        int x = (int)event.getX() - 60;
+        int y = (int)event.getY();
+        x = x / 30;
+        y = y / 30;
+        if (selected != null) {
+            selected.moveTo(battle.space, y, x);
+        }
+        display();
+    }
+</code>
+</pre>
+# add gui with Swing
+## 增加了一个gui
+![avatar](https://github.com/LintianShi/java-2018f-homework/blob/master/20180925/%E4%BE%8D%E6%9E%97%E5%A4%A9-161220108/gui/show.png)
+### MainWindow类
+* 继承于JFrame，有成员JLabel[][]，通过GridLayout布局。
+* refresh()接口：当二维空间上有Creature的时候就显示Creature对应的图片，没有的时候就显示background的图片。
+# rewrite with generics
+## 改写Tile类
+* public class Tile<T extends Creature> {
+    private T creatureStandOnTile;
+}
+## 改写TwoDimensionSpace类
+* public class TwoDimensionSpace<T extends Creature> {
+    private Tile<T> space[][];
+}
+
 # 面向葫芦娃编程3：阵型
 ***
 ## 需求分析

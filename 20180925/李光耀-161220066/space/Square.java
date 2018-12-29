@@ -1,17 +1,24 @@
 package space;
 
+import creature.Being;
 
 //一个小方块 可以用Square做成一个N*N空间
-public class Square {
+/**
+* @ClassName: Square
+* @Description: 描述组成棋盘的一个基本单元
+* @author 13745
+* @date 2018年11月4日
+*
+*/
+public class Square<T extends Being> {
 	private int x;
 	private int y;
-	private Object being;
-	//private Image image; 
+	private T being;
 	
-	public Square(int x,int y,Object creature) {
+	public Square(int x,int y,T being) {
 		this.x=x;
 		this.y=y;
-		this.being=creature;
+		this.being=being;
 		
 	}
 	
@@ -19,8 +26,8 @@ public class Square {
 		this.x=0;
 		this.y=0;
 		being=null;
-		//image=null;
 	}
+	
 	public int getX(){
 		return x;
 	}
@@ -28,10 +35,10 @@ public class Square {
 	public int getY() {
 		return y;
 	}
-	public Object getBeing(){
+	public T getBeing(){
 		return being;
 	}
-	public void setBeing(Object result){
+	public void setBeing(T result){
 		being=result;
 	}
 	

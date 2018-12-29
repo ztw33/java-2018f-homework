@@ -7,35 +7,27 @@ import java.util.Random;
  * @ Description：葫芦娃爷爷
  */
 
-public class Grandpa {
+public class Grandpa extends Creature{
 
-    private CalabashBrothers[] boys;
+    private CalabashBoys boys;
     private int boysNumber;
 
     public Grandpa() {
+        super("爷爷",CreatureType.HUMAN_BEING);
         this.findCalabashBrothers();
     }
 
     private void findCalabashBrothers() {
-        this.boysNumber = 7;
-        this.boys = new CalabashBrothers[this.boysNumber];
-        for (int i = 0; i < boys.length; i++) {
-            boys[i] = CalabashBrothers.values()[i];
-        }
+        boys = new CalabashBoys();
+        this.boysNumber = boys.getBoysNumber();
     }
 
-    private void swapBoys(int i, int j) {
-        CalabashBrothers tmp = boys[i];
-        boys[i] = boys[j];
-        boys[j] = tmp;
+    private void tellBoysSwap(int i, int j) {
+        boys.swap(i,j);
     }
 
-    private void swapBoysWithReport(int i, int j) {
-        System.out.println(boys[i].getName() + ":" + i + "->" + j);
-        System.out.println(boys[j].getName() + ":" + j + "->" + i);
-        CalabashBrothers tmp = boys[i];
-        boys[i] = boys[j];
-        boys[j] = tmp;
+    private void tellBoysSwapWithReport(int i, int j) {
+        boys.swapWithReport(i,j);
     }
 
     public void disruptQueue() {
@@ -47,62 +39,38 @@ public class Grandpa {
             m = rand.nextInt(7);
             n = rand.nextInt(7);
 //            System.out.println("swap"+boys[m].getName()+boys[n].getName());
-            swapBoys(m, n);
+            tellBoysSwap(m,n);
         }
     }
-
-    public void boysReportDetails() {
-        for (int i = 0; i < boysNumber; i++) {
-            System.out.println("我是" + i + "号,我的名字叫" + boys[i].getName() + ",我的颜色是" + boys[i].getColor());
-        }
-    }
-
-    public void boysReportNames() {
-        for (CalabashBrothers b : boys) {
-            System.out.print(b.getName() + ",");
-        }
-        System.out.println();
-    }
-
-    public void boysReportColors() {
-        for (CalabashBrothers b : boys) {
-            System.out.print(b.getColor() + ",");
-        }
-        System.out.println();
-    }
-
 
     public void calabashBrothersBubbleSort() {
-        for (int i = 0; i < boysNumber; i++) {
-            for (int j = 0; j < boysNumber - 1 - i; j++) {
-                if (boys[j].getRank() > boys[j + 1].getRank()) {
-                    swapBoysWithReport(j, j + 1);
-                }
+        BubbleSorter sorter = new BubbleSorter() {
+            @Override
+            void swapWithReport(int i, int j) {
+                tellBoysSwapWithReport(i,j);
             }
-        }
+
+            @Override
+            boolean compareSmaller(int i, int j) {
+                return boys.compareSmaller(i,j);
+            }
+        };
+        sorter.sort(boys.getBoysNumber());
     }
 
     public void calabashBrothersBinarySort() {
-        for (int i = 0; i < boysNumber; i++) {
-            int left = 0;
-            int right = i - 1;
-            int mid = (left + right) / 2;
-
-            while (left <= right) {
-                if (boys[i].getRank() < boys[mid].getRank()) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
-                mid = (left + right) / 2;
+        BinarySorter sorter = new BinarySorter() {
+            @Override
+            void swapWithReport(int i, int j) {
+                tellBoysSwapWithReport(i,j);
             }
 
-            for (int j = i; j > left; j--) {
-                swapBoysWithReport(j, j - 1);
+            @Override
+            boolean compareSmaller(int i, int j) {
+                return boys.compareSmaller(i,j);
             }
-
-
-        }
+        };
+        sorter.sort(boys.getBoysNumber());
     }
 
     public void testBubbleSort() {
@@ -112,7 +80,7 @@ public class Grandpa {
             this.disruptQueue();
             this.calabashBrothersBubbleSort();
             for (int j = 0; j < boysNumber; j++) {
-                if (boys[j].getRank() != j) {
+                if (boys.getSomeoneRank(j) != j) {
                     System.out.println("----------------------经过" + testTimes + "次测试冒泡排序测试失败");
                     System.exit(-1);
                 }
@@ -128,13 +96,26 @@ public class Grandpa {
             this.disruptQueue();
             this.calabashBrothersBinarySort();
             for (int j = 0; j < boysNumber; j++) {
-                if (boys[j].getRank() != j) {
+                if (boys.getSomeoneRank(j) != j) {
                     System.out.println("----------------------经过" + testTimes + "次测试二分排序测试失败");
                     System.exit(-1);
                 }
             }
         }
         System.out.println("----------------------经过" + testTimes + "次测试二分排序测试成功");
+    }
+
+    public void tellBoysReportDetails() {
+        boys.selfIntroduction();
+        boys.boysReportDetails();
+    }
+
+    public void tellBoysReportNames() {
+        boys.boysReportNames();
+    }
+
+    public void tellBoysReportColors() {
+        boys.boysReportColors();
     }
 
 

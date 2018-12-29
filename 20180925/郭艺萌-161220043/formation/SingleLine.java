@@ -3,7 +3,13 @@ package formation;
 import creature.*;
 import map.*;
 
-public class SingleLine implements Formation{
+public class SingleLine extends Formation{
+	public SingleLine() {
+		super.name = "长蛇阵";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		for (int i = 0; i < creatures.length; i++) {
