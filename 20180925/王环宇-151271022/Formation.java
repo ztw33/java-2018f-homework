@@ -10,7 +10,7 @@ public class Formation implements FormationInterface{
 	 * */
 	private static ArrayList<int[][]> book1;
 	private static ArrayList<int[][]> book2;
-	private static ArrayList<String> name;
+	public static ArrayList<String> name;
 	
 	public static void initialization() {
 		book1 = new ArrayList<int[][]>();

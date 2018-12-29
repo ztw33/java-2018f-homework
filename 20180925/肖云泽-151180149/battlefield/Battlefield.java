@@ -2,77 +2,42 @@ package battlefield;
 
 import creatures.*;
 import formation.*;
+import java.util.ArrayList;
+
 
 public class Battlefield {
-	private Unit[] unit;
-	private int scale;
-	public Battlefield() {
-		this.unit = null;
-		this.scale = 0;
-	}
-	public Battlefield(int scale) {
-		this.scale = scale;
-		this.unit = new Unit[scale * scale];
-		for (int i=0; i<scale; i++) {
-			for (int j=0; j<scale; j++) {
-				unit[j*scale + i] = new Unit(new Position(i, j));
+	ArrayList<Unit<Creature>> units = new ArrayList<>();
+	private int width = 15;
+	private int length = 15;
+	public Battlefield(){
+		for (int i=0; i<width; i++) {
+			for (int j=0; j<length; j++) {
+				units.add(new Unit<Creature>(new Position(j,i)));
 			}
 		}
+	}
+	public void place(Unit<Creature> u, Creature c) {
+		u.setCreature(c);
 	}
 	public void place(Position p, Creature c) {
-		this.searchUnit(p).setCreature(c);
+		units.get(p.getX() + width * p.getY()).setCreature(c);
 	}
-	public void place(Formation f, Position offset, Queue q) {
-		if(f.getLength() != q.queue.length)
-		{
-			System.out.println("Formation doesn't mastch Queue");
-			return;
+	public void placeQueue(Queue<Creature> q, Formation f) {
+		if(q.getLength() != f.getLength()) {
+			throw new IllegalArgumentException("The queue doesn't the formation");
 		}
-		for (int i=0; i<q.queue.length; i++) {
-			this.place(f.getPosition()[i].add(offset), q.queue[i]);
-			this.searchUnit(f.getPosition()[i].add(offset)).setQ(q);
+		for (int i=0; i<q.getLength(); i++) {
+			place(units.get(f.getArray()[i].getX() + width * f.getArray()[i].getY()), q.queue.get(i));
 		}
-	}
-	public void remove(Unit u) {
-		u.setCreature(new Creature());
-		u.setQ(new Queue());
-	}
-	public void changeFormation(Formation target, Queue q, Formation old, Position offset) {
-		System.out.println("Next Formation:");
-		if(target.getLength() != q.queue.length)
-		{
-			System.out.println("Formation doesn't match Queue");
-			return;
-		}
-		for (int i=0; i<q.queue.length; i++) {
-			try {
-				this.remove(this.searchUnit(old.getPosition()[i].add(offset)));
-			}catch(Exception e) {
-				
-			}
-			}
-		for (int i=0; i<q.queue.length; i++) {
-			this.place(target.getPosition()[i].add(offset), q.queue[i]);
-			this.searchUnit(target.getPosition()[i].add(offset)).setQ(q);
-		}
-	}
-	public Unit searchUnit(Position p) {
-		for (int i=0; i<this.unit.length; i++) {
-			if(this.unit[i].getPosition().getX() == p.getX() && this.unit[i].getPosition().getY() == p.getY()) {
-				return this.unit[i];
-			}
-		}
-		System.out.println("Can't find the unit");
-		return null;
 	}
 	public void showBattlefield() {
 		String chinese = "[\u4e00-\u9fa5]";
-		for (int i=0; i<unit.length; i++) {
+		for (int i=0; i<width * length; i++) {
 			try {
-				System.out.print(unit[i].getCreature().getName());
+				System.out.print(units.get(i).getCreature().getName());
 				int length = 0;
-				for (int p=0; p<unit[i].getCreature().getName().length(); p++) {
-					String temp = unit[i].getCreature().getName().substring(p, p + 1);
+				for (int p=0; p<units.get(i).getCreature().getName().length(); p++) {
+					String temp =units.get(i).getCreature().getName().substring(p, p + 1);
 					if (temp.matches(chinese)) {
 						length += 2;
 					} else {
@@ -85,10 +50,23 @@ public class Battlefield {
 			}catch(Exception e) {
 				System.out.print("null      ");
 			}
-			if(i%this.scale == this.scale - 1) {
+			if(i % width == width - 1) {
 				System.out.print("\n");
 			}
 		}
 		System.out.println();
+	}
+	public void clear(Queue<Creature> q, Formation f) {
+		if(q.getLength() != f.getLength()) {
+			throw new IllegalArgumentException("The queue doesn't the formation");
+		}
+		for (int i=0; i<q.getLength(); i++) {
+			units.get(f.getArray()[i].getX() + width * f.getArray()[i].getY()).setCreature(null);;
+		}
+	}
+	public void changeFormation(Queue<Creature> old, Queue<Creature> next, Formation oldf, Formation nextf) {
+		System.out.println("Change Formation:");
+		clear(old, oldf);
+		placeQueue(next, nextf);
 	}
 }
