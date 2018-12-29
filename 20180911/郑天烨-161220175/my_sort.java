@@ -28,7 +28,6 @@ public class my_sort {
         int[] a = {8,4,6,2,3,1,5,7};
         my_sort sort1 = new my_sort();
         sort1.my_sort(a);
-        System.out.println("hiahiahia");
     }
 
 }

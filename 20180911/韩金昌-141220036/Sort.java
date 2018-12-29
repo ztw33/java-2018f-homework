@@ -1,5 +1,5 @@
 public class Sort {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Array p= new Array();
         System.out.println("array:");
         p.show();
