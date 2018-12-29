@@ -1,21 +1,31 @@
 package calabashBrothers.formation;
 
+import calabashBrothers.Coordinate;
 import calabashBrothers.Maps;
 import calabashBrothers.beings.Creature;
+
+import java.util.ArrayList;
 
 /**
  * @ Author     ：Young
  * @ Description：长蛇阵
  */
 public class ChangShe extends Formation{
+
     public ChangShe(int startX, int startY) {
         super(startX, startY);
     }
 
     @Override
-    public void SetFormation(Maps maps, Creature[] creatures, int direction) {
-        for (int i = 0; i <creatures.length ; i++) {
-            maps.getMaps()[startX+i][startY].setCreature(creatures[i]);
+    void initSites(int x, int y) {
+        //Do nothing
+    }
+
+    @Override
+    public void SetFormation(Maps<Creature> maps, ArrayList<Creature> creatures, int direction) {
+        for (int i = 0; i <creatures.size() ; i++) {
+            maps.setContent(startX+i,startY,creatures.get(i));
         }
     }
+
 }

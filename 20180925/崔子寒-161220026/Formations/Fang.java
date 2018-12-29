@@ -8,4 +8,8 @@ public class Fang implements FormationProvider {
                 new Position(5,6),new Position(6,3),new Position(6,5),new Position(7,4)};
         return positions;
     }
+
+    public String getName() {
+        return "方块阵";
+    }
 }

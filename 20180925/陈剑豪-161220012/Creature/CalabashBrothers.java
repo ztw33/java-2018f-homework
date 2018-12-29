@@ -52,7 +52,6 @@ public class CalabashBrothers extends Creature{
 
     public static void swapPosition(CalabashBrothers[] brothers,int i,int j)/**两个葫芦娃交换位置*/
     {
-
         CalabashBrothers temp;
         temp=brothers[i];
         brothers[i]=brothers[j];

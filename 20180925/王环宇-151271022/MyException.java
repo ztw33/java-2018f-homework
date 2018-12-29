@@ -1,4 +1,3 @@
-package javahw3;
 /*
  * define an Exception that ensure no enemy in a team
  * */

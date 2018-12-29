@@ -1,5 +1,10 @@
 package creature;
 import color.COLOR;
+
+import javafx.scene.image.*;
+import java.io.File;
+import java.io.IOException;
+
 public class HuluWa extends Creature {
     private int priority;
     private COLOR color;
@@ -9,41 +14,49 @@ public class HuluWa extends Creature {
                 name = "老大";
                 priority = 1;
                 color = COLOR.RED;
+                imgPath = "image/red.jpeg";
                 break;
             case 2:
                 name = "老二";
                 priority = 2;
                 color = COLOR.ORANGE;
+                imgPath = "image/orange.jpeg";
                 break;
             case 3:
                 name = "老三";
                 priority = 3;
                 color = COLOR.YELLOW;
+                imgPath = "image/yellow.jpeg";
                 break;
             case 4:
                 name = "老四";
                 priority = 4;
                 color = COLOR.GREEN;
+                imgPath = "image/green.jpeg";
                 break;
             case 5:
                 name = "老五";
                 priority = 5;
                 color = COLOR.CYAN;
+                imgPath = "image/cyan.jpeg";
                 break;
             case 6:
                 name = "老六";
                 priority = 6;
                 color = COLOR.BLUE;
+                imgPath = "image/blue.jpeg";
                 break;
             case 7:
                 name = "老七";
                 priority = 7;
                 color = COLOR.PURPLE;
+                imgPath = "image/purple.jpeg";
                 break;
             default:
                 System.out.println("error:there is only 7 HuluWas");
                 break;
         }
+        image = new Image(imgPath);
     }
     public void shoutOutColor(){
         System.out.print(color.colorInChinese);

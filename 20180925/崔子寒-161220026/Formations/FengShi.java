@@ -9,4 +9,8 @@ public class FengShi implements  FormationProvider{
                 new Position(4,7),new Position(3,5),new Position(4,5),new Position(5,5)};
         return positions;
     }
+
+    public String getName() {
+        return "锋矢阵";
+    }
 }
