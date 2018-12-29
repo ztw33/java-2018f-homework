@@ -1,18 +1,28 @@
 package confront;
 
-public class Existence {
+public abstract class Existence {
 	private String name;           //名字
-	private String quality;        //性质，有“好”“坏”“中立”三种
-	private Coordinate coordinate; //坐标，在战场上的位置
 	
 	public Existence() {           
 		name = null;              
-		quality = null;
-		coordinate = null;
 	}
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String a) {
+		name = a;
+	}
+}
+
+abstract class CalabashWorld extends Existence {
+	private String quality;        //性质，有“好”“坏”“中立”三种
+	private Coordinate coordinate; //坐标，在战场上的位置
+	
+	public CalabashWorld() {                
+		quality = null;
+		coordinate = null;
 	}
 	
 	public String getQuality() {
@@ -31,21 +41,46 @@ public class Existence {
 		coordinate = null;
 	}
 	
-	public void setName(String a) {
-		name = a;
-	}
-	
 	public void setQuality(String a) {
 		quality = a;
 	}
 }
 
-class CalabashBro extends Existence {
+abstract class Justice extends CalabashWorld {
+	public Justice() {
+		this.setQuality("好");
+	}
+}
+
+abstract class Evil extends CalabashWorld {
+	public Evil() {
+		this.setQuality("坏");
+	}
+}
+
+interface WarMan{
+	public void LeaveBattleground(Battleground bg);
+}
+
+interface Fighter extends WarMan{
+	public void GotoBattleground(Battleground bg, Formation form);
+}
+
+interface SideLooker extends WarMan{
+	public void Lookatside(Battleground bg, Coordinate a);
+}
+
+interface FightLeader extends Fighter{
+	public void SetLeaderground(Coordinate a, Formation form);
+	public void GiveOrder(String a, Formation form);
+}
+
+class CalabashBro extends Justice implements FightLeader{
 	private String color;
 	private int rank;
 	
 	public CalabashBro(int i) {
-		this.setQuality("好");
+//		this.setQuality("好");
 		switch(i) {
 		case 1:
 			this.setName("老大");
@@ -127,10 +162,10 @@ class CalabashBro extends Existence {
 	}
 }
 
-class Grandpa extends Existence {
+class Grandpa extends Justice implements SideLooker{
 	public Grandpa() {
 		this.setName("老爷爷");
-		this.setQuality("好");
+//		this.setQuality("好");
 	}
 	
 	public void Lookatside(Battleground bg, Coordinate a) {        //旁观，即直接选取战场中无人的位置站立
@@ -144,10 +179,10 @@ class Grandpa extends Existence {
 	}
 }
 
-class DemonSnake extends Existence {
+class DemonSnake extends Evil implements SideLooker{
 	public DemonSnake() {
 		this.setName("蛇精");
-		this.setQuality("坏");
+//		this.setQuality("坏");
 	}
 	
 	public void Lookatside(Battleground bg, Coordinate a) {
@@ -161,10 +196,10 @@ class DemonSnake extends Existence {
 	}
 }
 
-class DemonScorpion extends Existence {
+class DemonScorpion extends Evil implements FightLeader {
 	public DemonScorpion() {
 		this.setName("蝎子精");
-		this.setQuality("坏");
+//		this.setQuality("坏");
 	}
 	
 	public void SetLeaderground(Coordinate a, Formation form) {
@@ -188,10 +223,10 @@ class DemonScorpion extends Existence {
 	}
 }
 
-class Lackey extends Existence {
+class Lackey extends Evil implements Fighter{
 	public Lackey() {
 		this.setName("小喽啰");
-		this.setQuality("坏");
+//		this.setQuality("坏");
 	}
 	
 	public void GotoBattleground(Battleground bg, Formation form) {

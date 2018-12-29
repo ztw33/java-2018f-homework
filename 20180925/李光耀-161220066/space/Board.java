@@ -1,134 +1,64 @@
 package space;
 
+import java.util.ArrayList;
 
-import creature.Creature;
-import creature.CreatureType;
+import creature.Being;
 import creature.Human;
 import creature.SnakeEssence;
-import gui.Gui;
+import regulate.Administer;
 
 
 //注意这里的x、y坐标轴与惯常的不同
+/**
+* @ClassName: Board
+* @Description: 描述整个棋盘
+* @author 13745
+* @date 2018年11月4日
+*
+*/
 public class Board{
 	
-		
-	private Square[][] board;
-	private static final int xLines=Gui.N;
-	private static final int yLines=Gui.N;
+	ArrayList<ArrayList<Square<Being>>> board=new ArrayList<>();	
+//	private Square[][] board;
+//	private static final int xLines=Gui.N;
+//	private static final int yLines=Gui.N;
 	
 		
 	public Board(){
-		board=new Square[yLines][xLines];
-		for(int i=0;i<yLines;i++){
-			for(int j=0;j<xLines;j++)
-				board[i][j]=new Square(i,j,null);
-		}
-	}
-	public boolean putFormation(Square[] formation){
-		boolean flag=true;
-		for(Square a:formation){
-			int c=a.getY();
-			int r=a.getX();
-			if(board[r][c].getBeing()!=null){
-				flag=false;
-			}
-		}
-		
-		if(flag==false){
-			return false;
-		}
-		for(Square a:formation){
-			int c=a.getY();
-			int r=a.getX();
-			
-			board[r][c]=a;
-		}
-		return true;
-	}
-	
-	public void clearBoardMonster(){
-		for(int i=0;i<xLines;i++){
-			for(int j=0;j<yLines;j++){
-				if(board[i][j].getBeing()!=null){
-					Creature temp=(Creature)board[i][j].getBeing();
-					if(temp.getType()==CreatureType.LITTLEMONSTER || temp.getType()==CreatureType.SCORPION){
-						board[i][j].setBeing(null);
-					}
-				}
-			}
-		}
-	}
-	public void clearBoardHuLuWa(){
-		for(int i=0;i<xLines;i++){
-			for(int j=0;j<yLines;j++){
-				if(board[i][j].getBeing()!=null){
-					Creature temp=(Creature)board[i][j].getBeing();
-					if(temp.getType()==CreatureType.HULUWA){
-						board[i][j].setBeing(null);
-					}
-				}
-			}
+		//board=new Square[yLines][xLines];
+		for(int i=0;i<Administer.yLines;i++){
+			ArrayList<Square<Being>> temp=new ArrayList<>();
+			for(int j=0;j<Administer.xLines;j++)
+				temp.add(new Square<Being>(i,j,null));
+			board.add(temp);
 		}
 	}
 	
 	public void putGrandPa(){
-		board[0][0].setBeing(Human.grandPa);
+		board.get(0).get(0).setBeing(Human.grandPa);
 	}
 	
 	public void putSnake(){
-		board[xLines-1][0].setBeing(SnakeEssence.snakeWoman);
+		board.get(Administer.xLines-1).get(0).setBeing(SnakeEssence.snakeWoman);
 	}
-	public Square[][] getBoard(){
+	public ArrayList<ArrayList<Square<Being>>> getBoard(){
 		return board;
 	}
 	
-	public void moveManual(CreatureType c,int x,int y){
+	
+	
+// 可以废弃 曾经用于字符阵列的打印
+//	public void show(){
 //		for(int i=0;i<xLines;i++){
 //			for(int j=0;j<yLines;j++){
-//				if(board[i][j].getBeing()!=null){
+//				if(board[i][j].getBeing()!=null)
 //					System.out.print("*");
-//				}
-//				else{
+//				else
 //					System.out.print("-");
-//				}
 //			}
 //			System.out.println("");
 //		}
-		
-		for(int i=0;i<xLines;i++){
-			for(int j=0;j<yLines;j++){
-				if(board[i][j].getBeing()!=null){
-					Creature temp=(Creature)board[i][j].getBeing();
-					System.out.println(temp.getType());
-					System.out.println(c);
-					if(temp.getType()==c){
-						if((i+x)>=0&&(i+x)<xLines&&(j+y)>=0&&(j+y)<yLines){
-							if(board[i+x][j+y].getBeing()==null){
-								//System.out.println("x:"+x+" y:"+y+" i:"+i+" j:"+j);
-								Square squaretemp=board[i+x][j+y];
-								board[i+x][j+y]=board[i][j];
-								board[i][j]=squaretemp;
-								return;
-							}
-						}
-					}
-				}
-			}
-		}
-		return;
-	}
-	
-	public void show(){
-		for(int i=0;i<xLines;i++){
-			for(int j=0;j<yLines;j++){
-				if(board[i][j].getBeing()!=null)
-					System.out.print("*");
-				else
-					System.out.print("-");
-			}
-			System.out.println("");
-		}
-	}
+//	}
 	
 	
 }
