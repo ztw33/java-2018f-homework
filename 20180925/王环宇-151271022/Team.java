@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
@@ -48,12 +53,54 @@ public class Team implements TeamInterface{
 		
 	}
 	
+	public void load(String fileName) {
+		ArrayList<String> members = new ArrayList<String>();
+		// one piece of String means one warrior
+		try
+		{
+			FileReader file = new FileReader(fileName);
+			BufferedReader bf = new BufferedReader(file);
+			String str;
+			while ((str = bf.readLine()) != null) {
+				members.add(str);
+			}
+			bf.close();
+			file.close();
+		} 
+		catch (IOException e) 
+		{		
+			e.printStackTrace();
+		}
+		for(String m: members) {
+			String[] str = m.split(" ");
+			team.add(new Warrior(str[0], str[1], str[2]));
+		}
+	}
+	
+	
+	public void writeWarriors(String fileName) {
+		try {
+			FileOutputStream fos = new FileOutputStream(fileName,true);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			for(Warrior ws:team) {
+				oos.writeObject(ws);
+			}
+			oos.close();
+			//fos.close();
+		}
+		catch (IOException e) 
+		{		
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void checkMember() throws MyException{
 		Iterator<Warrior> it = team.iterator();
 		while(it.hasNext()) {
 			Warrior w = it.next();
 			try {
-				if(w.getTeam() != side)
+				if(!w.getTeam().equals(side))
 					throwMyException(w.getName());
 			}catch(MyException e){
 				w.changeTeam(side);
@@ -72,6 +119,8 @@ public class Team implements TeamInterface{
 		Collections.sort(team, comp);
 	}
 	
+	// 抑制这里的警告
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	Comparator<Warrior> comp = new Comparator() {
 		public int compare(Object a0, Object a1) {
 			try {
@@ -89,21 +138,21 @@ public class Team implements TeamInterface{
 			Warrior w2 = (Warrior) a1;
 			
 			if(side == "GoodMan") {
-				if(w1.getName() == "老爷爷")
+				if(w1.getName().equals("老爷爷"))
 					return 1;
-				else if(w2.getName() == "老爷爷")
+				else if(w2.getName().equals("老爷爷"))
 					return -1;
 				return 0;
 			}
-			if(side == "BadMan") {
-				if(w1.getName() == "蛇精")
+			if(side.equals("BadMan")) {
+				if(w1.getName().equals("蛇精"))
 					return 1;
-				else if(w1.getName() == "蝎子精")
+				else if(w1.getName().equals("蝎子精"))
 					return -1;
 				
-				if(w2.getName() == "蛇精")
+				if(w2.getName().equals("蛇精"))
 					return -1;
-				else if(w2.getName() == "蝎子精")
+				else if(w2.getName().equals("蝎子精"))
 					return 1;
 				
 				int c1 = (int)w1.getName().charAt(2);
@@ -113,6 +162,5 @@ public class Team implements TeamInterface{
 			return 0;
 		}
 	};
-		
 	
 }
