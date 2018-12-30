@@ -355,14 +355,6 @@ public class BattleField {//战场，保存了每一个单位和棋盘信息
         }
         return false;
     }
-    private void reviveAll(){
-        for(int i=0;i<calabashBros.getBroNum();i++)
-            calabashBros.getCalabashKid(i).revive();
-        for(int i=0;i<mobsFormation.getUnitNum();i++)
-            mobs[i].revive();
-        grandpa.revive();
-        snakeQueen.revive();
-    }
     private EvilBeing getNextAliveEvil(GoodBeing goodBeing) {
         ArrayList<EvilBeing> list = new ArrayList<EvilBeing>();
         for (int i = 0; i < mobsFormation.getUnitNum(); i++) {
