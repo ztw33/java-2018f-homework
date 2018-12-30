@@ -1,0 +1,15 @@
+package creature;
+
+public enum CreatureImage {
+	HULUWAONE,
+	HULUWATWO,
+	HULUWATHREE,
+	HULUWAFOUR,
+	HULUWAFIVE,
+	HULUWASIX,
+	HULUWASEVEN,
+	GRANDPA,
+	LITTLEMONSTER,
+	SNAKE,
+	SCORP
+}
