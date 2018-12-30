@@ -7,9 +7,6 @@ public class CalabashBrothers {
     public static final int MAX_CALABASH_BROTHERS_COUNT = 7;
     private CalabashBoy[] calabashBoyArray = new CalabashBoy[MAX_CALABASH_BROTHERS_COUNT];
 
-    public static void main(String[] args) {
-    }
-
     public CalabashBrothers() {
         int[] randomArray = createRandomArray();
         for (int i = 0; i < MAX_CALABASH_BROTHERS_COUNT; i++) {
@@ -46,6 +43,17 @@ public class CalabashBrothers {
         }
         System.out.print("" + calabashBoyArray[i].getName() + i + " -> " + j + " && ");
         System.out.println("" + calabashBoyArray[j].getName() + j + " -> " + i);
+
+        CalabashBoy temp = calabashBoyArray[i];
+        calabashBoyArray[i] = calabashBoyArray[j];
+        calabashBoyArray[j] = temp;
+    }
+
+    public void swapCalabashBoyWithoutOutput(int i, int j) {
+
+        if (i < 0 || i > MAX_CALABASH_BROTHERS_COUNT - 1 || j < 0 || j > MAX_CALABASH_BROTHERS_COUNT - 1) {
+            System.out.println("ERROR IN swapCalabashBoy()");
+        }
 
         CalabashBoy temp = calabashBoyArray[i];
         calabashBoyArray[i] = calabashBoyArray[j];

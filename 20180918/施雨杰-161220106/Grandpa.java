@@ -1,4 +1,4 @@
-import java.util.*;
+﻿import java.util.*;
 
 enum CalabashBrother {
     One("红", "老大", 1), Two("橙","老二", 2), Three("黄","老三", 3), Four("绿","老四", 4), Five("青","小五", 5), Six("蓝","小六", 6), Seven("紫","小七", 7);
@@ -37,7 +37,20 @@ enum CalabashBrother {
 }
 
 class SortWays {
-    public void bubbleSort(CalabashBrother[] brothers) {
+    protected CalabashBrother[] brothers;
+    SortWays() {
+        this.brothers = null;
+    }
+    public void sort() {
+
+    }
+}
+class BubbleSort extends SortWays {
+    BubbleSort(CalabashBrother[] brothers) {
+        this.brothers = brothers;
+    }
+    @Override
+    public void sort() {
         for (int i = 0; i < brothers.length; i++) {
             for (int j = 0; j < brothers.length - 1 - i; j++) {
                 if (brothers[j].compareByRank(brothers[j+1]) == 1) {
@@ -50,7 +63,13 @@ class SortWays {
             }
         }
     }
-    public void binarySort(CalabashBrother[] brothers) {
+}
+class BinarySort extends SortWays {
+    BinarySort(CalabashBrother[] brothers) {
+        this.brothers = brothers;
+    }
+    @Override
+    public void sort() {
         int low = 0, high = 0, mid = 0;
         int now = 0;
         for (int i = 0; i < brothers.length; i++) {
@@ -74,7 +93,6 @@ class SortWays {
         }
     }
 }
-
 public class Grandpa {
     private static CalabashBrother[] grandpaGetBrothers() {
         CalabashBrother[] brothers = new CalabashBrother[7];
@@ -116,16 +134,17 @@ public class Grandpa {
         standInLine(brothers);
         System.out.println("第一次站队:");
         reportLineByName(brothers);
-        SortWays sort = new SortWays();
+        SortWays sort = new BinarySort(brothers);
         System.out.println("开始按排行排序:");
-        sort.bubbleSort(brothers);
+        sort.sort();
         System.out.println("按排行排序后");
         reportLineByName(brothers);
         standInLine(brothers);
         System.out.println("第二次站队后");
         reportLineByName(brothers);
         System.out.println("开始按颜色排序:");
-        sort.binarySort(brothers);
+        sort = new BinarySort(brothers);
+        sort.sort();
         System.out.println("按颜色排序后:");
         reportLineByColor(brothers);
     }
