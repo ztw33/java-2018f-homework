@@ -3,8 +3,14 @@ package formation;
 import creature.*;
 import map.*;
 
-//£¨1,17£©
-public class EnEchelon implements Formation{
+//ï¼ˆ1,17ï¼‰
+public class EnEchelon extends Formation{
+	public EnEchelon() {
+		super.name = "é›è¡Œé˜µ";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		for (int i = 0; i < 5; i++) {	

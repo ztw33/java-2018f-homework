@@ -1,24 +1,22 @@
 package creature;
 
 
-public class Scorpion extends Creature{
 
+/**
+* @ClassName: Scorpion
+* @Description: 蝎子精
+* @author 13745
+* @date 2018年11月4日
+*
+*/
+public class Scorpion extends BadCreature{
 	public static Scorpion scorpionMan;
-//	
 	static{
-//		try {
-//			Image image=ImageIO.read(HuLuWas.class.getResource("scorp.jpg"));
-//			image=image.getScaledInstance(Gui.squareXLength, Gui.squareYLength,Image.SCALE_DEFAULT );
-			scorpionMan=new Scorpion("蝎子精",CreatureImage.SCORP);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		scorpionMan=new Scorpion("蝎子精",StyleImage.SCORP);
 	}
 	
-	public Scorpion(String name,CreatureImage image) {
-		super(CreatureType.SCORPION, name,image);
-		// TODO Auto-generated constructor stub
+	public Scorpion(String name,StyleImage image) {
+		super(name,image);
 	}
 
 }

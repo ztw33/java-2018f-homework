@@ -3,8 +3,14 @@ package formation;
 import creature.*;
 import map.*;
 
-//£¨2, 15£© 
-public class Arrow implements Formation{
+//ï¼ˆ2, 15ï¼‰
+public class Arrow extends Formation{
+	public Arrow() {
+		super.name = "ç®­çŸ¢é˜µ";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		for (int i = 0; i < 6; i++) {

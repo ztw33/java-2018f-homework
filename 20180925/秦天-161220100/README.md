@@ -1,12 +1,13 @@
 # 设计理念
 ## 万物皆对象
 - 作战双方是一类共同对象Troop的两种特殊形式，分别抽象为类CalabashSide和MonsterSide的对象。
-- 作战人员都是生物体，都有名字、移动能力等，抽象为Creature的对象。
+- 人员都是生物体，都有名字等，抽象为虚类Creature的虚子类Fighter和Audience，具体又由之继承为CalabashBrother、SmallMonster等。
 - 作战场地抽象为BattleField。
-- 整场战斗作为一个抽象概念，由上述对象组合而成，抽象为类Battle。
-## 程序通过对象之间发送消息进行执行
-- Troop类中对士兵成员即Creature类的对象发出移动指令，再由Creature类对象向BattleField类发送消息以进行战场配置的更改，从而完成士兵移动操作。
-- Battle类对作战一方如CalabashSide发出更改阵型指令，再由CalabashSide类内部的方法完成阵型变更。
+- 整场战斗作为一个抽象概念，抽象为类Battle。
+- 具体类间关系见UML类图：
+![UML](
+        https://github.com/Qcer17/java-2018f-homework/blob/master/20180925/%E7%A7%A6%E5%A4%A9-161220100/UML.png
+      )
 # 面向对象机制
 ## 封装
 ### 实例
