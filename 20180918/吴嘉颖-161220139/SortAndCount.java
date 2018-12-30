@@ -42,9 +42,55 @@ enum CalabashBro {
     }
 }
 
-public class SortAndCount {
-    private static void BubbleSort(CalabashBro array[], int n) {
-        // sort
+class CBQueue {
+    CalabashBro[] broQueue;
+
+    CBQueue() {
+        broQueue = CalabashBro.values();
+    }
+
+    void randomQueue() {
+        // generate random number ( place of CalabashBro )
+        Random rd = new Random();
+        boolean []setDown = new boolean[7];
+        for (int i = 0; i < 7; i++) {
+            setDown[i] = false;
+        }
+
+        int idx;
+        for (int i = 0; i < 7; i++) {
+            // avoid collision
+            do {
+                idx = rd.nextInt(7);
+            }while(setDown[idx]);
+            setDown[idx] = true;
+            broQueue[i] = CalabashBro.values()[idx];
+            broQueue[i].setPlace(i);
+        }
+    }
+
+    void countOffAcName() {
+        for (int i = 0; i < 6; i++) {
+            System.out.print(broQueue[i].getName()+" ");
+        }
+        System.out.println(broQueue[6].getName());
+    }
+
+    void countOffAcColor() {
+        for (int i = 0; i < 6; i++) {
+            System.out.print(broQueue[i].getColor().CName+" ");
+        }
+        System.out.println(broQueue[6].getColor().CName);
+    }
+}
+
+// SortAlg - BubbleSort & BiSort
+abstract class SortAlg {
+    public abstract void sort(CalabashBro array[], int n);
+}
+
+class BubbleSort extends SortAlg {
+    public void sort(CalabashBro array[], int n){
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (array[j].ordinal() > array[j+1].ordinal()) {
@@ -56,16 +102,11 @@ public class SortAndCount {
                 }
             }
         }
-
-        // count off
-        for (int i = 0; i < n-1; i++) {
-            System.out.print(array[i].getName()+" ");
-        }
-        System.out.println(array[n-1].getName());
     }
+}
 
-    private static void BiSort(CalabashBro array[], int n) {
-        // sort
+class BiSort extends SortAlg {
+    public void sort(CalabashBro array[], int n){
         for (int i = 0; i < n; i++) {
             CalabashBro current = array[i];
             int hd = 0, tl = i-1, mid = 0;
@@ -85,44 +126,41 @@ public class SortAndCount {
                 array[hd].changePlace(hd);
             }
         }
+    }
+}
 
-        // count off
-        for (int i = 0; i < n-1; i++) {
-            System.out.print(array[i].getColor().CName+" ");
-        }
-        System.out.println(array[n-1].getColor().CName);
+public class SortAndCount {
+    private static SortAlg alg;
+
+    private static void SortByName(CBQueue cbq) {
+        alg = new BubbleSort();
+        alg.sort(cbq.broQueue, 7);
     }
 
-    private static void randomQueue(CalabashBro[] broQueue, int n) {
-        // generate random number ( place of CalabashBro )
-        Random rd = new Random();
-        boolean []setDown = new boolean[n];
-        for (int i = 0; i < n; i++) {
-            setDown[i] = false;
-        }
-
-        int idx;
-        for (int i = 0; i < n; i++) {
-            // avoid collision
-            do {
-                idx = rd.nextInt(n);
-            }while(setDown[idx]);
-            setDown[idx] = true;
-            broQueue[i] = CalabashBro.values()[idx];
-            broQueue[i].setPlace(i);
-        }
+    private static void SortByColor(CBQueue cbq) {
+        alg = new BiSort();
+        alg.sort(cbq.broQueue, 7);
     }
 
     public static void main(String[] args) {
-        int num = 7;
-        CalabashBro[] broQueue = new CalabashBro[num];
+        CBQueue cbqueue = new CBQueue();
 
-        randomQueue(broQueue, num);
-        BubbleSort(broQueue, num);
+        cbqueue.randomQueue();
+        System.out.println("Before sorting by name:");
+        cbqueue.countOffAcName();
+        SortByName(cbqueue);
+        System.out.println("After sorting by name:");
+        cbqueue.countOffAcName();
 
         System.out.println();
 
-        randomQueue(broQueue, num);
-        BiSort(broQueue, num);
+        cbqueue.randomQueue();
+        System.out.println("Before sorting by color:");
+        cbqueue.countOffAcName();
+        cbqueue.countOffAcColor();
+        SortByColor(cbqueue);
+        System.out.println("After sorting by color:");
+        cbqueue.countOffAcName();
+        cbqueue.countOffAcColor();
     }
 }
