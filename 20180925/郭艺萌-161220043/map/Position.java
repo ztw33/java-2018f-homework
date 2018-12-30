@@ -5,14 +5,12 @@ import creature.*;
 public class Position {
 
 	private int x, y;
-	private boolean isSet; 
 	private Creature creature;
 	
 	public Position(int x, int y) {
 		this.x = x;
 		this.y =y;
-		this.isSet = false;
-		this.creature = null; //?
+		this.creature = null; 
 	}
 	
 	public int getX() {
@@ -21,27 +19,24 @@ public class Position {
 	public int getY() {
 		return this.y;
 	}
-	public boolean getIsSet() {
-		return isSet;
-	}
 	public Creature getCreature() {
-		if (isSet) {
+		if (this.creature != null) {
 			return this.creature;
 		} else {
-		//	System.out.println("米有东西");
 			return null;
 		}
 	}
-	
+	public boolean getIsSet() {
+		return (this.creature != null);
+	}
 	public void setCreature(Creature creature) {
-		if (isSet) {
+		if (this.creature != null) {
 		//	System.out.println("~~移走啦");
+			this.creature = null;
 		}
-		isSet = true;
 		this.creature = creature;
 	}
 	public void removeCrearure() {
-		isSet = false;
-		this.creature = null; //?
+		this.creature = null; 
 	}
 }

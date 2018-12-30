@@ -1,17 +1,15 @@
-public class Snake extends Creature{
-    private String name;
+public class Snake extends Creature {
     Snake(){
-        name="蛇精";
-        x=y=0;
-        number=10;party=1;
+        this.name="蛇精";
+        this.x=this.y=0;
+        this.number=10;
+        this.type=CreatureType.SNAKE;
     }
     Snake(int get_x,int get_y){
-        name="蛇精";
-        x=get_x;y=get_y;
-        number=10;party=1;
-    }
-    public void report_name(){//打印名字
-        System.out.print(name+"  ");
+        this.name="蛇精";
+        this.x=get_x;this.y=get_y;
+        this.number=10;
+        this.type=CreatureType.SNAKE;
     }
     public void Cheer(){
         System.out.println("Cheer! (from 蛇精)");

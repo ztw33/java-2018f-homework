@@ -1,4 +1,4 @@
-﻿package creature;
+package creature;
 
 import java.util.Random;
 
@@ -20,16 +20,9 @@ public class CalabashBrother {
 		CalabashBody temp = order[p];
 		order[p] = order[q];
 		order[q] = temp;
-		
-//		if (isSort) {
-//			System.out.println(order[p].getName() + ":" + (q+1) + "->" + (p+1));
-//			System.out.println(order[q].getName() + ":" + (p+1) + "->" + (q+1));
-//		}
 	}
 	
 	public  void randomOrder() {
-//		System.out.println();
-//		System.out.println("Random:");
 		Random count = new Random();
 		for (int i = 0; i < count.nextInt(10)+3; i++) {
 			Random p = new Random();
@@ -39,8 +32,6 @@ public class CalabashBrother {
 	}
 	
 	public void bubbleSort() {
-//		System.out.println();
-//		System.out.println("Bubble Sort:");
 		for (int i = 0; i < 7; i++) {
 			for (int j = 1; j < 7-i; j++) {
 				if (order[j-1].getNo() > order[j].getNo()) 

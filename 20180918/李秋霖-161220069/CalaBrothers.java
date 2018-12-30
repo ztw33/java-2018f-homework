@@ -39,8 +39,10 @@ public class CalaBrothers {
 		tmp = brothers[i];
 		brothers[i] = brothers[j];
 		brothers[j] = tmp;
-		System.out.println("老大：" + i + "->" + j);
-		System.out.println("老大：" + j + "->" + i);
+		brothers[i].printName();
+		System.out.println(":" + i + "->" + j);
+		brothers[j].printName();
+		System.out.println("：" + j + "->" + i);
 	}
 
 	public void bubbleSort() {

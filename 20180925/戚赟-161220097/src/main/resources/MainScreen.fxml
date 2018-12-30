@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mywidget" prefHeight="600.0" prefWidth="1200.0" stylesheets="GUI_calabash.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CalashBro.MyController">
+   <children>
+      <BorderPane prefHeight="650.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <Canvas fx:id="mycanvas" height="500.0" width="1000.0" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <MenuBar fx:id="mymenu" prefHeight="35.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu fx:id="File" mnemonicParsing="false" text="文件">
+                  <items>
+                    <MenuItem fx:id="init" mnemonicParsing="false" text="初始化" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="改变阵型">
+                  <items>
+                    <MenuItem fx:id="change" mnemonicParsing="false" onAction="#set_queue" text="小怪改变阵型" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="帮助">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="帮助" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
