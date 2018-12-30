@@ -1,0 +1,45 @@
+formation 0
+move Hulu1 1 3 2 3
+move Hulu2 1 2 2 2
+move LoLo3 7 2 6 2
+move Scropion 5 4 4 4
+move LoLo1 4 3 3 3
+move Snake 5 3 4 3
+move Hulu7 1 6 2 6
+move Hulu6 1 0 2 0
+move Grandpa 0 3 1 3
+move Hulu5 1 5 2 5
+defeat Hulu2 LoLo0
+move Hulu4 1 1 2 1
+move Hulu3 1 4 2 4
+move LoLo3 6 2 5 2
+defeat Snake Hulu1
+defeat Hulu2 LoLo1
+move Scropion 4 4 3 4
+move LoLo2 6 3 5 3
+defeat Scropion Hulu5
+move Hulu7 2 6 3 6
+move Hulu6 2 0 3 0
+move Hulu4 2 1 3 1
+defeat Hulu3 Scropion
+move LoLo3 5 2 4 2
+move Hulu7 3 6 4 6
+move Hulu6 3 0 4 0
+defeat Hulu4 LoLo3
+move Hulu3 2 4 4 4
+move Hulu2 2 2 5 2
+defeat LoLo2 Hulu3
+move Hulu4 3 1 4 1
+move Hulu7 4 6 5 6
+move Hulu6 4 0 5 0
+move Hulu2 5 2 6 2
+move Hulu7 5 6 6 6
+move Hulu4 4 1 5 1
+move Hulu6 5 0 6 0
+move Hulu2 6 2 7 2
+move Hulu6 6 0 7 0
+move Hulu4 5 1 6 1
+move Hulu7 6 6 7 6
+defeat Hulu2 LoLo2
+defeat Hulu2 Snake
+Winner HuluBrothers
