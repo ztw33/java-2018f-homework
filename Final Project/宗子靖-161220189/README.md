@@ -2,6 +2,7 @@
 
 ----------
 ## 运行结果演示
+![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/SceneBuilder.PNG "Battle")
 ---
 ## 程序代码及设计思路
 ### 构建基本框架
@@ -33,7 +34,7 @@
 </project>
 ```
 - ##### 在src/main/resource中添加项目所需图片
-- ##### 在src/main/resource中添加创建窗口的资源文件game.fxml
+- ##### 在src/main/resource中添加创建窗口的资源文件game.fxml，用SceneBuilder进行管理
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 
