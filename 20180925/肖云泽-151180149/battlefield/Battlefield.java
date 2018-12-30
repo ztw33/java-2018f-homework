@@ -1,51 +1,43 @@
-﻿package battlefield;
+package battlefield;
 
-import creature.*;
+import creatures.*;
+import formation.*;
+import java.util.ArrayList;
+
 
 public class Battlefield {
-	public Unit[][] units;
-	public Battlefield() {
-		this.units = new Unit[15][15];
-		for (int i=0; i<15; i++) {
-			for (int j=0; j<15; j++) {
-				units[i][j] = new Unit(new Creature(), new Position(i, j));
+	ArrayList<Unit<Creature>> units = new ArrayList<>();
+	private int width = 15;
+	private int length = 15;
+	public Battlefield(){
+		for (int i=0; i<width; i++) {
+			for (int j=0; j<length; j++) {
+				units.add(new Unit<Creature>(new Position(j,i)));
 			}
 		}
 	}
-	public Battlefield(int N){
-		this.units = new Unit[N][N];
-		for (int i=0; i<N; i++) {
-			for (int j=0; j<N; j++) {
-				units[i][j] = new Unit(new Creature(), new Position(i, j));
-			}
-		}
+	public void place(Unit<Creature> u, Creature c) {
+		u.setCreature(c);
 	}
-	public void place(Queue q, Formation f) {
-		if (q.queue.length > f.arr.array.length) {
-			System.out.println("Too long Queue");
-			return;
-		}
-		for (int i=0; i<q.queue.length; i++) {
-			units[f.arr.array[i].y][f.arr.array[i].x].position = f.arr.array[i];
-			units[f.arr.array[i].y][f.arr.array[i].x].creature = q.queue[i];
-		}
-		for (int i=q.queue.length; i<f.arr.array.length; i++) {
-			units[f.arr.array[i].y][f.arr.array[i].x].position = f.arr.array[i];
-			units[f.arr.array[i].y][f.arr.array[i].x].creature = new Minion();
-		}
+	public void place(Position p, Creature c) {
+		units.get(p.getX() + width * p.getY()).setCreature(c);
 	}
-	public void place(Creature c, Position p) {
-		units[p.y][p.x].position = p;
-		units[p.y][p.x].creature = c;
+	public void placeQueue(Queue<Creature> q, Formation f) {
+		if(q.getLength() != f.getLength()) {
+			throw new IllegalArgumentException("The queue doesn't the formation");
+		}
+		for (int i=0; i<q.getLength(); i++) {
+			place(units.get(f.getArray()[i].getX() + width * f.getArray()[i].getY()), q.queue.get(i));
+		}
 	}
 	public void showBattlefield() {
 		String chinese = "[\u4e00-\u9fa5]";
-		for (int i=0; i<units.length; i++) {
-			for (int j=0; j<units[0].length; j++) {
-				System.out.print(units[i][j].creature.getName());
+		for (int i=0; i<width * length; i++) {
+			try {
+				System.out.print(units.get(i).getCreature().getName());
 				int length = 0;
-				for (int p=0; p<units[i][j].creature.getName().length(); p++) {
-					String temp = units[i][j].creature.getName().substring(p, p + 1);
+				for (int p=0; p<units.get(i).getCreature().getName().length(); p++) {
+					String temp =units.get(i).getCreature().getName().substring(p, p + 1);
 					if (temp.matches(chinese)) {
 						length += 2;
 					} else {
@@ -55,19 +47,26 @@ public class Battlefield {
 				for (int p=0; p<10-length; p++) {
 					System.out.print("\0");
 				}
+			}catch(Exception e) {
+				System.out.print("null      ");
 			}
-			System.out.print("\n");
+			if(i % width == width - 1) {
+				System.out.print("\n");
+			}
 		}
-		System.out.print("\n");
+		System.out.println();
 	}
-	public void changeFormation(Queue q, Formation old, Formation target) {
-		this.deleteFormation(q, old);
-		System.out.print("Next formation:\n");
-		this.place(q, target);
-	}
-	public void deleteFormation(Queue q, Formation f) {
-		for (int i=0; i<q.queue.length; i++) {
-			units[f.arr.array[i].y][f.arr.array[i].x].creature = new Creature();
+	public void clear(Queue<Creature> q, Formation f) {
+		if(q.getLength() != f.getLength()) {
+			throw new IllegalArgumentException("The queue doesn't the formation");
 		}
+		for (int i=0; i<q.getLength(); i++) {
+			units.get(f.getArray()[i].getX() + width * f.getArray()[i].getY()).setCreature(null);;
+		}
+	}
+	public void changeFormation(Queue<Creature> old, Queue<Creature> next, Formation oldf, Formation nextf) {
+		System.out.println("Change Formation:");
+		clear(old, oldf);
+		placeQueue(next, nextf);
 	}
 }

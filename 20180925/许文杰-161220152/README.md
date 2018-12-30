@@ -1,7 +1,14 @@
 # 第三次作业
 
+## 更新v4
+1. 使用javafx进行GUI绘制
+2. 更新文件结构，删除Player类，其功能由Main类代替。将数据部分放在data包中，将GUI界面部分放在sample包中，实现数据与界面的分离。
+![1](image/类.PNG)<!-- .element width="80%" height="65%" -->
+ - 运行结果
+![1](image/界面.png)<!-- .element width="80%" height="65%" -->
+
 ## 更新v3
-1. 在camp类中使用泛型，成功解决了第二次更新后遗留的问题，通过getLeader方法返回的leader对象即为创建时传进的对象，可以使用他自己的方法。
+1.在camp类中使用泛型，成功解决了第二次更新后遗留的问题，通过getLeader方法返回的leader对象即为创建时传进的对象，可以使用他自己的方法。
 ```java
 public class Camp<T extends Unit> {
     private ArrayList<Unit>soldiers;
@@ -13,7 +20,7 @@ public class Camp<T extends Unit> {
     }
 }
 ```
-2. 在相关方法中的Camp参数中使用类型通配符。
+2.在相关方法中的Camp参数中使用类型通配符。
 ```java
 public static void ChangShe(BattleField field,Camp<? extends Unit> camp, int start);
 ```

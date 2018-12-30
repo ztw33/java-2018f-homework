@@ -240,19 +240,19 @@ private class KeyMonitor extends KeyAdapter{
 
 ## 4.部分效果展示
 
-<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E9%95%BF%E8%9B%872.PNG?raw=true">
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E9%94%8B%E7%9F%A2.PNG?raw=true">
 
-<center>长蛇</center>
+<center>锋矢</center>
 
-<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E6%96%B9%E9%97%A82.PNG?raw=true">
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E6%96%B9%E9%97%A8.PNG?raw=true">
 
 <center>方门</center>
 
-<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E9%B9%A4%E7%BF%BC2.PNG?raw=true">
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E9%B1%BC%E9%B3%9E.PNG?raw=true">
 
-<center>鹤翼</center>
+<center>鱼鳞</center>
 
-<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E5%81%83%E6%9C%882.PNG?raw=true">
+<img src="https://github.com/KSDeng/pictures/blob/master/pictures/javaHW3/result/%E5%81%83%E6%9C%88.PNG?raw=true">
 
 <center>偃月</center>
 

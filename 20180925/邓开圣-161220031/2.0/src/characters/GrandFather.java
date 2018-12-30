@@ -10,7 +10,7 @@ import shapes.Location;
 
 public class GrandFather extends Creature{
 	private static Image img = new ImageIcon("resources/characters/grandfather/grandfather2.PNG").getImage();
-	private int fatherSizex = 80, fatherSizey = 80;
+	private int fatherSizex = 100, fatherSizey = 100;
 	
 	public GrandFather(Location l, Administrator ad) {
 		this.loc = l;

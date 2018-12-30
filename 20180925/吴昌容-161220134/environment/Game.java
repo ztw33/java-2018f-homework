@@ -2,6 +2,10 @@ package environment;
 
 import creature.*;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 public class Game {
     public static void main(String[] args) {
         Battlefield world = new Battlefield(7);
@@ -46,22 +50,15 @@ public class Game {
 
     static void initializeFormation(Leader snaker, Leader grandpa) {
         //Initialize formations
-        int[][] fmCoord1 = {{5, 0}, {6, 1}, {5, 2}, {6, 3}, {5, 4}, {6, 5}, {5, 6}};
-        int[] pos1 = {4, 3};
-        Formation fm1 = new Formation(fmCoord1, "衡轭阵", pos1);
-        int[][] fmCoord2 = {{3, 3}, {4, 4}, {4, 2}, {5, 5}, {5, 1}, {6, 4}, {6, 2}};
-        int[] pos2 = {5, 3};
-        Formation fm2 = new Formation(fmCoord2, "方阵", pos2);
-        snaker.addFormation(fm1);
-        snaker.addFormation(fm2);
-
-        int[][] fmCoord3 = {{0, 0}, {0, 1}, {0, 2}, {0, 3}, {0, 4}, {0, 5}, {0, 6}};
-        int[] pos3 = {1, 2};
-        Formation fm3 = new Formation(fmCoord3, "长蛇阵", pos3);
-        int[][] fmCoord4 = {{0, 0}, {0, 1}, {0, 2}, {0, 3}, {0, 4}, {0, 5}, {0, 6}};
-        int[] pos4 = {1, 4};
-        Formation fm4 = new Formation(fmCoord4, "长蛇阵", pos4);
-        grandpa.addFormation(fm3);
-        grandpa.addFormation(fm4);
+        snaker.addFormation(new File("res\\monsterFormationConfig.txt"));
+        URL file2 = Game.class.getResource("/res/huluwaFormationConfig.txt");
+        if (file2 != null) {
+            try {
+                grandpa.addFormation(new File(file2.toURI()));
+            }
+            catch (URISyntaxException urise) {
+                urise.printStackTrace();
+            }
+        }
     }
 }

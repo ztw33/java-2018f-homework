@@ -1,11 +1,30 @@
 public class Creature {
     protected CreatureName name;
-
+    int x;
+    int y;
+    int blood;
     Creature(){
         this.name = CreatureName.Undefined;
+        x=-1;
+        y=-1;
+        blood=100;
     }
     Creature(CreatureName cn){
+        this();
         this.name = cn;
+    }
+    public CreatureName getName(){
+        return this.name;
+    }
+    public void setPosition(int x,int y){
+        this.x = x;
+        this.y = y;
+    }
+    public int getX(){
+        return this.x;
+    }
+    public int getY(){
+        return this.y;
     }
 }
 
@@ -31,18 +50,12 @@ class GrandFather extends Creature{
     GrandFather(){
         this.name = CreatureName.GrandFather;
     }
-    //public void cheer(Map map){
-    //    map.setCreature(this,map.getSize()/2-1, 0);
-    //}
 }
 
 class Snake extends Creature{
     Snake(){
         this.name = CreatureName.Snake;
     }
-    //public void cheer(Map map){
-    //    map.setCreature(this,map.getSize()/2+1, map.getSize()-1);
-    //}
 }
 
 class Scorpion extends Creature{
@@ -55,7 +68,16 @@ class Underling extends Creature{
     private int number;
 
     Underling(int number){
-        this.name = CreatureName.Underling;
         this.number = number;
+        switch (number) {
+            case 0:name = CreatureName.Underling1;break;
+            case 1:name = CreatureName.Underling2;break;
+            case 2:name = CreatureName.Underling3;break;
+            case 3:name = CreatureName.Underling4;break;
+            case 4:name = CreatureName.Underling5;break;
+            case 5:name = CreatureName.Underling6;break;
+            case 6:name = CreatureName.Underling7;break;
+            case 7:name = CreatureName.Underling8;break;
+        }
     }
 }

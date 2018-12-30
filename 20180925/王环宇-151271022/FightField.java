@@ -1,77 +1,56 @@
 /*
- * ÒÔÔìÊÀÖ÷µÄ½Ç¶È£¬´´½¨Ë«·½ÉÏ³¡µÄÕ½Ê¿£¬²¢½«Æä×éÖ¯·ÅÈëÕ½³¡ÖĞ¡£
+ * ä»¥é€ ä¸–ä¸»çš„è§’åº¦ï¼Œåˆ›å»ºåŒæ–¹ä¸Šåœºçš„æˆ˜å£«ï¼Œå¹¶å°†å…¶ç»„ç»‡æ”¾å…¥æˆ˜åœºä¸­ã€‚
  * @see class FightFileld, class Formation, Class Team.
  * @author why
  * @Time 2018-11-12
  * @version 3.0
  * 
- * version 4.0 ĞŞ¸Ä½¨Òé£º
- * Ôö¼ÓÂÒĞò²Ù×÷ºÍÅÅĞò²Ù×÷£¬Ê¹µÃ³ÌĞò¸ü¼Ó·ûºÏÒªÇó £¬Íê³ÉÁËÂÒĞò²Ù×÷£¬¶øÃ»ÓĞÍê³ÉÅÅĞò²Ù×÷
- * ÅÅĞò²Ù×÷ÊÇÒ»¸ö´óÎÊÌâ£¬BadÕóÓªÖĞ£¬Ò»´óÒ»Ğ¡£¬ÆäËæ£»GoodÕóÓªÖĞ£¬Íê³ÉÁËEnumÖ®ºó±È½Ï»á¼òµ¥Ğ©
- * ÔÚJavaÖĞ£¬¶ÔÓÚÈİÆ÷µÄÅÅĞòÊÇ·ñÒ²ÊÇÄÇÃ´¼òµ¥£¿
+ * version 4.0 ä¿®æ”¹å»ºè®®ï¼š
+ * å¢åŠ ä¹±åºæ“ä½œå’Œæ’åºæ“ä½œï¼Œä½¿å¾—ç¨‹åºæ›´åŠ ç¬¦åˆè¦æ±‚ ï¼Œå®Œæˆäº†ä¹±åºæ“ä½œå’Œæ’åºæ“ä½œï¼Œä½†æ˜¯æ’åºæ“ä½œè¿˜ä¸å¤Ÿå®Œå–„ã€‚
  * 
- * Ê¹ÓÃ·ºĞÍÍê³É´úÂë£¬³¢ÊÔ·ºĞÍÖĞµÄÄÇĞ©·½·¨£¬Í¬Ê±Ò²ÀûÓÃÕâ¸öÊ±¼äÀ´»Ø¹ËÒ»ÏÂ·ºĞÍµÄÒ»Ğ©ÄÚÈİ
+ * ä½¿ç”¨æ³›å‹å®Œæˆä»£ç ï¼Œå°è¯•æ³›å‹ä¸­çš„é‚£äº›æ–¹æ³•ï¼ŒåŒæ—¶ä¹Ÿåˆ©ç”¨è¿™ä¸ªæ—¶é—´æ¥å›é¡¾ä¸€ä¸‹æ³›å‹çš„ä¸€äº›å†…å®¹
  * 
  * */
 
-package javahw3;
 import java.util.Random;
 //import java.util.ArrayList;
 import java.util.Scanner;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.io.*;
+
 
 
 
 public class FightField {
 	/*
-	 * ³ÌĞòÖ÷ÒªµÄÖ´ĞĞÈë¿Ú£¬ÔÚ´ËÀàÖĞµ¼ÈëÕ½³¡£¬¼ÓÈëÕ½Ê¿£¬Ñ¡ÔñÕóĞÍ£¬ÏÔÊ¾Õ½³¡ĞÅÏ¢.
+	 * ç¨‹åºä¸»è¦çš„æ‰§è¡Œå…¥å£ï¼Œåœ¨æ­¤ç±»ä¸­å¯¼å…¥æˆ˜åœºï¼ŒåŠ å…¥æˆ˜å£«ï¼Œé€‰æ‹©é˜µå‹ï¼Œæ˜¾ç¤ºæˆ˜åœºä¿¡æ¯.
 	 * <p>
-	 *     ÔÚ´ËÀàÖĞÉú³ÉWarriorµÄ³ÉÔ±£¬×÷Îª²ÎÓëÕ½¶·µÄÖ÷Ìå³ÉÔ±<br>
-	 *     ´ËÀàÖĞ»¹ÓÃµ½µÄTeamÀàµÄ³ÉÔ±ÒÔ¼°FormationÀàµÄ³ÉÔ±<br>
-	 *     ËùÓĞµÄÖ´ĞĞĞÔ¶¯×÷ÔÚ±¾ÀàÖĞÍê³É¡£<br>
-	 * @param true: ÕıÈ·, false: ´íÎó
-	 * @return£º boolean 
+	 *     åœ¨æ­¤ç±»ä¸­ç”ŸæˆWarriorçš„æˆå‘˜ï¼Œä½œä¸ºå‚ä¸æˆ˜æ–—çš„ä¸»ä½“æˆå‘˜<br>
+	 *     æ­¤ç±»ä¸­è¿˜ç”¨åˆ°çš„Teamç±»çš„æˆå‘˜ä»¥åŠFormationç±»çš„æˆå‘˜<br>
+	 *     æ‰€æœ‰çš„æ‰§è¡Œæ€§åŠ¨ä½œåœ¨æœ¬ç±»ä¸­å®Œæˆã€‚<br>
+	 * @param true: æ­£ç¡®, false: é”™è¯¯
+	 * @returnï¼š boolean 
 	 * */
+	static final String pwd = "/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/";
 	static int SHUFFLE = 50;
-	
+	private String file_name;
 	private static final int N = 15;
 	public Warrior[][] fields;
+	
+	static final SimpleDateFormat DF = new SimpleDateFormat("_MMdd");//è®¾ç½®æ—¥æœŸæ ¼å¼
+	static final String FILE_DATE = DF.format(new Date());// new Date()ä¸ºè·å–å½“å‰ç³»ç»Ÿæ—¶é—´
+	static final SimpleDateFormat DF1 = new SimpleDateFormat("YYYY-MM-dd HH:mm");//è®¾ç½®æ—¥æœŸæ ¼å¼
 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		FightField ff = new FightField();
-		//µÇÂ¼Ã¿¶ÓµÄÕ½Ê¿²¢ÇÒÏÔÊ¾Æä»ù±¾ĞÅÏ¢
-		Team teamGood = new Team("GoodMan");
-		Team teamBad = new Team("BadMan");
-		loading(teamGood, teamBad);
-		try {
-			teamGood.checkMember();
-			teamBad.checkMember();
-		}catch(MyException e) {
-		}
-		teamGood.showTeam();
-		teamBad.showTeam();
-		//³õÊ¼»¯ÕóĞÍ
-		Formation.initialization();
-		/*-----------------------ROUND 1------------------------*/
-		System.out.println("ROUND1");
-		ff.round(teamGood, teamBad, in);
-		ff.showFields();
-		
-		System.out.println();
-		/*-----------------------ROUND 2------------------------*/
-		ff.initialization();
-		System.out.println("ROUND2");
-		ff.round(teamGood, teamBad, in);
-		ff.showFields();
-		
-		in.close();
-		
-		teamGood.showTeam();
-		teamBad.showTeam();
-	}
+
 	//Constructor
 	private FightField() {
+		file_name = new String();
 		initialization();
+		
+		file_name = "/Users/huanyu_wang/eclipse-workspace/JavaHomework/src/"+"FightField"+ FILE_DATE + ".txt";
+		this.writeToFile(DF1.format(new Date()));
 	}
 
 	private void initialization() {
@@ -79,22 +58,147 @@ public class FightField {
 	}
 	
 	private static void loading(Team teamGood, Team teamBad) {
-		System.out.println("´´½¨¼´½«ÉÏ³¡½øĞĞ¶Ô¾öµÄ¶ÔÏó......");
-		String name = "´ó¶şÈıËÄÎåÁùÆß";
+		System.out.println("åˆ›å»ºå³å°†ä¸Šåœºè¿›è¡Œå¯¹å†³çš„å¯¹è±¡......");
+		String name = "å¤§äºŒä¸‰å››äº”å…­ä¸ƒ";
 		for (int i=0; i<7; i++) {
-			teamGood.add(new CalabashBrothers(name.charAt(i) + "ÍŞ", ""));
+			teamGood.add(new CalabashBrothers(name.charAt(i) + "å¨ƒ", ""));
 		}
-		teamGood.add(new Warrior("ÀÏÒ¯Ò¯", "¿´Ï·", teamBad.getSide()));
-		teamBad.add(new Warrior("Ğ«×Ó¾«", "Áì¶Ó", teamBad.getSide()));
-		for (int i=0; i<5; i++) {
-			teamBad.add(new Warrior("Ğ¡±ø"+i, "³å·æ", teamBad.getSide()));
-		}
-		teamBad.add(new Warrior("Ğ¡±ø"+6, "³å·æ", teamGood.getSide()));
-		teamBad.add(new Warrior("Éß¾«", "¿´Ï·", teamBad.getSide()));
+		teamGood.load(pwd + "GoodMan.txt");
+		teamBad.load(pwd + "BadMan.txt");
 		// shuffle
 		shuffle(teamGood);
 		shuffle(teamBad);
 	}
+	
+	// show the fields
+	private String showFields() {
+		String result = new String();
+		result += "***************************************************æˆ˜åœºå¯¹é˜µæƒ…å†µ****************************************************\n";
+		for (int i=0; i<N; i++) {
+			for (int j=0; j<N; j++) {
+				if(fields[i][j]==null) result += "---";
+				else result += fields[i][j];
+				result += "\t";	
+			}
+			result += "\n";
+		}
+		result += "***************************************************æˆ˜åœºå¯¹é˜µæƒ…å†µ****************************************************\n";
+		return result;
+	}
+	
+	//å°†åŒæ–¹çš„æ­¦å°†é€ä¸Šæˆ˜åœº
+	private void goBattle(Team team, int[][] place) {
+		team.goBattle(fields, place);
+	}
+	
+	//è‡ªå®šä¹‰é€‰æ‹©åŒæ–¹çš„é˜µå‹
+	private void round(Team teamGood, Team teamBad, Scanner in) {
+		Formation.show();
+		int f1 = -1;
+		// deal with the error: index out of bounds
+		this.goBattle(teamGood, Formation.getForm(0, 1));
+		try {
+			f1 = in.nextInt();
+			this.goBattle(teamBad, Formation.getForm(f1, 2));
+			this.writeToFile("é€‰æ‹©é˜µå‹"+f1+":"+Formation.name.get(f1));
+		}catch( IndexOutOfBoundsException e){
+			System.out.println("your input is out of bound! please input again!");
+			f1 = in.nextInt();
+			this.goBattle(teamBad, Formation.getForm(f1, 2));
+		}
+	}
+	
+	
+	private void writeToFile(String str) {
+		System.out.println(str);
+		try {
+			File file =new File(file_name);
+			if(!file.exists()){
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(str);
+			bw.write("\n");
+			bw.close();
+		
+		}catch(IOException e){
+				e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("all")
+	private void loading() {
+//		try {
+//			FileInputStream fis = new FileInputStream(pwd+"test.txt");
+//			ObjectInputStream ois = new ObjectInputStream(fis);
+//			Warrior w3 = (Warrior) ois.readObject();
+//			w3.showMe();
+//			Warrior w4 = (Warrior) ois.readObject();
+//			w4.showMe();
+//			ois.close();
+//		}
+//		catch (IOException e) 
+//		{		
+//			e.printStackTrace();
+//		}
+//		catch (ClassNotFoundException e2) {
+//			e2.printStackTrace();
+//		}
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		FightField ff = new FightField();
+		
+		//ç™»å½•æ¯é˜Ÿçš„æˆ˜å£«å¹¶ä¸”æ˜¾ç¤ºå…¶åŸºæœ¬ä¿¡æ¯
+		@TeamSide(side = "GoodTeam")
+		Team teamGood = new Team("GoodMan");
+		
+		@TeamSide(side = "BadTeam")
+		Team teamBad = new Team("BadMan");
+		
+		loading(teamGood, teamBad);
+		try {
+			teamGood.checkMember();
+			teamBad.checkMember();
+		}catch(MyException e) { }
+		
+		teamGood.showTeam();
+		teamBad.showTeam();
+		
+		System.out.println("\nAfter sort the team:");
+		teamGood.sortTeam();
+		teamBad.sortTeam();
+		
+		teamGood.showTeam();
+		teamBad.showTeam();
+		
+		//åˆå§‹åŒ–é˜µå‹
+		Formation.initialization();
+		/*-----------------------ROUND 1------------------------*/
+		ff.writeToFile("ROUND1");
+		ff.round(teamGood, teamBad, in);
+		ff.writeToFile(ff.showFields());
+		/*-----------------------ROUND 2------------------------*/
+		ff.initialization();
+		ff.writeToFile("ROUND2");
+		ff.round(teamGood, teamBad, in);
+		ff.writeToFile(ff.showFields());
+		
+		in.close();
+		
+		teamGood.showTeam();
+		teamBad.showTeam();
+		
+		ff.writeToFile("\n\n");
+		
+		teamGood.writeWarriors(pwd+"Warriors" + FILE_DATE + ".dat");
+		teamBad.writeWarriors(pwd+"Warriors" + FILE_DATE + ".dat");
+	}
+	
 	
 	public static void shuffle(Team team) {
 		Random rdm = new Random();
@@ -109,48 +213,6 @@ public class FightField {
 				team.team.set(t1, team.team.get(t2));
 				team.team.set(t2, w);
 			}
-		}
-	}
-	
-	// show the fields
-	private void showFields() {
-		System.out.println("***************************************************Õ½³¡¶ÔÕóÇé¿ö****************************************************");
-		for (int i=0; i<N; i++) {
-			for (int j=0; j<N; j++) {
-				if(fields[i][j]==null)
-					System.out.print("---");
-				else
-					System.out.print(fields[i][j]);
-				System.out.print("\t");
-			}
-			System.out.println();
-		}
-		System.out.println("***************************************************Õ½³¡¶ÔÕóÇé¿ö****************************************************");
-	}
-	
-	//½«Ë«·½µÄÎä½«ËÍÉÏÕ½³¡
-	private void goBattle(Team team, int[][] place) {
-		team.goBattle(fields, place);
-	}
-	
-	//×Ô¶¨ÒåÑ¡ÔñË«·½µÄÕóĞÍ
-	private void round(Team teamGood, Team teamBad, Scanner in) {
-		System.out.println("************Ë«·½Õ½Ê¿ÉÏ³¡*************");
-		System.out.println("********ÇëÑ¡ÔñÑı¾«ÉÏ³¡µÄÕóĞÍ*********");
-		System.out.println("**********0----------³¤ÉßÕó**********");
-		System.out.println("**********1----------ÑãĞÎÕó**********");
-		System.out.println("**********2----------º×ÒíÕó**********");
-		System.out.println("**********3----------³åéîÕó**********");
-		int f1 = -1;
-		// deal with the error: index out of bounds
-		this.goBattle(teamGood, Formation.getForm(0, 1));
-		try {
-			f1 = in.nextInt();
-			this.goBattle(teamBad, Formation.getForm(f1, 2));
-		}catch( IndexOutOfBoundsException e){
-			System.out.println("your input is out of bound! please input again!");
-			f1 = in.nextInt();
-			this.goBattle(teamBad, Formation.getForm(f1, 2));
 		}
 	}
 }

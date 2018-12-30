@@ -1,16 +1,18 @@
 package creature;
 
+import javafx.scene.image.Image;
+
 public class Being {
     private String name;
-    private char symbol;
-    public Being(String name,char symbol){
+    private Image image;
+    public Being(String name,Image image){
         this.name=name;
-        this.symbol=symbol;
+        this.image=image;
     }
     public String getName(){
         return this.name;
     }
-    public char getSymbol(){
-        return this.symbol;
+    public Image getImage(){
+        return this.image;
     }
 }

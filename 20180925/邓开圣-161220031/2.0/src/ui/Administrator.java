@@ -16,19 +16,22 @@ import java.net.URL;
 public class Administrator extends Frame{
 	
 	// ----------------------Properties--------------------------------
+	//主窗口尺寸
 	public static int mainwindow_sizex = 1600;
 	public static int mainwindow_sizey = 900;
 
 	//-------------------------Variables----------------------------------------
 	private static final long serialVersionUID = 1L;
-
+	//获取屏幕尺寸
 	private static Toolkit tk = Toolkit.getDefaultToolkit();
 	private static Dimension screen = tk.getScreenSize();
-	
+	//背景图地址
 	private static String bkpAddr = "http://i1.073img.com/130109/3848468_100453_1.jpg";
+	//背景图	
 	private static Image bkp;
 	
-	//葫芦娃信息和形象
+
+	//葫芦娃信息和形象的映射表
 	public static Map <CalabashInfo, Image> boysImg = new HashMap <CalabashInfo, Image>();
 	private static Image[] CalabashBoysImgs = null;
 	static {
@@ -51,21 +54,25 @@ public class Administrator extends Frame{
 	}
 	//随机数产生器
 	public static Random r = new Random();
-	
+	//存放各种人物
 	public Snake snake;	
 	public GrandFather grandfather;
+	//存放葫芦娃
 	public List <CalabashBoy> calabashes = new ArrayList <CalabashBoy>();
+	//蝎子精和喽啰
 	public List <Creature> monsters = new ArrayList <Creature>();
+	//阵型信息的数组
 	public static ShapeInfo[] spInfo_array = ShapeInfo.values();	
+	//葫芦娃信息的数组
 	public static CalabashInfo[] cbInfo_array = CalabashInfo.values();	
 	//绘图缓冲
 	Image OffScreenImage = null;
-	//葫芦娃阵型和妖怪阵型
+	//葫芦娃阵型和妖怪阵型,初始化为长蛇
 	public static ShapeInfo calabash_shape = ShapeInfo.changshe;
 	public static ShapeInfo monster_shape = ShapeInfo.changshe;
-	
+	//控制葫芦娃阵型的左右移动
 	private int xMove = 0;
-	
+	//重写container的update方法,将内容画到缓冲,再一次性画到原图上
 	@Override
 	public void update(Graphics g) {
 		if(OffScreenImage == null) {
@@ -75,23 +82,29 @@ public class Administrator extends Frame{
 		paint(gOffScreen);
 		g.drawImage(OffScreenImage, 0, 0, null);
 	}
-	
+	//重写window的paint方法
 	@Override
 	public void paint(Graphics g) {
+		//画背景图
+		//Image bkp = bkps[bkpNum];
 		g.drawImage(bkp, 0, 0, this.getWidth(), this.getHeight(), 0, 0, bkp.getWidth(null), bkp.getHeight(null), null);
 		
+		//画出所有葫芦娃
 		for(int i=0;i<calabashes.size();i++) {
 			calabashes.get(i).draw(g);
 		}
+		//画出蝎子精和小喽啰
 		for(int i=0;i<monsters.size();i++) {
 			monsters.get(i).draw(g);
 		}
+		//画出蛇精和老爷爷
 		snake.draw(g);
 		grandfather.draw(g);
 	}	
 	//设置阵型
 	private void set_shape() {
 		
+		//葫芦娃布阵
 		switch (calabash_shape) {
 		case heyi:		break;
 		case yanxing:	break;
@@ -112,11 +125,12 @@ public class Administrator extends Frame{
 			default: break;
 		}
 		
-		monsters.clear();
-		monsters.add(new Crab(new Location(0,0),this));	
+		monsters.clear();	//删除所有元素
+		monsters.add(new Crab(new Location(0,0),this));	//添加蝎子精
 		//妖精布阵
 		switch (monster_shape) {
 		case heyi:{
+			//添加小喽啰
 			for(int i=0;i<6;i++) {
 				this.monsters.add(new Gangster(new Location(0,0),this));
 			}
@@ -248,14 +262,15 @@ public class Administrator extends Frame{
 	public void change_shape() {
 		int n = r.nextInt(spInfo_array.length);
 		monster_shape = spInfo_array[n];
-		xMove = r.nextInt(400)-200;	
+		xMove = r.nextInt(400)-200;			//葫芦娃阵型横向移动
+		//bkpNum = r.nextInt(bkps.length);	//改变背景图
 		set_shape();
 		setLocGrandfatherSnake();
 	}
 	//改变老爷爷和蛇精的位置
 	public void setLocGrandfatherSnake() {
 		do {
-			int fatherX = r.nextInt(mainwindow_sizex/2)+grandfather.getSizex();
+			int fatherX = r.nextInt(mainwindow_sizex/3)+grandfather.getSizex();
 			int fatherY = r.nextInt(mainwindow_sizey-2*grandfather.getSizey())+grandfather.getSizey();
 			grandfather.setLoc(new Location(fatherX,fatherY));			
 		}while(grandfather.hitCalaBash(calabashes) || grandfather.hitOthers(monsters)
@@ -267,19 +282,21 @@ public class Administrator extends Frame{
 		}while(snake.hitCalaBash(this.calabashes) || snake.hitOthers(monsters));
 	}
 	
-	//键盘事件监听
+	//添加键盘事件监听,继承KeyAdapter类
 	private class KeyMonitor extends KeyAdapter{
 
+		//重写按下键盘事件的处理
 		@Override
 		public void keyPressed(KeyEvent e) {
 			switch(e.getKeyCode()) {
-			case KeyEvent.VK_SPACE: 	//按下空格键
+			//按下空格键时改变阵型
+			case KeyEvent.VK_SPACE: 
 				change_shape();
 				break;
 			default:break;
 			}
 		}
-
+		//重写释放键盘事件的处理
 		@Override
 		public void keyReleased(KeyEvent e) {
 			
@@ -291,17 +308,19 @@ public class Administrator extends Frame{
 		@Override
 		public void run() {
 			while(true) {
-				repaint();	
+				repaint();	//repaint()首先调用update(),再调用paint()
 				try {
-					Thread.sleep(50);	
+					Thread.sleep(50);	//暂停一段时间
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}					
 			}
 		}
 	}
+
 	
 	private void run() {
+		//从网页加载背景图
 		try {
 			URL bkpURL = new URL(bkpAddr);
 			bkp = tk.getImage(bkpURL);
@@ -309,34 +328,38 @@ public class Administrator extends Frame{
 			e.printStackTrace();
 		}
 
+		//添加葫芦娃
 		for(int i=0;i<cbInfo_array.length;i++) {
 			calabashes.add(new CalabashBoy(new Location(0,0),i,this));
 		}
-
+		//添加蛇精
 		this.snake = new Snake(new Location(0,0),this);
-
+		//添加老爷爷
 		this.grandfather = new GrandFather(new Location(0,0),this);
 		this.set_shape();
 		this.setLocGrandfatherSnake();
-
+		//设置标题、窗口大小、关闭事件
 		this.setTitle("java葫芦娃");
 		this.setSize(mainwindow_sizex, mainwindow_sizey);
-		this.addWindowListener(new WindowAdapter() {	
+		this.addWindowListener(new WindowAdapter() {	//定义窗口关闭事件
 			@Override
 			public void windowClosing(WindowEvent e) {
-				System.exit(0);		
+				System.exit(0);		//表示正常退出
 			}
 		});
 		//设置位置居中
 		int locx = (screen.width - this.getWidth())/2;
 		int locy = (screen.height - this.getHeight())/2;
 		this.setLocation(locx, locy);
+		//添加键盘事件监听器
 		this.addKeyListener(new KeyMonitor());
+		//setVisible(true)最好放在最后,以防出现空指针
 		this.setVisible(true);	
 		this.setResizable(false);
-
+		//创建重画线程并启动
 		new Thread(new PaintThread()).start();
 	}
+	
 	
 	public static void main(String[] args) {
 		Administrator admin = new Administrator();

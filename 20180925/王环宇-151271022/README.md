@@ -1,10 +1,32 @@
 # README
 
-## copyright@why | version 3.1 | date 2018-11-13
+## copyright@why | version 6.0 | date 2018-11-24
 
 ## https://github.com/cjnjuwhy
 
 >更新内容：
+>
+>更新建议：
+>
+>version6.0:
+>
+>完成了对程序的注解和测试功能。
+>
+>version5.1:
+>
+>> 增加了对象状态的调取，以及对象的保存，用于加载对象以及保存对象内容。
+>
+>version5.0:
+>
+>> 增加了文件的写入，通过formation.txt来读取Formation内的数据，以便方便地添加和删除阵型信息
+>>
+>> 增加了文件的输出，将每次模拟的结果输出到FightField.txt文件中。
+>
+>Version4.0:
+>
+>> 增加了排序操作，针对不同的队伍，完成了排序操作
+>>
+>> 使用范型完善了代码，并且在运行时对类型进行了检查
 >
 >version 3.1:
 >
@@ -38,6 +60,15 @@ WarriorInterface.java
 
 Formation.java
 FormationInterface.java
+
+TeamSide.java 		// 自定义注解，给人物加上标记
+CalabashTest.java 	// 用于测试
+
+FightField_MMDD.txt	// 用于保存场面信息，并且能够保存多次的内容
+formation.txt		// 用于保存队形信息
+GoodMan.txt			// 
+BadMan.txt			// 用于保存团队信息，在程序中加载对象
+Warriors_MMDD.dat	// 将最后的对象保存在文件中，以便保存战斗过程
 ```
 
 ##### 2. 编写思路

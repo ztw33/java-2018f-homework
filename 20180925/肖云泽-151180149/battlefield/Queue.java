@@ -1,104 +1,65 @@
-﻿package battlefield;
+package battlefield;
 
-import java.util.Random;
+import creatures.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
-import creature.*;
-
-public class Queue {
-	public Creature[] queue;
-	Queue(){
-		this.queue = new Creature[0];
+public class Queue <T extends Creature>{
+	public ArrayList<T> queue = new ArrayList<>();
+	public Queue(){		
 	}
-	public Queue(String[] namelist) {
-		this.queue = new Creature[namelist.length];
-		for (int i=0; i<namelist.length; i++) {
-			this.queue[i] = recognizeClass(namelist[i]);
+	public Queue(T[] creaturelist) {
+		for (T c : creaturelist) {
+			queue.add(c);
 		}
 	}
-	public void printQueue() {
-		for (int i=0; i<this.queue.length; i++) {
-			System.out.print(this.queue[i].getName() + " ");
-		}
+	public void add(T t) {
+		queue.add(t);
 	}
-	public Creature recognizeClass(String name) {
-		switch (name) {
-		case "Grandpa":
-			return new Grandpa();
-		case "Minion":
-			return new Minion();
-		case "Scorpion":
-			return new Scorpion();
-		case "Serpent":
-			return new Serpent();
-		case "0":
-			return new CalabashBrother(CalabashBrotherMask.RED);
-		case "1":
-			return new CalabashBrother(CalabashBrotherMask.ORANGE);
-		case "2":
-			return new CalabashBrother(CalabashBrotherMask.YELLOW);
-		case "3":
-			return new CalabashBrother(CalabashBrotherMask.GREEN);
-		case "4":
-			return new CalabashBrother(CalabashBrotherMask.CYAN);
-		case "5":
-			return new CalabashBrother(CalabashBrotherMask.BLUE);
-		case "6":
-			return new CalabashBrother(CalabashBrotherMask.PURPLE);
-		default:
-			return new Creature();
-		}
-	}
-	public Creature[] randomOrder() {
-		Random rand = new Random();
-		int[] QueueIndex = new int[this.queue.length];
-		// get an index code
-		for (int i = 0; i < QueueIndex.length; i++) {
-			QueueIndex[i] = rand.nextInt(QueueIndex.length - i);
-		}
-		// decode
-		for (int i = 0; i < QueueIndex.length; i++) {
-			int m = QueueIndex[i] + i;
-			while (true) {
-				int temp = 0;
-				for (int j = 0; j < i; j++) {
-					if (QueueIndex[j] < m) {
-						temp += 1;
-					}
-				}
-				if (QueueIndex[i] + temp == m) {
-					break;
-				}
-				m--;
-			}
-			QueueIndex[i] = m;
-		}
+	public void randomOrder() {
+		Collections.shuffle(queue);
 		System.out.println("Random order:");
-		Creature[] creatures = new Creature[this.queue.length];
-		for (int i = 0; i < QueueIndex.length; i++) {
-			creatures[i] = this.queue[QueueIndex[i]];
-		}
-		this.queue = creatures;
-		this.printQueue();
-		return this.queue;
+		printQueue();
+		
 	}
 	public void calaSort() {
-		for (int i=0; i<this.queue.length; i++) {
-			if (this.queue[i].index < 0) {
-				System.out.print("\nOther creature exists");
-				return;
+		for (T t : queue) {
+			if (t.getClass() != CalabashBrother.class)
+			{
+				throw new IllegalArgumentException("the calaSort() is used for CalabashBrother");
 			}
 		}
-		for (int i = 0; i < this.queue.length; i++) {
-			for (int j = 0; j < this.queue.length - 1; j++) {
-				if (this.queue[j].index > this.queue[j + 1].index) {
-					Creature temp = this.queue[j];
-					this.queue[j] = this.queue[j + 1];
-					this.queue[j + 1] = temp;
+		ArrayList<T> copyqueue = new ArrayList<>();
+		for (T c : queue) {
+			copyqueue.add(c);
+		}
+		ArrayList<CalabashBrother> tempqueue = new ArrayList<>();
+		for (T c : queue) {
+			CalabashBrother x = (CalabashBrother)c;
+			tempqueue.add(x);
+		}
+		for (int i = 0; i < this.getLength(); i++) {
+			for (int j = 0; j < this.getLength() - 1; j++) {
+				if (tempqueue.get(j).getIndex() > tempqueue.get(j + 1).getIndex()) {
+					CalabashBrother temp1 = tempqueue.get(j);
+					tempqueue.set(j, tempqueue.get(j + 1));
+					tempqueue.set(j + 1, temp1);
+					T temp2 = queue.get(j);
+					queue.set(j, queue.get(j + 1));
+					queue.set(j + 1, temp2);
 				}
 			}
 		}
-		System.out.println("\ncalaSort results:");
+		System.out.println("calaSort results:");
 		this.printQueue();
-		System.out.println("");
+	}
+	public int getLength() {
+		return queue.size();
+	}
+	public void printQueue() {
+		for (T t : queue) {
+			System.out.print(t.getName() + " ");
+		}
+		System.out.println();
 	}
 }

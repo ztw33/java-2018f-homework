@@ -1,4 +1,3 @@
-package javahw3;
 
 public interface FormationInterface {
 	// abstract void initialization();
