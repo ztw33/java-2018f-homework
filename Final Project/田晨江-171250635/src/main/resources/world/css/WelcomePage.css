@@ -1,0 +1,14 @@
+
+.root {
+    -fx-background-image: url(background.png);
+    background-repeat:no-repeat;
+
+}
+
+#l2 {
+    -fx-font-size: 50.0;
+}
+
+#l3 {
+    -fx-font-size: 20.0;
+}
