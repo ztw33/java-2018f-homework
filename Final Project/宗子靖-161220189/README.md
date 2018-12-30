@@ -2,7 +2,7 @@
 
 ----------
 ## 运行结果演示
-![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/SceneBuilder.PNG "Battle")
+![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/battle.gif "Battle")
 ---
 ## 程序代码及设计思路
 ### 构建基本框架
@@ -34,7 +34,13 @@
 </project>
 ```
 - ##### 在src/main/resource中添加项目所需图片
+
+![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/resources.PNG "resources")
+
 - ##### 在src/main/resource中添加创建窗口的资源文件game.fxml，用SceneBuilder进行管理
+
+![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/SceneBuilder.PNG "SceneBuilder")
+
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -1019,6 +1025,7 @@ public class Main extends Application {
 ```
 
 - ##### 为一些算法创建测试，新建TestUnit
+![chain](https://github.com/JimZong/java-2018f-homework/blob/master/Final%20Project/%E5%AE%97%E5%AD%90%E9%9D%96-161220189/pic/TestUnit.PNG "TestUnit")
 ```java
 import org.junit.Test;
 import static org.junit.Assert.*;
