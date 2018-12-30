@@ -1,4 +1,3 @@
-
 public interface TeamInterface {
 	abstract public String toString();
 	abstract public void showTeam() ;
