@@ -1,62 +1,26 @@
 package calabashbrothers;
 
 enum COLOR {
-	RED, ORANGE, YELLOW, GREEN, BLUE, CYAN, PURPLE
+	RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, PURPLE
 }
 
-class OneCalabash {
-    private int number;
-    private COLOR color;
-    private String colorName;
-    private String name;
-    OneCalabash(int i) {
-    	if(i>6 || i<0) {
-    		System.out.println("初始化失败。");
-    	}else {
-    		this.number = i;
-    		switch (i) {
-    		case 0:
-    			this.color = COLOR.RED;
-    			this.colorName = "红色";
-    			this.name = "老大"; 
-    			break;
-    		case 1:
-    			this.color = COLOR.ORANGE;
-    			this.colorName = "橙色";
-    			this.name = "老二"; 
-    			break;
-    		case 2:
-    			this.color = COLOR.YELLOW;
-    			this.colorName = "黄色";
-    			this.name = "老三"; 
-    			break;
-    		case 3:
-    			this.color = COLOR.GREEN;
-    			this.colorName = "绿色";
-    			this.name = "老四"; 
-    			break;
-    		case 4:
-    			this.color = COLOR.BLUE;
-    			this.colorName = "蓝色";
-    			this.name = "老五"; 
-    			break;
-    		case 5:
-    			this.color = COLOR.CYAN;
-    			this.colorName = "青色";
-    			this.name = "老六"; 
-    			break;
-    		case 6:
-    			this.color = COLOR.PURPLE;
-    			this.colorName = "紫色";
-    			this.name = "老七"; 
-    		}
-    	}
-    }
-    int tellNo() {
+enum ONECAlABASH {
+	FIRST(0, "红色", COLOR.RED, "老大"), SECOND(1, "橙色", COLOR.ORANGE, "老二"), THIRD(2, "黄色", COLOR.YELLOW, "老三"), FOURTH(3, "绿色", COLOR.GREEN, "老四"),
+	FIFTH(4, "青色", COLOR.CYAN, "老五"), SIXTH(5, "蓝色", COLOR.BLUE, "老六"), SEVENTH(6, "紫色", COLOR.PURPLE, "老七");
+	
+	private int number;
+	private String colorName;
+	private COLOR color;
+	private String name;
+	
+	ONECAlABASH(int no, String colorName, COLOR color, String name){
+		this.number = no;
+		this.colorName = colorName;
+		this.color = color;
+		this.name = name;
+	}
+	int tellNo() {
     	return this.number;
-    }
-    String tellName() {
-    	return this.name;
     }
     String tellColorName() {
     	return this.colorName;
@@ -64,16 +28,31 @@ class OneCalabash {
     COLOR tellColor() {
     	return this.color;
     }
+    String tellName() {
+    	return this.name;
+    }
+	
 }
 
 class CalabashBrothers {
-	OneCalabash[] sevenBrothers = new OneCalabash[7];
-	int[] queue = new int[7];
+	ONECAlABASH[] sevenBrothers = new ONECAlABASH[7];
 	CalabashBrothers() {		
-		for (int i = 0; i < 7; i++) {
-			sevenBrothers[i] = new OneCalabash(i);
-		}
+		sevenBrothers[0] = ONECAlABASH.FIRST;
+		sevenBrothers[1] = ONECAlABASH.SECOND;
+		sevenBrothers[2] = ONECAlABASH.THIRD;
+		sevenBrothers[3] = ONECAlABASH.FOURTH;
+		sevenBrothers[4] = ONECAlABASH.FIFTH;
+		sevenBrothers[5] = ONECAlABASH.SIXTH;
+		sevenBrothers[6] = ONECAlABASH.SEVENTH;
 	}
+}
+class Sort{
+	int[] queue = new int[7];
+	ONECAlABASH[] sevenBrothers = new ONECAlABASH[7];
+	Sort(ONECAlABASH[] sevenBrothers){
+		this.sevenBrothers = sevenBrothers;
+	}
+	
 	private void initQueue() {
 		queue[0] = 3;
 		queue[1] = 1;
@@ -129,12 +108,12 @@ class CalabashBrothers {
 		}
 	}
 }
-
 public class CalabashBrothersQueue {
 	public static void main(String[] args) {
 		CalabashBrothers ourCalabashBro = new CalabashBrothers();
-		ourCalabashBro.sortByNo();
-		ourCalabashBro.sortByColor();
+		Sort sort = new Sort(ourCalabashBro.sevenBrothers);
+		sort.sortByNo();
+		sort.sortByColor();
 		return;
 	}
 }
