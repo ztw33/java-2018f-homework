@@ -1,15 +1,19 @@
 package calabash;
 
-public class Grandpa extends Creature{
+public final class Grandpa extends Creature implements Cheer {
 	Grandpa(){
 		name = "爷爷";
+		type = 0;
 	}
 	
-	public String getName() {
-		return name;
+	Grandpa(int ix, int iy){
+		name = "爷爷";
+		x = ix;
+		y = iy;
 	}
 	
-	public String cheerG() {
-		return "孩子们冲鸭！！！";
-	}
+	@Override
+    public void cheer() {
+        
+    }
 }
