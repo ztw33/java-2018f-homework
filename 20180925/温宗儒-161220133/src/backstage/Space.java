@@ -1,40 +1,46 @@
-import com.sun.javaws.exceptions.CouldNotLoadArgumentException;
-import creature.Audience.*;
-import creature.Creature;
-import creature.fighter.*;
-import formation.*;
+package backstage;
+
+import backstage.creature.Audience.*;
+import backstage.creature.Creature;
+import backstage.creature.fighter.*;
+import backstage.formation.*;
+import javafx.geometry.Pos;
 
 import java.util.Random;
 
 public class Space {
-    private static int maxRow = 20;
-    private static int maxCow = 30;
-    private static Position[][] position = new Position[maxRow][maxCow];
-    private static GourdBoy[] gourdBoys = new GourdBoy[7];
-    private static GrandFather grandFather = new GrandFather();
-    private static Snake snake = new Snake();
+    private static int maxRow = 30;    //最大行数
+    private static int maxCow = 40;    //最大列数
 
-    public static void main(String[] args){
+    private static Position[][] position = new Position[maxRow][maxCow]; //position数组，用来放葫芦娃
+    private static GourdBoy[] gourdBoys = new GourdBoy[7];    //7个葫芦兄弟
+    private static GrandFather grandFather = new GrandFather(); //爷爷
+    private static Snake snake = new Snake();                //蛇精
+
+
+    public void initialize() {
 
         //初始化出一个position数组来存放各种生物
-        for(int i = 0; i< maxRow; i++){
-            for(int j = 0; j< maxCow; j++)
+        for (int i = 0; i < maxRow; i++) {
+            for (int j = 0; j < maxCow; j++)
                 position[i][j] = new Position();
         }
         System.out.println("战场初始化成功。");
 
         //把爷爷和蛇精放在空间的左下角和右下角
-        position[maxRow -1][0].setCreature(grandFather);
-        position[maxRow -1][maxCow -1].setCreature(snake);
+        position[maxRow - 1][0].setCreature(grandFather);
+        position[maxRow - 1][maxCow - 1].setCreature(snake);
         grandFather.cheer();
         snake.cheer();
 
         //得到随机的葫芦娃
-        for(int i=0;i<7;i++){ gourdBoys[i] = new GourdBoy(Attribute.values()[i]); }
+        for (int i = 0; i < 7; i++) {
+            gourdBoys[i] = new GourdBoy(Attribute.values()[i]);
+        }
         Random random = new Random();
         int maxRandomNumber = 7;
         int randomNumber = 0;
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             randomNumber = random.nextInt(maxRandomNumber);
             GourdBoy temp = gourdBoys[randomNumber];
             maxRandomNumber--;
@@ -42,49 +48,118 @@ public class Space {
             gourdBoys[maxRandomNumber] = temp;
         }
         setLongSnake(gourdBoys);
+    }
 
-        int num=0;
-        while (num++<7) {
-
-            maxRandomNumber = 7;
-            randomNumber = random.nextInt(maxRandomNumber) + 1;
-            Formation formation = Formation.values()[randomNumber];
-            switch (formation) {
-                case CRANEWING:
-                    System.out.println("现在变换为鹤翼阵法");
-                    setCraneWing();
-                    break;
-                case WILDGOOSE:
-                    System.out.println("现在变换为雁行阵法");
-                    setWildGoose();
-                    break;
-                case DOUBLEYOKE:
-                    System.out.println("现在变换为衡軛阵法");
-                    setDoubleYoke();
-                    break;
-                case FISHSCALE:
-                    System.out.println("现在变换为鱼鳞阵法");
-                    setFishScale();
-                    break;
-                case SQUAREDOOR:
-                    System.out.println("现在变换为方门阵法");
-                    setSquareDoor();
-                    break;
-                case CRESCENTMOON:
-                    System.out.println("现在变换为偃月阵法");
-                    setCrescentMoon();
-                    break;
-                case FENGSHI:
-                    System.out.println("现在变换为锋矢阵法");
-                    setFengShi();
-                    break;
-            }
-
-            print();
+    public Position[][] randomFormation(int selectIndex){
+        Formation formation = Formation.values()[selectIndex];
+        switch (formation) {
+            case CRANEWING:
+                System.out.println("现在变换为鹤翼阵法");
+                setCraneWing();
+                break;
+            case WILDGOOSE:
+                System.out.println("现在变换为雁行阵法");
+                setWildGoose();
+                break;
+            case DOUBLEYOKE:
+                System.out.println("现在变换为衡軛阵法");
+                setDoubleYoke();
+                break;
+            case FISHSCALE:
+                System.out.println("现在变换为鱼鳞阵法");
+                setFishScale();
+                break;
+            case SQUAREDOOR:
+                System.out.println("现在变换为方门阵法");
+                setSquareDoor();
+                break;
+            case CRESCENTMOON:
+                System.out.println("现在变换为偃月阵法");
+                setCrescentMoon();
+                break;
+            case FENGSHI:
+                System.out.println("现在变换为锋矢阵法");
+                setFengShi();
+                break;
         }
 
 
+        return position;
+
     }
+
+//    public static void main(String[] args){
+//
+//        //初始化出一个position数组来存放各种生物
+//        for(int i = 0; i< maxRow; i++){
+//            for(int j = 0; j< maxCow; j++)
+//                position[i][j] = new Position();
+//        }
+//        System.out.println("战场初始化成功。");
+//
+//        //把爷爷和蛇精放在空间的左下角和右下角
+//        position[maxRow -1][0].setCreature(grandFather);
+//        position[maxRow -1][maxCow -1].setCreature(snake);
+//        grandFather.cheer();
+//        snake.cheer();
+//
+//        //得到随机的葫芦娃
+//        for(int i=0;i<7;i++){ gourdBoys[i] = new GourdBoy(Attribute.values()[i]); }
+//        Random random = new Random();
+//        int maxRandomNumber = 7;
+//        int randomNumber = 0;
+//        for(int i=0;i<7;i++){
+//            randomNumber = random.nextInt(maxRandomNumber);
+//            GourdBoy temp = gourdBoys[randomNumber];
+//            maxRandomNumber--;
+//            gourdBoys[randomNumber] = gourdBoys[maxRandomNumber];
+//            gourdBoys[maxRandomNumber] = temp;
+//        }
+//        setLongSnake(gourdBoys);
+//
+//        int num=0;
+//        while (num++<7) {
+//
+//            maxRandomNumber = 7;
+////            randomNumber = random.nextInt(maxRandomNumber) + 1;
+//            randomNumber = 5;
+//            Formation formation = Formation.values()[randomNumber];
+//            switch (formation) {
+//                case CRANEWING:
+//                    System.out.println("现在变换为鹤翼阵法");
+//                    setCraneWing();
+//                    break;
+//                case WILDGOOSE:
+//                    System.out.println("现在变换为雁行阵法");
+//                    setWildGoose();
+//                    break;
+//                case DOUBLEYOKE:
+//                    System.out.println("现在变换为衡軛阵法");
+//                    setDoubleYoke();
+//                    break;
+//                case FISHSCALE:
+//                    System.out.println("现在变换为鱼鳞阵法");
+//                    setFishScale();
+//                    break;
+//                case SQUAREDOOR:
+//                    System.out.println("现在变换为方门阵法");
+//                    setSquareDoor();
+//                    break;
+//                case CRESCENTMOON:
+//                    System.out.println("现在变换为偃月阵法");
+//                    setCrescentMoon();
+//                    break;
+//                case FENGSHI:
+//                    System.out.println("现在变换为锋矢阵法");
+//                    setFengShi();
+//                    break;
+//            }
+//
+//            print();
+//        }
+//
+//
+//    }
 
     private static void  setLongSnake(GourdBoy[] gourdBoys){
         for(int i=0; i<7; i++){
@@ -106,6 +181,7 @@ public class Space {
             position[row++][cow].setCreature(gourdBoys[i]);
             i++;
         }
+
 
 
     }
@@ -159,7 +235,7 @@ public class Space {
     private static void setFishScale(){
         cleanRightHalf();
         int row = maxRow/3;
-        int cow = 2*maxCow/3;
+        int cow = 3*maxCow/4;
         int len = maxRow/3;
         position[row++][cow].setCreature(new Scorpion());
         for(int i=2;i<=len; i++){
@@ -185,7 +261,7 @@ public class Space {
         cleanRightHalf();
         int row = maxRow/6;
         int cow = 3*maxCow/4;
-        int len = maxRow/3;
+        int len = maxRow/4;
         position[row++][cow].setCreature(new Scorpion());
         int i=1;
         while (i<len){
@@ -248,5 +324,16 @@ public class Space {
             }
             System.out.print('\n');
         }
+    }
+
+
+
+
+    public static int getMaxRow() {
+        return maxRow;
+    }
+
+    public static int getMaxCow() {
+        return maxCow;
     }
 }
