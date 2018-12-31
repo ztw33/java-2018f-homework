@@ -46,4 +46,3 @@
 
     - 封装和继承：设计中使用了封装的思想对private和protected成员进行保护，同时Creature类是一个抽象基类，其有Hulu、Grandfa和MonSnake等子类，用于概念上的IS-A抽象。
     - 接口分离原则：程序中的接口功能进行了分离，使得能更加合理地去调用Map类、Formation类中的方法。
-    - 
