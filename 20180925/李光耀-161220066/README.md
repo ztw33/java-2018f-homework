@@ -1,3 +1,89 @@
+<u>**Version 3**</u>
+
+在版本2中引入泛型。修正措施如下。
+
+1. 将`Board`中每一个元素`Square`进行泛型化修改。
+
+   ```java
+   public class Square{
+       private Object being;
+   }
+   ```
+
+   ```java
+   public class Square<T extends Being>{
+       private T being;
+   }
+   ```
+
+   将`board`由`ArrayList<ArrayList<Square>>`类别改为`ArrayList<ArrayList<Square<Being>>>`。
+
+   将`formation`由`ArrayList<Square>`类别改为`ArrayList<Square<Being>>`。
+
+2. 在版本2中存在bug。主要由于妖怪不断切换阵型时可能导致待切换的阵型中已经有老爷爷、蛇精挡着。此时应该不能发生切换，需要移动老爷爷、蛇精的位置。对该代码进行fix(其实版本1是没有这个问题的，在版本2重构时疏忽了)。
+
+3. 在循环生成妖怪阵型时，使用工厂方法实现。
+
+   ```java
+   interface Factory<T>{
+       T create();
+       T back();
+   }
+   ```
+
+   ```java
+   class FormationFactory implements Factory<Formation>{
+       public Formation create();
+       public Formation back();
+   }
+   ```
+
+   在`FormationAdminister`中使用`FormationFactory`循环生成阵型。
+
+
+
+----
+
+
+
+<u>**Version 2**</u>
+
+Version1版本存在的问题以及修正措施。
+
+1. `Creature`中还有`CreatureType`属性，这是不必要的，可以使用`RTTI`在运行时动态判定对象类别。
+
+2. `Formation`没有作为一个抽象类，使用者可以故意对其进行显示实例化。由于我是在构造函数中对`Formation`里的数据进行初始化，其他情况下不会再进行修改，故在`Formation`中我没有添加抽象方法。
+
+3. 在看很多位同学在`README`中描述对类的功能划分时，发现他们都划分的很细致。于是，我在原先`creature`包的基础上，追加引入`Being,GoodCreature,BadCreature`。便于后期各种活动体拓展。同时原来我的加油助威逻辑是放在`UI`模块中，现在放在内部模块。将加油助威抽象为一个接口，`Human,SnakeEssence`分别实现这个接口。目前实现的加油助威内容只是往`JTextArea`写入一句话而已。
+
+   新的类图如下所示(和很多同学的设计大同小异)。
+
+![creatureUML](https://github.com/lidayou/java-2018f-homework/blob/master/20180925/%E6%9D%8E%E5%85%89%E8%80%80-161220066/creatureUML.png)
+
+
+
+4. 由于已经不只有生物体了，将来还可能引入非生物体，将`CreatureImage`改名为`StypeImage`，使得名称更准确。
+5. 在张明超同学的`README`中提到阵型应该和生物体解耦，也应该和场地的大小无关。我觉得很对。原来我的每一个阵型是坐标和生物体同时初始化，然而位置是位置，生物体是生物体，两者应该独立。为此，对于管理类来说需要更细致的划分。这也在一定程度上体现了`SOLID`原则的`S`，每个类应该具有单一的职责。为此新的`regulate`包中管理类的关系如下所示。
+
+![administerUML](https://github.com/lidayou/java-2018f-homework/blob/master/20180925/%E6%9D%8E%E5%85%89%E8%80%80-161220066/administerUML.png)
+
+	
+
+5. (续)管理类具体职能如下：Administer作为UI界面与内部具体实现逻辑部分的桥梁。UI只与	Administer类打交道。为此定义一个接口`LinkGUI2Inside`用于对两者之间的通信、联系的规约(这个接口联系起了整个系统的框架，应该在设计之初就确定下来)。Administer将功能指责划分为4份，`BoardAdminister`用于管理`Board`工作，主要有物体移动、清盘、放置阵型等功能。`GoodManAdminister`主要用于好人阵营的管理，包括对老人(老人要加油助威)，以及葫芦娃兄弟管理者`HuLuWaAdminister`的控制，同时完成对`Formation`里具体生物的填充(好人生物)。`HuLuWaAdminister`完成对七兄弟的排序、乱序等工作，其控制对象为`HuLuWa`数组。`BadManAdminister`主要控制蛇精以及对地方阵型中坏人生物的填充。`FormationAdminister`主要用于循环生成阵型。只生成坐标，不填充具体的生物体。填充具体的生物体由上面`GoodManAdminister`和`BadManAdminister`完成。而具体阵型的放置则由`BoardAdminister`完成。如此将放置阵型这一指责分散为三方独立协作完成，一定程度上体现了接口隔离原则。
+6. 关于移动生物体那块，老师在上课时提了个问题(我是通过数字坐标来确定上下左右的)"如果上下左右的概念变了如何"，在先前的设计中，上下左右的概念是我写死的。听了老师的问题，我觉得需要将其单独抽出来。定义一个方向向量类`DirectionVector`，其中蕴含一个坐标向量。在`BoardAdminister`中定义四个静态方向向量，分别表示上下左右(完成舒适化)，以后每次坐标移动，只需加上这个方向向量即可。如果方向的定义放上了变化，只需重新定义这四个静态方向向量。
+7. 引入集合框架，将原先自己用数组完成的数据结构用`ArrayList`代替。如此，在对葫芦娃排序、乱序时，可以直接使用集合框架中的函数。同时可以看出这种实现跟老师之前提到的排序实现是相同的。将具体的实现算法和两两元素的序关系相互隔离开来。
+8. 在`github`上查看其他同学的设计时，发现自己不怎么情愿去读别人的代码，最后都是简单得读了下`README`。本着互利互惠，便于相互学习的态度，决定参照马白家欣同学那样，添加文档注释。
+
+
+
+---
+
+
+
+
+
+<u>**Version 1**</u>
+
 # 设计思路:
 
 面向对象的概念、机制、理念

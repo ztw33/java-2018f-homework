@@ -1,3 +1,4 @@
+# 10月23日上课迟到40分钟
 # 面向对象的设计思路
 根据需要，我设计了五个对象：生物(Creature)、阵法(Formation)、战场(BattleField)、监视器(Monitor)和排序器(Sort).
 # 生物(Creature)

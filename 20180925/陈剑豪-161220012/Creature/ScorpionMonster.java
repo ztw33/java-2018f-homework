@@ -1,15 +1,22 @@
-public class ScorpionMonster {
-    static final String name="蝎子";
-    int row;
-    int column;
-    public static void reportName()
+package Creature;
+import BattleField.*;
+/**
+ * @ Author     ：cjh
+ * @ Description：蝎子精
+ */
+public class ScorpionMonster extends Creature {
+    public ScorpionMonster()
     {
-        System.out.print(name+"  ");
+        init();
+        name="蝎子";
+        list.add(this);
     }
+    @Override
     public void standOnMap(int i,int j)
     {
         row=i;
         column=j;
-        Space.space[i][j]=10;
+        Space.space[i][j]=Existance.scorpion;
+
     }
 }

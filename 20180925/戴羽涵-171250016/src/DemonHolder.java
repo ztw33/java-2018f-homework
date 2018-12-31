@@ -1,8 +1,10 @@
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DemonHolder implements Holder {
 	// TODO: 2018/9/25 初始化、设置Map到底放在那个类中？？？
-	private Demon[] demons;
+//	private Demon[] demons;
+	private List<Creature> demons = new ArrayList<>();
 	private BattleModel battleModel;
 
 	/**
@@ -12,11 +14,13 @@ public class DemonHolder implements Holder {
 	 */
 	public DemonHolder(int numOfFollowing) {
 		// 数组中依次存放：蛇精、蝎子精小喽啰们
-		demons = new Demon[numOfFollowing+2];
-		demons[0] = Demon.SNAKE;
-		demons[1] = Demon.SCORPION;
+//		demons = new Demon[numOfFollowing+2];
+//		demons[0] = Demon.SNAKE;
+//		demons[1] = Demon.SCORPION;
+		demons.add(Demon.SNAKE);
+		demons.add(Demon.SCORPION);
 		for (int i = 0; i < numOfFollowing; i++) {
-			demons[i+2] = Demon.FOLLOWING;
+			demons.add(Demon.FOLLOWING);
 		}
 	}
 
@@ -25,7 +29,7 @@ public class DemonHolder implements Holder {
 //		Creature temp=
 //	}
 
-	public Demon[] getDemons() {
+	public List<Creature> getDemons() {
 		return demons;
 	}
 

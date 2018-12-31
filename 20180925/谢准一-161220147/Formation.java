@@ -1,4 +1,5 @@
 import java.util.*;
+import Being.*;
 
 public enum Formation {
     YanXing(12, 12, 0), FengShi(10, 12, 1), HeYi(12, 15, 2);
