@@ -1,8 +1,10 @@
-import creature.Creature;
+package backstage;
 
-class Position {
-    private Creature creature;
-    private boolean possession;
+import backstage.creature.Creature;
+
+public class Position {
+    private Creature creature;   //放置的生物是什么
+    private boolean possession; //该位置是否被占用
 
     Position(){
         creature = null;
@@ -25,6 +27,16 @@ class Position {
     void clean(){
         this.creature = null;
         this.possession = false;
+    }
+
+
+
+    public Creature getCreature() {
+        return creature;
+    }
+
+    public boolean isPossession() {
+        return possession;
     }
 
 
