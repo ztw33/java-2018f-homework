@@ -2,51 +2,54 @@ import java.util.*;
 
 public class BattleField {
     private int length;
-    private Block[][] field;
-
-    public BattleField(int n){
-        field = new Block[n][n];
+    //private Block[][] field;
+    private ArrayList<ArrayList <Block>> field;
+    public BattleField(int n) {
+        field = new ArrayList<>(n);
         for(int i = 0; i < n; i++){
+            field.add(new ArrayList<>());
+           // field.get(i).addAll(Collections.nCopies(n, new Block()));
             for(int j = 0; j < n; j++){
-                field[i][j] = new Block();
+                field.get(i).add(new Block());
             }
         }
         this.length = n;
     }
     public Block at(int x, int y) {
-        return field[x][y];
+        return field.get(x).get(y);
     }
 
     public String tellName() { return null; }
 
-    public int length(){ return this.length; }
+    public int length() { return this.length; }
 
-    public void removeAll(){
-        for(int i = 0; i < length; i++){
-            for(int j = 0; j < length; j++){
-                field[i][j].being = null;
+    public void removeAll() {
+        for(int i = 0; i < length; i++) {
+            for(int j = 0; j < length; j++) {
+                field.get(i).get(j).set(null);
             }
         }
     }
     public void display(){
-        for(int i = 0; i < length; i++){
-            for(int j = 0; j < length; j++){
-                if(field[i][j].being == null){
+        for(int i = 0; i < length; i++) {
+            for(int j = 0; j < length; j++) {
+                if(field.get(i).get(j).get() == null) {
                     System.out.print("[ ] ");
                 } else {
-                    System.out.print(field[i][j].being.tellName() + " ");
+                    System.out.print(field.get(i).get(j).get().tellName() + " ");
                 }
             }
             System.out.print("\n");
         }
     }
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         Scanner s = new Scanner(System.in);
         BattleField battleField = new BattleField(16);
         Heros heros = new Heros();
         Monster monsters = new Monster();
         heros.snake(battleField);
-        Boolean end = false;
+       //battleField.display();
+        boolean end = false;
         while(!end) {
             battleField.removeAll();
             heros.snake(battleField);
