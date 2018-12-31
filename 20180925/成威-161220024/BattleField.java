@@ -1,33 +1,118 @@
 package Battle;
 
-public class BattleField {
-    LifeEntity[][] ground=new LifeEntity[17][17];   //二维空间
-    CalabashBrother[] cb=new CalabashBrother[7];    //葫芦娃队列
-    Grandpa gp=Grandpa.gp_birth();                  //老爷爷
-    Snake se=Snake.se_birth();                      //蛇精
-    Scorpion sp=Scorpion.sp_birth();                //蝎子精
-    Little[] lm=new Little[12];                     //12只小喽啰
+import java.util.Random;
 
-    //初始化战场信息,加入各个生命体
-    BattleField(){
-        for(int i=0;i<7;i++)
-            cb[i]=CalabashBrother.cb_birth();
-        for(int i=0;i<12;i++)
-            lm[i]=new Little();
-
-        //将老爷爷和蛇精分别置于二维空间的左上角和右上角
-        gp.twomove(ground,0,0);
-        se.twomove(ground,0,16);
+class Position<T extends Creatures>{
+    private T body;
+    Position(){
+        body=null;
     }
 
-    //打印输出对峙局面
-    public void showfield(){
-        for(int i=0;i<17;i++){
-            for(int j=0;j<17;j++){
-                if(ground[i][j]==null)
+    T getBody(){
+        return body;
+    }
+
+    void setBody(T a){
+        body=a;
+    }
+}
+
+public class BattleField {
+    public static final int raw=17;
+    public static final int col=17;
+    public static Position<Creatures>[][] field=new Position[raw][col];     //定义为透明的战场
+
+    private CbBrother[] cbBrothers=new CbBrother[7];
+    private Soldier[] soldiers=new Soldier[Soldier.max];
+    private Scorpion scorpion;
+    private GrandPa grandPa;
+    private Snake snake;
+
+    BattleField(){
+        try{
+            for(int i=0;i<raw;i++){
+                for(int j=0;j<col;j++){
+                    field[i][j]=new Position<Creatures>();
+                }
+            }
+
+            for(int i=0;i<7;i++){
+                cbBrothers[i]=new CbBrother();
+            }
+            for(int i=0;i<Soldier.max;i++){
+                soldiers[i]=new Soldier();
+            }
+            scorpion=new Scorpion();
+            grandPa=new GrandPa();
+            snake=new Snake();
+
+            grandPa.moveto(0,0);
+            snake.moveto(0,16);
+        }catch (createException e){
+            System.out.println("不能创建当前指定的生物体。");
+        }
+    }
+
+    //葫芦娃队列的随机排序
+    public void randomsort() {
+        Random random = new Random();
+        for (int i = 1; i < 7; i++) {
+            int p = random.nextInt(i + 1);
+            CbBrother temp = cbBrothers[i];
+            cbBrothers[p].queueMove(cbBrothers,i);
+            temp.queueMove(cbBrothers, p);
+        }
+    }
+
+    //葫芦娃队列冒泡排序
+    public void bubblesort() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7 - i - 1; j++) {
+                if (cbBrothers[j].me.index > cbBrothers[j + 1].me.index) {
+                    CbBrother temp = cbBrothers[j];
+                    cbBrothers[j + 1].queueMove(cbBrothers, j);
+                    temp.queueMove(cbBrothers, j + 1);
+                }
+            }
+        }
+    }
+
+    //将当前葫芦娃队列在二维空间内摆成长蛇阵
+    public void snaketeam(){
+        for(int i=0;i<7;i++)
+            cbBrothers[i].moveto(5+i,6);
+    }
+
+    //鹤翼阵
+    public void cranewing(){
+        scorpion.moveto(8,16);
+        int i=0;
+        for(int j=1;j<=6;j++) {
+            soldiers[i++].moveto(8 - j, 16 - j);
+            soldiers[i++].moveto( 8 + j, 16 - j);
+        }
+    }
+
+    //锋矢阵
+    public void arrow(){
+        scorpion.moveto(8,10);
+        int i=0;
+        for(int j=1;j<=6;j++)
+            soldiers[i++].moveto(8,10+j);
+        for(int j=1;j<=3;j++){
+            soldiers[i++].moveto(8-j,10+j);
+            soldiers[i++].moveto(8+j,10+j);
+        }
+    }
+
+    public void showField(){
+        for(int i=0;i<raw;i++){
+            for(int j=0;j<col;j++){
+                if(field[i][j].getBody()==null){
                     System.out.print("     ");
+                }
                 else {
-                    System.out.print(ground[i][j].label);
+                    System.out.print(field[i][j].getBody().name);
                     System.out.print(" ");
                 }
             }
@@ -35,21 +120,21 @@ public class BattleField {
         }
     }
 
-    //作业要求的步骤
-    public void demonstration(){
+    //演示对峙过程
+    public void demo(){
         System.out.println("葫芦娃:乱序长蛇阵    妖精:鹤翼阵");
-        gp.randomsort(cb);
-        gp.snaketeam(ground,cb);
-        se.cranewing(ground,sp,lm);
-        showfield();
+        randomsort();
+        snaketeam();
+        cranewing();
+        showField();
 
         System.out.println("葫芦娃:长蛇阵    妖精:鹤翼阵");
-        gp.bubblesort(cb);
-        gp.snaketeam(ground,cb);
-        showfield();
+        bubblesort();
+        snaketeam();
+        showField();
 
         System.out.println("葫芦娃:长蛇阵    妖精:锋矢阵");
-        se.arrow(ground,sp,lm);
-        showfield();
+        arrow();
+        showField();
     }
 }

@@ -1,10 +1,16 @@
-﻿package formation;
+package formation;
 
 import creature.*;
 import map.*;
 
 //（0,15）
-public class FishScale implements Formation{
+public class FishScale extends Formation{
+	public FishScale() {
+		super.name = "鱼鳞阵";
+	}
+	public String getName() {
+		return super.name;
+	}
 	@Override
 	public void form(Map map, Creature[] creatures, int x, int y) {
 		creatures[0].move(map.getPos()[x][y]);

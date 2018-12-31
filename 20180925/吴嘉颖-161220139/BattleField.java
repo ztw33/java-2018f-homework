@@ -96,34 +96,48 @@ enum Formation {
     }
 }
 
-class Brick {
+class Brick<T> {
     char sign;
+    T holder;
     Brick() {
         sign = '_';
+        holder = null;
+    }
+    public String toString(){
+        return Character.toString(sign);
     }
 }
 
 class BattleField{
     private int row, col;
-    Brick[][] bricks;
+    Brick<Creature>[][] bricks;
 
+    @SuppressWarnings("unchecked")
     BattleField(int row, int col) {
         this.row = row;
         this.col = col;
-        bricks = new Brick[row][col];
+        // bricks = new Brick<Creature>[row][col]; // er: Generic array creation
+        // bricks = new Brick[row][col];   // Unchecked assignment: 'Brick[][]' to 'Brick<Creature>[][]
+        bricks = (Brick<Creature>[][])new Brick[row][col];   // Unchecked assignment: 'Brick[][]' to 'Brick<Creature>[][]'
+        // actually, lose type information in run time --- erasure
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                bricks[i][j] = new Brick();
+                bricks[i][j] = new Brick<>();
             }
         }
     }
 
-    void ShowField() {
+    //void ShowField() {
+    public String toString() {
+        StringBuilder res = new StringBuilder();
         for (int r = 0; r < row; r++) {
             for (int c = 0; c < col-1; c++){
-                System.out.print(bricks[r][c].sign + " ");
+                //System.out.print(bricks[r][c] + " ");
+                res.append(bricks[r][c] + " ");
             }
-            System.out.println(bricks[r][col-1].sign);
+            //System.out.println(bricks[r][col-1]);
+            res.append(bricks[r][col-1] + "\n");
         }
+        return res.toString();
     }
 }

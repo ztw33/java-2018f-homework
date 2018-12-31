@@ -1,25 +1,21 @@
+enum Color{
+    RED, ORANGE, YELLOW, GREEN, CYAN, BLUE, PURPLE
+}
 public class Brother extends Creature{
-    private String name;//葫芦娃名字
-    private Color color;//葫芦娃颜色
-
-    Brother(int get_number,String get_name,Color get_color){
-        number=get_number;
-        party=0;
-        name=get_name;
-        color=get_color;
-        x=y=0;
+    private int rank;
+    private Color color;
+    Brother(String name,Color color,int rank,int number) {
+        this.name = name;
+        this.color = color;
+        this.rank = rank;
+        this.number = number;
+        this.x = this.y = 0;
+        this.type=CreatureType.BROTHER;
     }
-    Brother(int get_number,String get_name,Color get_color,int get_x,int get_y){
-        number=get_number;
-        party=0;
-        name=get_name;
-        color=get_color;
-        x=get_x;y=get_y;
+    public int get_rank(){
+        return rank;
     }
-    public void report_name(){//打印名字
-        System.out.print(name+"  ");
-    }
-    public void report_color(){//打印颜色
+    public void report_color(){
         System.out.println(color);
     }
 }
