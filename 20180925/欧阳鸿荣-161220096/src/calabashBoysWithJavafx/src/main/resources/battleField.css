@@ -1,0 +1,10 @@
+.root {
+    -fx-background-image: url("pic/background.jpg");
+}
+
+
+#Time,#TimeText,#FormationChoice,#FormationChoiceText,#SpeedChoice{
+    -fx-text-fill: white;
+}
+
+/*速度选择样式有问题*/
