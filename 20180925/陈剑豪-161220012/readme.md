@@ -183,7 +183,25 @@ public class ChangsheBattleArray<T extends Creature> {
 
 ##### 封装、继承和多态：
 
+举个简单的例子，生物类封装了他们的坐标，各子类又继承了坐标，并重写了显示方法：
 
+```
+public class Creature extends SObject{
+    protected int row;//生物在地图上的纵坐标
+    protected int column;//生物在地图上的横坐标
+    ……
+    }
+    
+public class Grandparent extends Creature implements Runnable{
+	……
+	@Override
+    public void standOnMap(int i,int j)
+    {
+        Space.space[i][j]=Existance.grandparent;
+
+    }
+}
+```
 
 #### 一些感受：
 
@@ -245,11 +263,11 @@ public class ChangsheBattleArray<T extends Creature> {
 
 接着本次由于引入了一个二维空间的概念，所以直接将二维空间看做一个对象Space，它拥有固有属性空间的大小，空间的内容（二维数组实现），并设计为静态成员，对应现实中空间唯一的概念，使所有生物处于同一维度。例如：
 ​    
-    public class Space{
-    private static Existance[][] space;
-    private int sizeofspace;
-    ……
-    }
+​    public class Space{
+​    private static Existance[][] space;
+​    private int sizeofspace;
+​    ……
+​    }
 
 Existance为一个枚举类，里面枚举了一个空间中可能存在的所有种类：
 
@@ -286,12 +304,12 @@ Space类，提供三个个方法：
 
 3.展示地图上站位情况display，根据Space中记录的枚举类型进行显示，目前暂时使用字符串输出，后期会改用GUI输出图像。例如：
 ​    
-    switch(space[i][j]) {
-    case socrpion:
-              System.print("蝎子");
-              break;
-    ……
-    ｝
+​    switch(space[i][j]) {
+​    case socrpion:
+​              System.print("蝎子");
+​              break;
+​    ……
+​    ｝
 
 Formation包中共包含八个类，分别对应雁行，鹤翼，长蛇，衝轭，方円，锋矢，鱼鳞，偃月阵法，具体实现就不赘述，具体效果见最后图片。
 >#优点
