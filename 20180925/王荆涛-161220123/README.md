@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  葫芦娃——排兵布阵Version2
 ##  增加图形化界面
 ###  
@@ -5,6 +6,11 @@
 ## 葫芦娃——排兵布阵Version1  
 ## 161220123 王荆涛  
 ---
+=======
+# 葫芦娃——排兵布阵  
+## 161220123 王荆涛  
+---
+>>>>>>> ac6e22a64532fb5bbe34c75e8ad96b3ccb139bc5
 ### 一、代码框架  
 
 <table border=0 cellpadding=0 cellspacing=0 width=709 style='border-collapse:
