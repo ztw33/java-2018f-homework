@@ -20,6 +20,8 @@ public class CalabashBrotherTest {
         System.out.println("冒泡排序后报数:");
         CalabashBrother.numberOffName(calabashBrothers);
 
+        System.out.println("\n");
+
         calabashBrothers = init();
         System.out.println("二分法排序前报数:");
         CalabashBrother.numberOffColor(calabashBrothers);

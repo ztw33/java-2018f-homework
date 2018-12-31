@@ -1,16 +1,22 @@
 package space;
 
-import creature.LittleMonster;
-import creature.Scorpion;
+import creature.Being;;
 
 //雁行
+/**
+* @ClassName: Echelon
+* @Description: 基本阵型
+* @author 13745
+* @date 2018年11月4日
+*
+*/
 public class Echelon extends Formation{
 	public Echelon() {
-		super(5);
-		formation[0]=new Square(broadxLines-1,(int)Math.ceil((double)broadyLines/2)-1-2,Scorpion.scorpionMan);
-		formation[1]=new Square(broadxLines-2,(int)Math.ceil((double)broadyLines/2)-1-1,new LittleMonster(""));
-		formation[2]=new Square(broadxLines-3,(int)Math.ceil((double)broadyLines/2)-1,new LittleMonster(""));
-		formation[3]=new Square(broadxLines-4,(int)Math.ceil((double)broadyLines/2)-1+1,new LittleMonster(""));
-		formation[4]=new Square(broadxLines-5,(int)Math.ceil((double)broadyLines/2)-1+2,new LittleMonster(""));		
+		formation.add(new Square<Being>(broadxLines-1,(int)Math.ceil((double)broadyLines/2)-1-2,null));
+		formation.add(new Square<Being>(broadxLines-2,(int)Math.ceil((double)broadyLines/2)-1-1,null));
+		formation.add(new Square<Being>(broadxLines-3,(int)Math.ceil((double)broadyLines/2)-1,null));
+		formation.add(new Square<Being>(broadxLines-4,(int)Math.ceil((double)broadyLines/2)-1+1,null));
+		formation.add(new Square<Being>(broadxLines-5,(int)Math.ceil((double)broadyLines/2)-1+2,null));		
 	}
+	
 }
