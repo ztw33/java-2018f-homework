@@ -1,9 +1,9 @@
 package formation;
 
-import BattleField.*;
+import world.*;
 import creature.Creature;
 
-public class HengE implements FormationImp {
+public class YanXing implements FormationImp {
     @Override
     public void arrange(BattleField battleField, Creature[] creature, Location location ) {
         int row = battleField.getRow();
@@ -17,13 +17,9 @@ public class HengE implements FormationImp {
         for(int i=location.getX(),count=0;
             i<location.getX()+num&&count<num; count++,i++){
             battleField.addCreature(creature[count],new Location(location_x,location_y));
-            if(count%2==0) {
-                location_x++;
-                location_y++;
-            }else {
-                location_x++;
-                location_y--;
-            }
+            location_x--;
+            location_y++;
         }
-    }
+
+        }
 }

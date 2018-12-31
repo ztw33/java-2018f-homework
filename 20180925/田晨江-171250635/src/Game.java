@@ -1,9 +1,9 @@
-import BattleField.BattleField;
+import world.BattleField;
 import creature.CalabashBrothers;
 import creature.*;
 import creature.LittleGuys;
 import creature.ScorpionEssence;
-import BattleField.*;
+import world.*;
 import formation.*;
 
 import java.util.Scanner;
