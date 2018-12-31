@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane focusTraversable="false" minHeight="564.0" onKeyPressed="#myKeyBoard" prefHeight="560.0" prefWidth="740.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.MenuController">
+  <children>
+    <Pane disable="false" focusTraversable="false" layoutX="571.0" layoutY="-14.0" prefHeight="578.0" prefWidth="137.0" visible="true">
+      <children>
+        <Button id="menu_start" fx:id="start" cancelButton="false" defaultButton="false" layoutX="0.0" layoutY="30.0" mnemonicParsing="false" onAction="#getStart" prefHeight="43.05029296875" prefWidth="130.0" text="开始" />
+        <Button id="menu_end" fx:id="end" layoutX="0.0" layoutY="99.0" mnemonicParsing="false" onAction="#getEnd" prefHeight="43.05029296875" prefWidth="130.0" text="结束" />
+        <Button id="menu_end" fx:id="readfile" layoutX="0.0" layoutY="372.0" mnemonicParsing="false" onAction="#getReadFile" prefHeight="43.05029296875" prefWidth="130.00009999999747" text="读取记录" />
+        <ComboBox id="FormaHulu" fx:id="formaHulu" layoutX="0.0" layoutY="167.0" prefHeight="40.0" prefWidth="130.0" promptText="葫芦娃阵型">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Crane" />
+              <String fx:value="Goose" />
+              <String fx:value="Yoke" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <ComboBox id="FormaMons" fx:id="formaMons" layoutX="1.0" layoutY="234.0" prefHeight="40.0" prefWidth="130.0" promptText="妖怪阵型">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Crane" />
+              <String fx:value="Goose" />
+              <String fx:value="Yoke" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Button fx:id="speedup" layoutX="-1.0" layoutY="507.0" mnemonicParsing="false" onAction="#getSpeedUp" prefWidth="65.0" text="加速" />
+        <Button id="speedown" fx:id="speeddown" layoutX="64.0" layoutY="507.0" mnemonicParsing="false" onAction="#getSpeedDown" prefWidth="65.0" text="减速" />
+        <TextField fx:id="speed" editable="false" layoutX="38.0" layoutY="469.0" prefWidth="92.0" />
+        <Label layoutX="0.0" layoutY="472.0" text="速度" />
+      </children>
+    </Pane>
+    <Canvas fx:id="canvas" focusTraversable="false" height="540.0" layoutX="2.0" layoutY="1.0" scaleX="1.0" scaleY="1.0" width="540.0" />
+    <Canvas id="canvas" fx:id="canvasBattle" height="540.0" layoutX="2.0" layoutY="1.0" scaleX="1.0" scaleY="1.0" width="540.0" />
+    <Canvas id="canvas" fx:id="canvasBullet" height="540.0" layoutX="2.0" layoutY="0.0" scaleX="1.0000002260561343" scaleY="1.0000002260561343" width="540.0" />
+  </children>
+</AnchorPane>

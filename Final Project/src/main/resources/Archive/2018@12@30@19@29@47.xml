@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rounds> 
+  <round count="1"> 
+    <ACT name="大娃" action="0" alive="true" x="15" y="10"/>  
+    <ACT name="二娃" action="0" alive="true" x="16" y="11"/>  
+    <ACT name="三娃" action="0" alive="true" x="16" y="9"/>  
+    <ACT name="四娃" action="0" alive="true" x="17" y="12"/>  
+    <ACT name="五娃" action="0" alive="true" x="17" y="8"/>  
+    <ACT name="六娃" action="0" alive="true" x="18" y="13"/>  
+    <ACT name="七娃" action="0" alive="true" x="18" y="7"/>  
+    <ACT name="Mouse1" action="0" alive="true" x="6" y="11"/>  
+    <ACT name="Mouse2" action="0" alive="true" x="6" y="9"/>  
+    <ACT name="Mouse3" action="0" alive="true" x="7" y="12"/>  
+    <ACT name="Mouse4" action="0" alive="true" x="7" y="8"/>  
+    <ACT name="Mouse5" action="0" alive="true" x="8" y="13"/>  
+    <ACT name="Mouse6" action="0" alive="true" x="8" y="7"/>  
+    <ACT name="Mouse7" action="0" alive="true" x="9" y="14"/>  
+    <ACT name="Mouse8" action="0" alive="true" x="9" y="6"/>  
+    <ACT name="Scorpion" action="0" alive="true" x="5" y="10"/>  
+    <ACT name="Grandpa" action="0" alive="true" x="15" y="8"/>  
+    <ACT name="Serpent" action="0" alive="true" x="5" y="8"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="四娃" action="1" alive="true" x="16" y="12"/>  
+    <ACT name="五娃" action="1" alive="true" x="17" y="7"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="7"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="5" y="11"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="13"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="6" y="10"/>  
+    <ACT name="大娃" action="1" alive="true" x="16" y="10"/>  
+    <ACT name="二娃" action="1" alive="true" x="15" y="11"/>  
+    <ACT name="三娃" action="1" alive="true" x="16" y="9"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="Grandpa" action="1" alive="true" x="16" y="8"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="Mouse7" action="1" alive="true" x="9" y="13"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="7" y="13"/>  
+    <ACT name="Mouse8" action="1" alive="true" x="9" y="6"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="5" y="8"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="五娃" action="1" alive="true" x="18" y="7"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="6"/>  
+    <ACT name="四娃" action="1" alive="true" x="16" y="11"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="11"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="12"/>  
+    <ACT name="三娃" action="1" alive="true" x="15" y="9"/>  
+    <ACT name="大娃" action="1" alive="true" x="17" y="10"/>  
+    <ACT name="二娃" action="1" alive="true" x="15" y="11"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="5" y="10"/>  
+    <ACT name="Mouse7" action="1" alive="true" x="9" y="12"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="Grandpa" action="1" alive="true" x="15" y="8"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="8" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="5" y="8"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="8" y="13"/>  
+    <ACT name="Mouse8" action="1" alive="true" x="10" y="6"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="四娃" action="1" alive="true" x="16" y="10"/>  
+    <ACT name="五娃" action="1" alive="true" x="18" y="6"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="11"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="5" y="11"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="6" y="10"/>  
+    <ACT name="二娃" action="1" alive="true" x="15" y="10"/>  
+    <ACT name="三娃" action="1" alive="true" x="16" y="9"/>  
+    <ACT name="大娃" action="1" alive="true" x="18" y="10"/>  
+    <ACT name="Grandpa" action="1" alive="true" x="15" y="7"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="Mouse7" action="1" alive="true" x="9" y="12"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="Serpent" action="1" alive="true" x="5" y="7"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="9" y="13"/>  
+    <ACT name="Mouse8" action="1" alive="false" x="9" y="6"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="11"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="七娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="五娃" action="1" alive="true" x="18" y="6"/>  
+    <ACT name="四娃" action="1" alive="true" x="17" y="10"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="11"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="5" y="10"/>  
+    <ACT name="三娃" action="1" alive="true" x="16" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="大娃" action="1" alive="true" x="18" y="9"/>  
+    <ACT name="二娃" action="1" alive="false" x="16" y="10"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="Mouse7" action="1" alive="false" x="8" y="12"/>  
+    <ACT name="Grandpa" action="1" alive="false" x="14" y="7"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="9" y="12"/>  
+    <ACT name="Serpent" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="8" y="11"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="10"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="五娃" action="1" alive="true" x="17" y="6"/>  
+    <ACT name="四娃" action="1" alive="true" x="17" y="10"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="5"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="11"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="大娃" action="1" alive="false" x="19" y="9"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="6"/>  
+    <ACT name="三娃" action="1" alive="true" x="15" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="12"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="7" y="7"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="五娃" action="1" alive="true" x="18" y="6"/>  
+    <ACT name="四娃" action="1" alive="true" x="18" y="10"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="七娃" action="1" alive="true" x="17" y="5"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="11"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="6"/>  
+    <ACT name="三娃" action="1" alive="true" x="15" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="7" y="6"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="12"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="四娃" action="1" alive="true" x="18" y="10"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="6"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="12"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="6" y="11"/>  
+    <ACT name="七娃" action="1" alive="true" x="17" y="5"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="8" y="9"/>  
+    <ACT name="三娃" action="1" alive="true" x="15" y="7"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="7" y="5"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="6"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="6"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="四娃" action="1" alive="true" x="19" y="10"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="12"/>  
+    <ACT name="Serpent" action="1" alive="true" x="7" y="4"/>  
+    <ACT name="三娃" action="1" alive="false" x="15" y="6"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="5"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="10"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="6" y="11"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="8" y="9"/>  
+    <ACT name="Mouse6" action="1" alive="true" x="8" y="6"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="6"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="四娃" action="1" alive="true" x="19" y="10"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="9"/>  
+    <ACT name="Serpent" action="1" alive="true" x="7" y="4"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="4"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="11"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="9" y="9"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="12"/>  
+    <ACT name="Mouse6" action="1" alive="false" x="8" y="5"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="5"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="7"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="四娃" action="1" alive="true" x="19" y="10"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="10"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="8" y="9"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="3"/>  
+    <ACT name="Mouse5" action="1" alive="true" x="10" y="11"/>  
+    <ACT name="Serpent" action="1" alive="true" x="8" y="4"/>  
+    <ACT name="六娃" action="1" alive="true" x="18" y="9"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="4"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse2" action="1" alive="true" x="5" y="7"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="四娃" action="1" alive="true" x="18" y="10"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="Mouse5" action="1" alive="false" x="10" y="10"/>  
+    <ACT name="Serpent" action="1" alive="true" x="9" y="4"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="3"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="10"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="9"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="8" y="9"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="5" y="4"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="9" y="7"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="5"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="四娃" action="1" alive="true" x="19" y="10"/>  
+    <ACT name="Serpent" action="1" alive="true" x="9" y="4"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="9" y="9"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="3"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="4"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="9" y="7"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="6"/>  
+    <ACT name="五娃" action="1" alive="true" x="18" y="5"/>  
+    <ACT name="四娃" action="1" alive="false" x="19" y="10"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="六娃" action="1" alive="true" x="17" y="8"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="3"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="8" y="9"/>  
+    <ACT name="Serpent" action="1" alive="true" x="9" y="4"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="3"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="五娃" action="1" alive="true" x="18" y="4"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="5"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="六娃" action="1" alive="false" x="17" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="7" y="9"/>  
+    <ACT name="Serpent" action="1" alive="true" x="9" y="4"/>  
+    <ACT name="七娃" action="1" alive="true" x="19" y="2"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="2"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="7"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="4"/>  
+    <ACT name="五娃" action="1" alive="true" x="19" y="4"/>  
+    <ACT name="Serpent" action="1" alive="true" x="8" y="4"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="2"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="7" y="2"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="五娃" action="1" alive="true" x="19" y="3"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="5" y="4"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="7"/>  
+    <ACT name="Serpent" action="1" alive="true" x="9" y="4"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="6" y="9"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="8" y="8"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="1"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="7" y="1"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="8" y="7"/>  
+    <ACT name="五娃" action="1" alive="true" x="18" y="3"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="5" y="3"/>  
+    <ACT name="Serpent" action="1" alive="false" x="9" y="3"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="5" y="9"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="0"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="8" y="8"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="1"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse1" action="1" alive="true" x="7" y="7"/>  
+    <ACT name="五娃" action="1" alive="true" x="17" y="3"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="6" y="3"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="5" y="8"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="8" y="8"/>  
+    <ACT name="七娃" action="1" alive="true" x="18" y="0"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="7" y="1"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="五娃" action="1" alive="true" x="17" y="2"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="5" y="3"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="7" y="8"/>  
+    <ACT name="七娃" action="1" alive="true" x="17" y="0"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="4" y="8"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="7" y="1"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="五娃" action="1" alive="true" x="18" y="2"/>  
+    <ACT name="Mouse2" action="1" alive="true" x="4" y="3"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="5" y="7"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="4" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="6" y="8"/>  
+    <ACT name="七娃" action="1" alive="true" x="16" y="0"/>  
+    <ACT name="Mouse4" action="1" alive="true" x="6" y="1"/> 
+  </round>  
+  <round count="1"> 
+    <ACT name="Mouse2" action="1" alive="true" x="5" y="3"/>  
+    <ACT name="五娃" action="1" alive="false" x="19" y="2"/>  
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="7"/>  
+    <ACT name="Mouse3" action="1" alive="true" x="5" y="8"/>  
+    <ACT name="Scorpion" action="1" alive="true" x="3" y="7"/>  
+    <ACT name="七娃" action="1" alive="true" x="16" y="0"/>  
+    <ACT name="Mouse4" action="1" alive="false" x="6" y="0"/> 
+  </round>  
+  <round count="1">
+    <ACT name="Mouse2" action="1" alive="true" x="4" y="3"/>
+    <ACT name="Mouse1" action="1" alive="true" x="6" y="6"/>
+    <ACT name="Scorpion" action="1" alive="true" x="2" y="7"/>
+    <ACT name="七娃" action="1" alive="true" x="17" y="0"/>
+    <ACT name="Mouse3" action="1" alive="true" x="4" y="8"/>
+  </round>
+</rounds>
