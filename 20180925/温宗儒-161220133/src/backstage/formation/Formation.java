@@ -1,0 +1,5 @@
+package backstage.formation;
+
+public enum Formation {
+    LONGSNAKE,CRANEWING,WILDGOOSE,DOUBLEYOKE,FISHSCALE,SQUAREDOOR,CRESCENTMOON,FENGSHI
+}
