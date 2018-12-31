@@ -1,7 +1,7 @@
 public abstract class Organism {
     Block position;
     void  moveTo(Block b){
-        b.being = this;
+        b.set(this);
         position = b;
     }
     void fallBack(){
