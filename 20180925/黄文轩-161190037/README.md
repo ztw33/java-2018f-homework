@@ -36,11 +36,11 @@
 
     ## 结果展示
 
-    ## ![pic3](C:\Users\hwx\Documents\GitHub\java-2018f-homework\20180925\黄文轩-161190037\pic3.png)
+    ![pic1](https://raw.githubusercontent.com/hwxnju/java-2018f-homework/master/20180925/%E9%BB%84%E6%96%87%E8%BD%A9-161190037/pic1.png)
 
-    ![pic1](C:\Users\hwx\Documents\GitHub\java-2018f-homework\20180925\黄文轩-161190037\pic1.png)
+    ![pic2](https://raw.githubusercontent.com/hwxnju/java-2018f-homework/master/20180925/%E9%BB%84%E6%96%87%E8%BD%A9-161190037/pic2.png)
 
-    ![pic2](C:\Users\hwx\Documents\GitHub\java-2018f-homework\20180925\黄文轩-161190037\pic2.png)
+    ![pic3](https://raw.githubusercontent.com/hwxnju/java-2018f-homework/master/20180925/%E9%BB%84%E6%96%87%E8%BD%A9-161190037/pic3.png)
 
     ## 设计思想
 
