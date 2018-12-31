@@ -6,14 +6,44 @@ enum COLOR {
 
 public class Calabash {
 	private COLOR color;
+	private String name;
 
 	public Calabash(COLOR color) {
 		super();
 		this.color = color;
+		switch (color) {
+		case RED:
+			name = "老大";
+			break;
+		case ORANGE:
+			name = "老二";
+			break;
+		case YELLOW:
+			name = "老三";
+			break;
+		case GREEN:
+			name = "老四";
+			break;
+		case CYAN:
+			name = "老五";
+			break;
+		case BLUE:
+			name = "老六";
+			break;
+		case PURPLE:
+			name = "老七";
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void printSign() {
 		System.out.print(color.toString());
+	}
+
+	public void printName() {
+		System.out.print(name);
 	}
 
 	public int getValue() {
