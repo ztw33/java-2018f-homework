@@ -9,7 +9,6 @@ enum Brothers {
         this.name = name;
         this.color = color;
     }
-
     public int getRank()
     {
         return rank;
@@ -27,7 +26,6 @@ enum Brothers {
 }
 
 public class GourdBrothers {
-    //Brothers[] brothers=Brothers.values();
     public static void BubbleSort(Brothers[] brothers)
     {
         for(int i=0;i<brothers.length-1;i++)

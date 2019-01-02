@@ -1,24 +1,11 @@
 package formation;
 
 public class ArrowFormation extends Formation {
-	public ArrowFormation(int s){
-		this.setName();
-		this.setScale(s);
-		//this.setArray();
-	}
-	protected  void setName() {
-		this.name = "Arrow";
-	}
-	protected void setArray() {
-		this.array = new Position[this.scale + (this.scale - 1) / 2 + (this.scale - 1) / 2];
-		for (int i=0; i<this.scale; i++) {
-			this.array[i] = new Position(i, (this.scale - 1) / 2);
-		}
-		for (int i=1; i<=(this.scale-1)/2; i++) {
-			this.array[this.scale + i - 1] = new Position(i, (this.scale - 1) / 2 - i);
-		}
-		for (int i=1; i<=(this.scale-1)/2; i++) {
-			this.array[this.scale + (this.scale - 1) / 2 - 1 + i] = new Position(i, (this.scale - 1) / 2 + i);
-		}
+	public ArrowFormation(){
+		name = "Arrow";
+		array = new Position[] {new Position(7,7),
+				new Position(8,6),new Position(9,5),new Position(10,4),
+				new Position(8,7),new Position(9,7),new Position(10,7),new Position(11,7),new Position(12,7),new Position(13,7),
+				new Position(8,8),new Position(9,9),new Position(10,10)};
 	}
 }
