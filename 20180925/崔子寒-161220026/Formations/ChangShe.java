@@ -8,4 +8,8 @@ public class ChangShe implements FormationProvider{
                 new Position(5,5),new Position(6,5),new Position(7,5),new Position(8,5)};
         return positions;
     }
+
+    public String getName() {
+        return "长蛇阵";
+    }
 }

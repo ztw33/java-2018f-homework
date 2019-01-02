@@ -4,8 +4,8 @@ import Creature.*;
  * @ Author     ：cjh
  * @ Description：鱼鳞阵
  */
-public class YulinBattleArray {
-    public static void form(Creature scorpionMonster,Creature[] underlings,int row,int column) {
+public class YulinBattleArray<T extends Creature> {
+    public void form(T scorpionMonster,T[] underlings,int row,int column) {
         scorpionMonster.standOnMap(row, column);
         int temp = 1;
         for (int k = 0; k < underlings.length - 1; k++) {

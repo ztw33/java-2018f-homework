@@ -3,6 +3,8 @@ package calabashBrothers.formation;
 import calabashBrothers.Maps;
 import calabashBrothers.beings.Creature;
 
+import java.util.ArrayList;
+
 /**
  * @ Author     ：Young
  * @ Description：雁行阵
@@ -13,9 +15,15 @@ public class YanXing extends Formation{
     }
 
     @Override
-    public void SetFormation(Maps maps, Creature[] creatures, int direction) {
-        for (int i = 0; i <creatures.length ; i++) {
-            maps.getMaps()[startX+i][startY-i].setCreature(creatures[i]);
+    void initSites(int x, int y) {
+
+    }
+
+    @Override
+    public void SetFormation(Maps<Creature> maps, ArrayList<Creature> creatures, int direction) {
+        for (int i = 0; i <creatures.size() ; i++) {
+            maps.setContent(startX+i,startY-i,creatures.get(i));
         }
     }
+
 }

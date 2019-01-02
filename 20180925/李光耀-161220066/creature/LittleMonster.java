@@ -2,18 +2,15 @@ package creature;
 
 
 
-public class LittleMonster extends Creature{
-	
-//	static{
-//			image=ImageIO.read(HuLuWas.class.getResource("monster.jpg"));
-//			image=image.getScaledInstance(Gui.squareXLength, Gui.squareYLength,Image.SCALE_DEFAULT );
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+/**
+* @ClassName: LittleMonster
+* @Description: 小怪
+* @author 13745
+* @date 2018年11月4日
+*
+*/
+public class LittleMonster extends BadCreature{
 	public LittleMonster(String name) {
-		super(CreatureType.LITTLEMONSTER, name,CreatureImage.LITTLEMONSTER);
-		// TODO Auto-generated constructor stub
+		super(name,StyleImage.LITTLEMONSTER);
 	}
 }
