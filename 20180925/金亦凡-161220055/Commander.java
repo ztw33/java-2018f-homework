@@ -1,19 +1,35 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Commander {
-    private Creature[][] creatures = new Creature[12][12];
+
+    private int row;
+    private int col;
+    private static ArrayList<ArrayList<Creature>> creatures;
 
     private int[][] CalabashLocation = new int[7][2];
     private int[][] MinionLocation = new int[20][2];
     private int[][] ScorpionLocation = new int[1][2];
     private int MinionNum;
 
+    private JFrame battleField;
+
     private Commander() {
-        for(int i = 0; i < 12; i++) {
-            for(int j = 0; j < 12; j++) {
-                creatures[i][j] = new Creature();
+        row = 12;
+        col = 13;
+        creatures = new ArrayList<>();
+        for(int i = 0; i < row; i++) {
+            creatures.add(new ArrayList<>());
+            for(int j = 0; j < col - 1; j++) {
+                Creature creature = new Creature();
+                creatures.get(i).add(creature);
             }
         }
+        battleField = new JFrame("葫芦娃大战蝎子精");
     }
 
     public static void main(String[] argv) {
@@ -22,17 +38,15 @@ public class Commander {
         commander.placeSnake();
         commander.placeCalabash();
         commander.battleArray(6);
-        commander.printBattleField();
-        commander.battleArray();
-        commander.printBattleField();
+        commander.setBattleField();
     }
 
     private void placeGrandpa() {
-        creatures[11][0] = new Grandpa();
+        creatures.get(11).set(0, new Grandpa());
     }
 
     private void placeSnake() {
-        creatures[11][11] = new Snake();
+        creatures.get(11).set(11, new Snake());
     }
 
     private void placeCalabash() {
@@ -41,14 +55,15 @@ public class Commander {
         for(int i = 0; i < 7; i++) {
             CalabashLocation[i][0] = CalabashTemp[i][0];
             CalabashLocation[i][1] = CalabashTemp[i][1];
-            creatures[CalabashLocation[i][0]][CalabashLocation[i][1]] = new Calabash(huluwas[i]);
+            creatures.get(CalabashLocation[i][0]).set(CalabashLocation[i][1], new Calabash(huluwas[i]));
         }
+
     }
 
     private void deleteArray() {
-        this.creatures[ScorpionLocation[0][0]][ScorpionLocation[0][1]] = new Creature();
+        creatures.get(ScorpionLocation[0][0]).set(ScorpionLocation[0][1], new Creature());
         for(int i = 0; i < MinionNum; i++) {
-            this.creatures[MinionLocation[i][0]][MinionLocation[i][1]] = new Creature();
+            creatures.get(MinionLocation[i][0]).set(MinionLocation[i][1], new Creature());
         }
     }
 
@@ -79,26 +94,17 @@ public class Commander {
         System.out.println("请输入阵型：1鹤翼，2雁行，3冲轭，4鱼鳞，5方圆，6偃月，7锋矢。");
         int n = input.nextInt();
         this.chooseArray(n);
-        this.creatures[ScorpionLocation[0][0]][ScorpionLocation[0][1]] = new Scorpion();
+        creatures.get(ScorpionLocation[0][0]).set(ScorpionLocation[0][1], new Scorpion());
         for(int i = 0; i < MinionNum; i++)
-            this.creatures[MinionLocation[i][0]][MinionLocation[i][1]] = new Minion();
+            creatures.get(MinionLocation[i][0]).set(MinionLocation[i][1], new Minion());
     }
 
     private void battleArray(int n) {
+        this.deleteArray();
         this.chooseArray(n);
-        this.creatures[ScorpionLocation[0][0]][ScorpionLocation[0][1]] = new Scorpion();
+        creatures.get(ScorpionLocation[0][0]).set(ScorpionLocation[0][1], new Scorpion());
         for(int i = 0; i < MinionNum; i++)
-            this.creatures[MinionLocation[i][0]][MinionLocation[i][1]] = new Minion();
-    }
-
-    private void printBattleField() {
-        System.out.println("当前对峙情形如下：");
-        for(int i = 0; i < 12; i++) {
-            for(int j = 0; j < 12; j++) {
-                creatures[i][j].Print();
-            }
-            System.out.print('\n');
-        }
+            creatures.get(MinionLocation[i][0]).set(MinionLocation[i][1], new Minion());
     }
 
     private void HeYi() {
@@ -176,5 +182,120 @@ public class Commander {
             MinionLocation[i][0] = MinionTemp[i][0];
             MinionLocation[i][1] = MinionTemp[i][1];
         }
+    }
+
+    public void setBattleField() {
+        battleField.getContentPane().removeAll();
+        battleField.setLayout(new GridLayout(row, col));
+        battleField.setSize(col * 80, row * 60);
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col - 1; j++) {
+                JButton jButton = new JButton();
+                jButton.setBounds(0, 0, 80, 60);
+                setImage(creatures.get(i).get(j).getType(), jButton);
+                battleField.add(jButton);
+            }
+            JButton jButton = new JButton();
+            switch (i) {
+                case 1:
+                    jButton.setText("鹤翼");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(1);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 2:
+                    jButton.setText("雁行");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(2);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 3:
+                    jButton.setText("冲轭");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(3);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 4:
+                    jButton.setText("鱼鳞");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(4);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 5:
+                    jButton.setText("方圆");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(5);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 6:
+                    jButton.setText("偃月");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(6);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                case 7:
+                    jButton.setText("锋矢");
+                    jButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            battleArray(7);
+                            setBattleField();
+                        }
+                    });
+                    break;
+                default: break;
+            }
+            battleField.add(jButton);
+        }
+        //battleField.pack();
+        battleField.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        battleField.setVisible(true);
+    }
+
+    private void setImage(int type, JButton jButton) {
+        String imagePath = "src/image/";
+        switch (type) {
+            case 2: imagePath += "grandpa.jpg"; break;
+            case 3: imagePath += "scorpion.jpg"; break;
+            case 4: imagePath += "snake.jpg"; break;
+            case 5: imagePath += "minion.jpg"; break;
+            case 11: imagePath += "calabash_1st.jpg"; break;
+            case 12: imagePath += "calabash_2nd.jpg"; break;
+            case 13: imagePath += "calabash_3rd.jpg"; break;
+            case 14: imagePath += "calabash_4th.jpg"; break;
+            case 15: imagePath += "calabash_5th.jpg"; break;
+            case 16: imagePath += "calabash_6th.jpg"; break;
+            case 17: imagePath += "calabash_7th.jpg"; break;
+            default: imagePath = null; break;
+        }
+
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image temp = imageIcon.getImage().getScaledInstance(jButton.getWidth(), jButton.getHeight(), imageIcon.getImage().SCALE_DEFAULT);
+        imageIcon = new ImageIcon(temp);
+        jButton.setIcon(imageIcon);
     }
 }
