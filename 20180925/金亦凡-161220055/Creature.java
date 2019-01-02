@@ -17,4 +17,8 @@ public class Creature {
     public void setType(int type) {
         this.type = type;
     }
+
+    public int getType() {
+        return type;
+    }
 }
