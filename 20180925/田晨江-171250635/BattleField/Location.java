@@ -1,4 +1,4 @@
-package BattleField;
+package world;
 
 import creature.Creature;
 
