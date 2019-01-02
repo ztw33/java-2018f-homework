@@ -1,0 +1,8 @@
+蝎子精 领队 BadMan
+小兵0 冲锋 BadMan
+小兵1 冲锋 BadMan
+小兵2 冲锋 GoodMan
+小兵3 冲锋 BadMan
+小兵4 冲锋 BadMan
+小兵5 冲锋 BadMan
+蛇精 看戏 BadMan

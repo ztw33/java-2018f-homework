@@ -18,7 +18,7 @@ enum Color {
     public String getStr() {
         return str;
     }
-};
+}
 
 enum Age {
     ONE("老大"),
@@ -38,26 +38,30 @@ enum Age {
     public String getStr() {
         return str;
     }
-};
+}
 
 public class CalabashBrother {
-    Age num;
+    Age rank;
     Color colorAttr;
 
     public CalabashBrother (int n) {
-        num = Age.values()[n];
+        rank = Age.values()[n];
         colorAttr = Color.values()[n];
     }
 
     public int compareAge(CalabashBrother right) {
-        return num.compareTo(right.num);
+        return rank.compareTo(right.rank);
     }
     public int compareCol(CalabashBrother right) {
         return colorAttr.compareTo(right.colorAttr);
     }
 
-    public void displayMov(int src, int dst) { System.out.println(num.getStr() + ": "+ src + "->" + dst); }
-    public void printAge() { System.out.printf("%s ", num.getStr()); }
+    public void displayMov(int src, int dst) { System.out.println(rank.getStr() + ": "+ src + "->" + dst); }
+    public void moveTo(CalabashBrother[] sequence, int index) {
+        sequence[index] = this;
+    }
+
+    public void printAge() { System.out.printf("%s ", rank.getStr()); }
     public void printCol() {
         System.out.printf("%s ", colorAttr.getStr());
     }
