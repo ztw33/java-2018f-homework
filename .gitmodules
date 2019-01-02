@@ -1,3 +1,18 @@
+[submodule "Final Project/吴昌容-161220134"]
+	path = Final Project/吴昌容-161220134
+	url = https://github.com/BYGX-wcr/Java-Final-Project.git
+[submodule "Final Project/李展烁-171840565"]
+	path = Final Project/李展烁-171840565
+	url = https://github.com/tfuge/java_final
+[submodule "Final Project/单明慧-161220029"]
+	path = Final Project/单明慧-161220029
+	url = https://github.com/WitAnn/homework
+[submodule "Final Project/任卓然-151220089"]
+	path = Final Project/任卓然-151220089
+	url = https://github.com/c151220089/java-
+[submodule "Final Project/朱峰熠-161220184"]
+	path = Final Project/朱峰熠-161220184
+	url = https://github.com/Chasenzfy/Cala184
 [submodule "Final Project/王荆涛-161220123"]
 	path = Final Project/王荆涛-161220123
 	url = https://github.com/AlexisCoke/huluwa
@@ -169,6 +184,9 @@
 [submodule "Final Project/陈金池-161220013"]
 	path = Final Project/陈金池-161220013
 	url = https://github.com/cjinchi/CalabashMan
+[submodule "Final Project/叶超-151180159"]
+	path = Final Project/叶超-151180159
+	url = https://github.com/moon19971102/myhomework
 [submodule "Final Project/朱向荣-161220187"]
 	path = Final Project/朱向荣-161220187
 	url = https://github.com/zxr19980213/final-project
@@ -250,3 +268,24 @@
 [submodule "Final Project/郑天烨-161220175"]
 	path = Final Project/郑天烨-161220175
 	url = https://github.com/Tianye-Zheng/Final-Project
+[submodule "Final Project/谢贤-151220132"]
+	path = Final Project/谢贤-151220132
+	url = https://github.com/LinusXieXian/HULUWA
+[submodule "Final Project/戴佳宸-161220028"]
+	path = Final Project/戴佳宸-161220028
+	url = http://github.com/161220028jcdai/161220028finalhomework
+[submodule "Final Project/孙楚涛-161220112"]
+	path = Final Project/孙楚涛-161220112
+	url = https://github.com/sct136135127/FINAl1.0
+[submodule "Final Project/钱玥珥-151220083"]
+	path = Final Project/钱玥珥-151220083
+	url = https://github.com/151220083/FinalProject
+[submodule "Final Project/刘潇远-161220083"]
+	path = Final Project/刘潇远-161220083
+	url = https://github.com/courseralxy/CalaBashBrother.git
+[submodule "Final Project/周宇航-161220182"]
+	path = Final Project/周宇航-161220182
+	url = https://github.com/njuzyh/JavaFinal
+[submodule "Common"]
+	path = Final Project/朱寅-161220188
+	url = https://github.com/ZhuangbilityY/Final
