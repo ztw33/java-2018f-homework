@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="861.0" prefWidth="1341.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Pane fx:id="mainPane" layoutX="14.0" prefHeight="880.0" prefWidth="1229.0">
+         <children>
+            <ImageView fitHeight="857.0" fitWidth="1208.0" layoutX="85.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../common/images/background/vs.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="-16.0" layoutY="15.0" prefHeight="828.0" prefWidth="1190.0">
+               <children>
+                  <Pane fx:id="creaturePane" layoutY="14.0" prefHeight="702.0" prefWidth="1190.0">
+                     <children>
+                        <Pane prefHeight="55.0" prefWidth="948.0">
+                           <children>
+                              <Button layoutX="282.0" layoutY="16.0" mnemonicParsing="false" onAction="#changeFormation" text="变换阵型" />
+                              <Button layoutX="20.0" layoutY="16.0" mnemonicParsing="false" onAction="#startGame" prefHeight="17.0" prefWidth="215.0" text="开始游戏" />
+                              <Button layoutX="398.0" layoutY="16.0" mnemonicParsing="false" onAction="#emptyPane" text="置空" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
