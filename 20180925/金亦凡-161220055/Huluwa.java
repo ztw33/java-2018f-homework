@@ -14,4 +14,8 @@ public enum Huluwa {
     public void ColorOff() {
         System.out.print(color);
     }
+
+    public int getNum() {
+        return num;
+    }
 }
